@@ -1,21 +1,19 @@
 Use Case: Healthcare Services
+
 Context: The member intends to recieve health care services from ChocAn
 		  through the health care professional (provider).
+		  
 Actors: Member, ChocAn Data Software, Provider
 
 Main Success Scenario:
 	1. Provider recieves ChocAn member card from member.
-	2. The provider slides the card through the terminal's card reader.
+	2. The provider slides the card through the ChocAn computer terminal's card reader.
 	3. The terminal validates member number.
 		3.1. The terminal communicates with the ChocAn data software to validate member number and membership.
-	4. 	 
-
-
-
-
-
-
-
-
-
+	4. The provider hands back the member card to the member and provides health care service.
+	5. The provider recieves ChocAn member card from member after the health care service has been provided.
+	6. The provider slides the member card through the terminal or keys in in the member number.
+	
+	. The member receives an email with an attachment that lists services provided, sorted in order of service date, at the end of every week.
 Extensions:
+	
