@@ -1,6 +1,6 @@
 Use case:	Verify Service Code
 Context:	When the provider enters in the six-digit service code, the provider interacts with the system to verify the service code.
-Actors:	Provider 
+Actors:		Provider 
 
 Main Success Scenario: 
 	
@@ -11,7 +11,7 @@ Main Success Scenario:
 	4.1. The provider enters comments about the service provided. 
 
 Extensions
-	1a. A nonsexist service code was entered.
+	1a. A nonexistent service code was entered.
 	      1a.1 An error message is printed to the terminal.
 	      1a.2 The use case terminates.
 	3a. The service name does not match with the service that was provided
