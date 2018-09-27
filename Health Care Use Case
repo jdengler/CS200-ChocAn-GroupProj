@@ -63,6 +63,8 @@ Extensions:
 
 Use Case: Request Provider Directory
 
+Context: The provider intends to request a Provider Directory in order to bill the member.
+
 Actors: Provider
 
 Main Success Scenario:
