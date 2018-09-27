@@ -1,0 +1,99 @@
+Use Case: Execute Weekly Accounting Process
+Context: At the end of each week on Friday at midnight the main accounting procedures run at the ChocAn Data Center
+Actors: Scheduled Task (Timer)
+Main Success Scenario:
+1. At midnight on Friday the main accounting procedure is run at the ChocAn Data Center.
+    1.1. The weekly <u> Member Report </u> totals the provided services to each member.
+    1.2. The weekly <u> Provider Report </u> totals the payable amount for services provided from each provider. 
+    1.3. The weekly <u> Report for Accounts Payable </u> totals the total payable amount for all services provided.
+2. The <u> Funds Transfer Process </u> is initiated and funds are electronically transferred.
+3.	The ChocAn Systems publishes the reports and waits to be run again. 
+
+Extensions:
+1a.  The main accounting procedure is run at the ChocAn Data Center by the request of a manager.
+	1a.1 The use case continues at step 1.1
+1b.  The ChocAn System is set to the time zone of the central location of the ChocAn Data Center.
+
+
+
+Use Case: Produce a Report for Accounts Payable 
+Context: The ChocAn System produces a weekly summary report of accounts payable and sends it to the manager.
+ Actors: Manager
+Main Success Scenario:
+1.	The ChocAn System reads the week’s files for all provider information related to billing, and consultations for services provided to members and creates an accounts payable summary report of all providers.
+1.1.	The Report includes:  every provider to be paid for the week, the number of consultation each had and related total fees, total number of providers who provided services, total number of consultations, and calculations of overall fee total.
+2.	The ChocAn System sends the provider summary report to the manager.
+3.	The manager receives the accounts payable report.
+
+Extensions:
+1a. There is no new information for the current week related to billing, and consultations for services provided to members.
+1a.1 The ChocAn System creates a report stating that there is no new information related to billing, and consultations for services provided to members.
+1a.2The use case continues at step 2.
+
+
+
+Use Case: Produce Provider Report extends Produce Report for Accounts Payable
+Context: Each Provider that has billed ChocAn during that week receives a summary report.
+Actors: Provider, Manager
+Main Success Scenario:
+1.2 The ChocAn System reads the week’s files for each bill from providers and creates a provider summary report for each provider.
+1.2.1 The report includes: Provider name (25 characters), Provider number (9 digits), Provider street address (25 characters), Provider city (14 characters), Provider state (2 letters), Provider ZIP code (5 digits),
+1.2.1.1 For each service provided the report includes: Member name (25 characters), Member number (9 digits), Service code (6 digits), Fee to be paid (up to $999.99), Total number of consultations with members (3 digits), Total fee for week (up to $99,999.99)
+1.3	The ChocAn System sends the provider summary report to each provider via e-mail attachment.
+1.4	Each provider receives their weekly service report.
+
+Extensions:
+1.2a. There is no new information related to bill from providers.
+1.2a.1 The ChocAn System creates a report stating that there is no new information related to bill from providers.
+1.2a.2The use case continues at step 1.3.
+
+
+
+Use Case: Initiate Funds Transfer Process <b> extends </b> Produce Provider Report
+Context: The accounts payable are transferred to the appropriate funds.
+Actors: Banking Computers
+Main Success Scenario:
+1.2.2 The system uses the read-in files for each bill from providers to initiate the Electronic Fund Transfer Process. 
+1.2.3 The record of electronic funds transfer data is written to a disk.
+1.2.4 The banking computers ensure each provider's bank account is credited the appropriate amount.
+
+Extensions:
+1.2.4a. The accreditation fails.
+    1.2.4a.1. The banking computers inform the ChocAn system that the transaction failed.
+    1.2.4a.2. The use case continues at step 1.3.
+
+
+
+Use Case: Request Report extends Produce Report for Accounts Payable
+Context: The manager can request a report from the ChocAn System to which the systems will send the report without waiting until the end of the week.
+ Actors: Manager
+Main Success Scenario:
+1.2	A manager requests a report at any time during the week.
+1.2.1The manager specifies the type of report needed 
+1.3	The ChocAn System runs the reporting process for the specified type of report. 
+1.4 The ChocAn System sends the manager a report of the current weeks data that has been gathered so far.
+1.5	The manager receives the report.
+
+Extensions:
+1.3a. There is no new information for the current week related to the specified report.
+	1.3a.1 The ChocAn System creates a report stating that there is no new information related to the specified report.
+1.3a.2The use case continues at step 1.4.
+
+
+
+Use Case: Produce a Weekly Member Report extends Produce Report for Accounts Payable
+Context: Each member who has consulted a ChocAn provider during that week receives a list of services provided.
+Actors: Member, Manager
+Main Success Scenario:
+1.2	 The ChocAn System reads the week’s file of services provided and creates a member report for each member.
+1.2.1The report includes: Member Name (25 characters), Member number (9 digits), Member street address (25 characters), Member city (14 characters), Member state (2 letters), Member ZIP code (5 digits)
+1.2.1.1 For each service provided the report includes: Date of service (MM-DD-YYYY), Provider name (25 characters), Service name (20 characters)
+1.3	The ChocAn System sends the member report to each member via e-mail attachment.
+1.4	Each member receives their weekly service report.
+
+Extensions:
+1.2a. There is no new information related to services provided.
+1.2a.1 The ChocAn System creates a report stating that there is no new information related to services provided.
+1.2a.2The use case continues at step 1.3.
+
+
