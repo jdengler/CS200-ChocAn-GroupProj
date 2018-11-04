@@ -1,6 +1,6 @@
-Use Case: Member Validation
+Use Case: Verify member
 
-Context: The member intends to recieve health care services from the provider
+Context: The member intends to receive health care services from the provider
 		  through ChocAn.
 		  
 Actors: Member, Provider
@@ -8,7 +8,7 @@ Actors: Member, Provider
 Main Success Scenario:
 	1. The provider turns on their terminal and enters their provider login.
 		1.1. The terminal validates the provider login.
-	2. The provider recieves ChocAn member card from member.
+	2. The provider receives ChocAn member card from member.
 	3. The provider slides the card through the ChocAn computer terminal's card reader.
 	4. The terminal validates member number.
 		4.1. The terminal communicates with the ChocAn data software to validate member number and membership.
@@ -34,7 +34,7 @@ Actors: Provider
 Main Success Scenario:
 	1. The provider turns on their terminal and enters their provider login.
 		1a. The terminal validates the provider login.
-	2. The provider recieves the member card from the member and passes the card through the reader.
+	2. The provider receives the member card from the member and passes the card through the reader.
 	3. The word "VALIDATED" appears and the provider enters the date the service was provided.
 	4. Using the provider directory, the provider looks up the appropriate six-digit code corresponding to the service provided.
 	5. The provider keys in the service code.
@@ -64,7 +64,7 @@ Main Success Scenario:
 	1. The provider turns on the terminal and enters their login.
 		1a. The terminal validates the provider login.
 	2. The provider requests the Provider Directory through the terminal.
-	3. The provider recieves an email with the Provider Directory attached.
+	3. The provider receives an email with the Provider Directory attached.
 
 Extensions:
 	1a. The provider login is invalid.
