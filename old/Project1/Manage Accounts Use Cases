@@ -1,0 +1,37 @@
+Use Case: Manage Member
+
+Context: The software at the ChocAn Data Center is run allowing operators to add new members to ChocAn, to delete members who have resigned, and to update member records.
+
+Actors: Operator
+
+Main Success Scenario:
+    1.	An operator is prompted to add, delete, or update member
+    2.	The operator enters information of the member
+    3.	The operator adds, deletes, or updates the member
+
+Extensions:
+	2a. The member does not exist in the system
+		An error message is displayed on the screen then goes back to step 1
+	2b. The member is suspended
+		An error message id displayed and goes back to step 1
+	2c. When adding a member, the member’s information already exists in the system
+        The software alerts the operator then allow access to the provider to go to step 3
+        
+        
+Use Case: Manage Provider
+
+Context: Similar to the use case as above, the software at the ChocAn Data Center is run allowing operators to now add new providers, to delete providers, and to update provider records.
+
+Actors: Operator
+
+Main Success Scenario:
+    1.	An operator is promoted to add, delete, or update provider
+    2.	The operator enters information of the provider
+    3.	The operator adds, deletes, or updates the provider
+
+Extensions:
+	2a. The provider does not exist in the system
+		An error message is displayed on the screen then goes back to step 1
+	2b. When adding a provider, the provider’s information already exists in the system
+        The software alerts the operator then allows access to the provider to go to step 3
+

@@ -1,0 +1,31 @@
+Use case:	Verify Service Code
+Context:	When the provider enters in the six-digit service code, the provider interacts with the system to verify the service code.
+Actors:		Provider 
+
+Main Success Scenario: 
+	
+1.	The system finds the service name that corresponds to the service code.
+2.	The system displays the service name to the terminal.
+3.	The system prompts the provider to verify that the service name matches with the service that was provided.
+4.	The provider confirms that the service name and service provided match.
+	4.1. The provider enters comments about the service provided. 
+
+Extensions
+	1a. A nonexistent service code was entered.
+	      1a.1 An error message is printed to the terminal.
+	      1a.2 The use case terminates.
+	3a. The service name does not match with the service that was provided
+	      3a.1. The use case terminates. 
+
+
+
+Use case:	Complete Service form
+
+Context: 	The provider completes a form with information related to the service provided.
+
+Actors: 	Provider 
+
+Main Success Scenario:
+	
+1.	The terminal displays a form that includes the current date and time, the date the service was provided, member name and number, service code, and fee to be paid to the terminal.
+2.	The provider submits the completed form. 
