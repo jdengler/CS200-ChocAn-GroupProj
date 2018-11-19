@@ -1,7 +1,7 @@
 Use case:	Verify Service Code
 Context:	When the provider enters in the six-digit service code, the provider interacts with the system to verify the service code.
 Actors:		Provider 
-
+ 
 Main Success Scenario: 
 	
 1.	The system finds the service name that corresponds to the service code.
