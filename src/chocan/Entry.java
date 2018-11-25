@@ -9,13 +9,13 @@ public class Entry {
   private String state;
   private Boolean status;
   private String zip;
-  private ArrayList<ServiceRecord> services;
+  private ArrayList<Services> services;
   
   public Entry(){
 	  
   }
   
-  public ArrayList<ServiceRecord> addService(ServiceRecord s){
+  public ArrayList<Services> addService(Services s){
 	  services.add(s);
 	  return services;
   } 
