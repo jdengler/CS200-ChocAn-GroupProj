@@ -1,6 +1,6 @@
 package chocan;
 
-public class ManagerTerminal {
+public class ManagerTerminal extends Terminal{
 	
 	
 

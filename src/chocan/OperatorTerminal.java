@@ -1,6 +1,6 @@
 package chocan;
 
-public class OperatorTerminal {
+public class OperatorTerminal extends Terminal {
 	
 	
 

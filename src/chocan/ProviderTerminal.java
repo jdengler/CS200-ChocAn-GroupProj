@@ -1,6 +1,6 @@
 package chocan;
 
-public class ProviderTerminal {
+public class ProviderTerminal extends Terminal {
 	
 	
 
