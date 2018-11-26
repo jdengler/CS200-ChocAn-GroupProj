@@ -1,20 +1,25 @@
 package chocan;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class ValidateMember {
 	
+	private CardSwipe swipe = new CardSwipe();
 	
 	private CardSwipe swipeCard() {
-		CardSwipe swipe = new CardSwipe();
-		
 		return swipe;
 	}
 	
 	private void enterNumber(int memberNumber) {
-		CardSwipe swipe = new CardSwipe();
+		swipe.setMemberNumber(memberNumber);
+	}
+	
+	public ValidateMember() {
 		
 	}
 	
-	public static void main() {
+	public ValidateMember(int memberNumber) {
 		
 	}
 }
