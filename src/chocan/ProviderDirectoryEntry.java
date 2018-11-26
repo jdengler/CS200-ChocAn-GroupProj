@@ -6,6 +6,17 @@ public class ProviderDirectoryEntry {
 	private int serviceCode;
 	private double serviceFee;
 	
+	public ProviderDirectoryEntry() {
+		
+	}
+	
+	public ProviderDirectoryEntry(String serviceName, int serviceCode, double serviceFee) {
+		super();
+		this.serviceName = serviceName;
+		this.serviceCode = serviceCode;
+		this.serviceFee = serviceFee;
+	}
+	
 	public String getServiceName() {
 		return serviceName;
 	}
@@ -30,9 +41,4 @@ public class ProviderDirectoryEntry {
 		this.serviceFee = serviceFee;
 	}
 
-
-	
-	public ProviderDirectoryEntry() {
-		
-	}
 }
