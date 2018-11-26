@@ -22,4 +22,60 @@ public class ProviderAccounts {
 		this.zipCode = zipCode;
 		this.status = status;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
+	}
+	
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getNumber() {
+		return number;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	
+	public String getState() {
+		return state;
+	}
+	
+	public int getZipCode() {
+		return zipCode;
+	}
+	
+	public boolean getStatus() {
+		return status;
+	}
 }
