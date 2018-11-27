@@ -73,5 +73,14 @@ public class ManageAccounts {
 			}
 		}
 	}
+	
+	public boolean searchMember (int number) {
+		for (MemberAccounts ma : memberAccountsList) {
+			if (ma.getNumber() == number) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
