@@ -74,13 +74,16 @@ public class ManageAccounts {
 		}
 	}
 	
-	public boolean searchMember (int number) {
+	public int searchMember (int number) {
 		for (MemberAccounts ma : memberAccountsList) {
 			if (ma.getNumber() == number) {
-				return true;
+				if(ma.getStatus() == false) {
+					return 2;		//Invalid; Status suspended
+				}
+				return 0;			//Valid
 			}
 		}
-		return false;
+		return 1;					//Invalid; Invalid number
 	}
-
+	
 }
