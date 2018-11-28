@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class OperatorTerminal extends Terminal {
 	
-	public void Menu() {
+	public void operaterMenu() {
 		System.out.println("Menu\n1. Manage Accounts\n2. Manage Provider\n");
 	}
 	
