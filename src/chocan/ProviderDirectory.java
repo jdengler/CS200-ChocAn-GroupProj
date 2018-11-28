@@ -27,4 +27,8 @@ public class ProviderDirectory {
 		ProviderDirectoryEntry pde = new ProviderDirectoryEntry(serviceName, serviceCode, serviceFee);
 		providerDirectoryEntries.add(pde);
 	}
+	
+	public ArrayList<ProviderDirectoryEntry> getProviderDirectory() {
+	    return providerDirectoryEntries;
+	}
 }
