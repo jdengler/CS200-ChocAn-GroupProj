@@ -7,20 +7,18 @@ public class ProviderAccounts {
 	private String city;
 	private String state;
 	private int zipCode;
-	private boolean status;
 	
 	public ProviderAccounts () {
 		
 	}
 	
-	public ProviderAccounts (String name, int number, String address, String city, String state, int zipCode, boolean status) {
+	public ProviderAccounts (String name, int number, String address, String city, String state, int zipCode) {
 		this.name = name;
 		this.number = number;
 		this.address = address;
 		this.city = city;
 		this.state = state;
 		this.zipCode = zipCode;
-		this.status = status;
 	}
 	
 	public void setName(String name) {
@@ -47,10 +45,6 @@ public class ProviderAccounts {
 		this.zipCode = zipCode;
 	}
 	
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-	
 	public String getName() {
 		return name;
 	}
@@ -73,9 +67,5 @@ public class ProviderAccounts {
 	
 	public int getZipCode() {
 		return zipCode;
-	}
-	
-	public boolean getStatus() {
-		return status;
 	}
 }
