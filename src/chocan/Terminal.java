@@ -2,9 +2,52 @@ package chocan;
 import java.awt.BorderLayout;
 import javax.swing.*;
 
-public class Terminal {
+import java.util.*;
 
-  public static void main(String[] args) {
+public class Terminal {
+	
+	ManagerTerminal manager = new ManagerTerminal();
+	ProviderTerminal provider = new ProviderTerminal();
+	OperatorTerminal operator = new OperatorTerminal();
+
+  public void main(String[] args) {
+	  
+	Scanner reader = new Scanner(System.in);
+	int option=0;
+	  
+	System.out.println("ChocAn System");  
+	
+	while(true) {
+		System.out.println("\tMenu");
+		System.out.println("1.) Open Manager Terminal"); 
+		System.out.println("2.) Open Provider Terminal"); 
+		System.out.println("3.) Open Operator Terminal");
+		System.out.println("4.) Quit");
+		System.out.println("\tOption: ");
+		
+		option = reader.nextInt();
+		
+		if (option == 1) { // manager terminal
+			OpenManagerTerminal();
+		}
+		
+		else if (option == 2) { // provider terminal
+			OpenProviderTerminal();
+		}
+		
+		else if (option == 3) { // operator terminal
+			OpenOperatorTerminal();
+		}
+		
+		else {
+			break;
+		}
+	}
+	
+	reader.close();
+	
+	// GUI
+	/*
 	//Frame
 	JFrame frame = new JFrame("ChocAn System");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,18 +98,19 @@ public class Terminal {
 	frame.getContentPane().add(BorderLayout.NORTH, menuBar);
 	frame.getContentPane().add(BorderLayout.CENTER, textArea);
 	frame.setVisible(true);
+	*/
   }
   
   public void OpenManagerTerminal () {
-	  
-  }
-  
-  public void OpenOperatorTerminal () {
-	  
+	  manager.managerMenu();
   }
   
   public void OpenProviderTerminal () {
-	  
+	  provider.providerMenu();
+  }
+  
+  public void OpenOperatorTerminal () {
+	  operator.operatorMenu();
   }
 
 }
