@@ -8,10 +8,50 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import java.util.*;
+
 public class Terminal {
 
   static ManageAccounts ma = new ManageAccounts(); 
   public static void main(String[] args) {
+	  
+	Scanner reader = new Scanner(System.in);
+	int option=0;
+	
+	while(true) {
+		System.out.println("ChocAn System Menu");
+		System.out.println("1.) Open Manager Terminal"); 
+		System.out.println("2.) Open Provider Terminal"); 
+		System.out.println("3.) Open Operator Terminal");
+		System.out.println("4.) Quit");
+		System.out.print(" Option: ");
+		
+		option = reader.nextInt();
+		
+		if (option == 1) { // manager terminal
+			OpenManagerTerminal();
+			continue;
+		}
+		
+		else if (option == 2) { // provider terminal
+			OpenProviderTerminal();
+			continue;
+		}
+		
+		else if (option == 3) { // operator terminal
+			OpenOperatorTerminal();
+			continue;
+		}
+		
+		else {
+			break;
+		}
+	}
+	
+	reader.close();
+	
+	// GUI
+	/*
 	//Frame
 	JFrame frame = new JFrame("ChocAn System");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,18 +126,19 @@ public class Terminal {
 	frame.getContentPane().add(BorderLayout.NORTH, menuBar);
 	frame.getContentPane().add(BorderLayout.CENTER, textArea);
 	frame.setVisible(true);
+	*/
   }
   
-  public void OpenManagerTerminal () {
-	  
+  public static void OpenManagerTerminal () {
+	  ManagerTerminal.managerMenu();
   }
   
-  public void OpenOperatorTerminal () {
-	  
+  public static void OpenProviderTerminal () {
+	  ProviderTerminal.providerMenu();
   }
   
-  public void OpenProviderTerminal () {
-	  
+  public static void OpenOperatorTerminal () {
+	  OperatorTerminal.operaterMenu();
   }
 
 }
