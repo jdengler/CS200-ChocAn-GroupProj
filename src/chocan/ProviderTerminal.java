@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class ProviderTerminal extends Terminal {
+public class ProviderTerminal {
   
   private static Scanner sc = new Scanner(System.in);
   
