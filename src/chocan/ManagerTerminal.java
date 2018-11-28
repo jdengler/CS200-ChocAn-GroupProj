@@ -9,12 +9,12 @@ public class ManagerTerminal extends Terminal{
 		int option = 0;
 		
 		while(true) {
-			System.out.println("\tManager Terminal");
+			System.out.println("\nManager Terminal");
 			System.out.println("1.) Generate Summary Report"); 
 			System.out.println("2.) Generate Member Report"); 
 			System.out.println("3.) Generate Provider Report"); 
 			System.out.println("4.) Quit");
-			System.out.println("\tOption: ");
+			System.out.print(" Option: ");
 			
 			option = reader.nextInt();
 			
@@ -37,7 +37,6 @@ public class ManagerTerminal extends Terminal{
 				break;
 			}
 		}
-		
 		reader.close();
 	}
 

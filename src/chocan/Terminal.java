@@ -6,33 +6,34 @@ import java.util.*;
 
 public class Terminal {
 
-  public void main(String[] args) {
+  public static void main(String[] args) {
 	  
 	Scanner reader = new Scanner(System.in);
 	int option=0;
-	  
-	System.out.println("ChocAn System");  
 	
 	while(true) {
-		System.out.println("\tMenu");
+		System.out.println("ChocAn System Menu");
 		System.out.println("1.) Open Manager Terminal"); 
 		System.out.println("2.) Open Provider Terminal"); 
 		System.out.println("3.) Open Operator Terminal");
 		System.out.println("4.) Quit");
-		System.out.println("\tOption: ");
+		System.out.print(" Option: ");
 		
 		option = reader.nextInt();
 		
 		if (option == 1) { // manager terminal
 			OpenManagerTerminal();
+			continue;
 		}
 		
 		else if (option == 2) { // provider terminal
 			OpenProviderTerminal();
+			continue;
 		}
 		
 		else if (option == 3) { // operator terminal
 			OpenOperatorTerminal();
+			continue;
 		}
 		
 		else {
@@ -97,15 +98,15 @@ public class Terminal {
 	*/
   }
   
-  public void OpenManagerTerminal () {
+  public static void OpenManagerTerminal () {
 	  ManagerTerminal.managerMenu();
   }
   
-  public void OpenProviderTerminal () {
+  public static void OpenProviderTerminal () {
 	  ProviderTerminal.providerMenu();
   }
   
-  public void OpenOperatorTerminal () {
+  public static void OpenOperatorTerminal () {
 	  OperatorTerminal.operaterMenu();
   }
 
