@@ -1,8 +1,15 @@
 package chocan;
 import java.util.*;
 
+
+
 public class BillChocAn {
 
+    public void main(String[] args) {
+       //setCurrentDate();
+       setDateOfService();
+    }
+    
     private ServiceRecord billService = new ServiceRecord();
     
     public BillChocAn() {
@@ -28,7 +35,9 @@ public class BillChocAn {
         @SuppressWarnings("deprecation")
         Date date = new Date(year,month - 1, day);
         
-        billService.setDateOfService(date);
+        System.out.println("Date: " + date);
+        
+        //billService.setDateOfService(date);
     }
     
     public void enterComments() {
@@ -40,7 +49,8 @@ public class BillChocAn {
     }
     
     public void enterServiceCode() {
-        billService.setServiceCode();
+        
+        
         
         
     }
