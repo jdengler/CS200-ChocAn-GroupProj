@@ -1,14 +1,24 @@
 package chocan;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Terminal {
 
+  static ManageAccounts ma = new ManageAccounts(); 
   public static void main(String[] args) {
 	//Frame
 	JFrame frame = new JFrame("ChocAn System");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setSize(500,500);
+	
+	
+	
 	    
 	//Menu bar and components
 	JMenuBar menuBar = new JMenuBar();
@@ -18,10 +28,29 @@ public class Terminal {
 	menuBar.add(menu1);
 	menuBar.add(menu2);
 	menuBar.add(menu3);
-	    
+		 
+	
 	JMenuItem submenu11 = new JMenuItem("Generate Summary Report");
-	JMenuItem submenu12 = new JMenuItem("Generate Member Report");
+	JMenuItem submenu12 = new JMenuItem(new AbstractAction("Generate Member Report") {
+		@Override 
+		public void actionPerformed(ActionEvent e) {
+	    	try{
+	    		 
+	    		ma = OperatorTerminal.readMembers(); 
+	    	}
+	    	catch(Exception ex){
+	    		
+	    	}
+	    	
+	    }
+	});
+	
 	JMenuItem submenu13 = new JMenuItem("Generate Provider Report");
+	
+	
+	
+	
+	
 	menu1.add(submenu11);
 	menu1.add(submenu12);
 	menu1.add(submenu13);
@@ -50,6 +79,8 @@ public class Terminal {
 	    
 	//Text area
 	JTextArea textArea = new JTextArea();
+	
+	
 	        
 	frame.getContentPane().add(BorderLayout.SOUTH, panel);
 	frame.getContentPane().add(BorderLayout.NORTH, menuBar);
