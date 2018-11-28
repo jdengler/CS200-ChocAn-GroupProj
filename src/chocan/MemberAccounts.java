@@ -10,14 +10,14 @@ public class MemberAccounts {
 	private String city;
 	private String state;
 	private int zipCode;
-	private boolean status;
+	private int status;
 	private ArrayList<ServiceRecord> servicesProvided;
 	
 	public MemberAccounts () {
 		
 	}
 	
-	public MemberAccounts (String name, int number, String address, String city, String state, int zipCode, boolean status) {
+	public MemberAccounts (String name, int number, String address, String city, String state, int zipCode, int status) {
 		this.name = name;
 		this.number = number;
 		this.address = address;
@@ -51,7 +51,7 @@ public class MemberAccounts {
 		this.zipCode = zipCode;
 	}
 	
-	public void setStatus(boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	
@@ -79,7 +79,7 @@ public class MemberAccounts {
 		return zipCode;
 	}
 	
-	public boolean getStatus() {
+	public int getStatus() {
 		return status;
 	}
 	

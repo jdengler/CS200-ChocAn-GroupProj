@@ -75,4 +75,8 @@ public class ProviderAccounts {
 	public ArrayList<ServiceRecord> getServicesProvided() {
 		return servicesProvided;
 	}
+	
+	public void addService(ServiceRecord service){
+		servicesProvided.add(service);
+	}
 }
