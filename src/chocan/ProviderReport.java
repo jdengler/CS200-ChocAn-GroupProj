@@ -38,4 +38,8 @@ public class ProviderReport {
 		return total;
 	}
 	
+	public void main() {
+		
+	}
+	
 }
