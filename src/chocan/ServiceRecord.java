@@ -3,8 +3,8 @@ import java.util.Date;
 
 public class ServiceRecord {
 	
-  private Date currentDateTime;
-  private Date dateOfService;
+  private String currentDateTime;
+  private String dateOfService;
   private int providerNumber;
   private int memberNumber;
   private int serviceCode;
@@ -14,7 +14,7 @@ public class ServiceRecord {
 	  
   }
   
-  public ServiceRecord(Date currentDateTime, Date dateOfService, int providerNumber, int memberNumber,
+  public ServiceRecord(String currentDateTime, String dateOfService, int providerNumber, int memberNumber,
 			int serviceCode, String comments) {
 		super();
 		this.currentDateTime = currentDateTime;
@@ -25,15 +25,15 @@ public class ServiceRecord {
 		this.comments = comments;
 	}
   
-  public Date getCurrentDateTime() {
+  public String getCurrentDateTime() {
 	return currentDateTime;
 }
 
-public void setCurrentDateTime(Date currentDateTime) {
+public void setCurrentDateTime(String currentDateTime) {
 	this.currentDateTime = currentDateTime;
 }
 
-public Date getDateOfService() {
+public String getDateOfService() {
 	return dateOfService;
 }
 
