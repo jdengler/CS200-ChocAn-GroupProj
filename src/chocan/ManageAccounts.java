@@ -45,8 +45,8 @@ public class ManageAccounts {
 		}
 	}
 	
-	public void addProvider(String name, int number, String address, String city, String state, int zipCode, boolean status) {
-		ProviderAccounts ma = new ProviderAccounts(name, number, address, city, state, zipCode, status);
+	public void addProvider(String name, int number, String address, String city, String state, int zipCode) {
+		ProviderAccounts ma = new ProviderAccounts(name, number, address, city, state, zipCode);
 		providerAccountsList.add(ma);
 	}
 	
@@ -60,7 +60,7 @@ public class ManageAccounts {
 		}
 	}
 	
-	public void updateProvider (String name, int number, String address, String city, String state, int zipCode, boolean status) {
+	public void updateProvider (String name, int number, String address, String city, String state, int zipCode) {
 		for (ProviderAccounts ma : providerAccountsList) {
 			if (ma.getNumber() == number) {
 				ma.setName(name);
@@ -69,9 +69,17 @@ public class ManageAccounts {
 				ma.setCity(city);
 				ma.setState(state);
 				ma.setZipCode(zipCode);
-				ma.setStatus(status);
 			}
 		}
+	}
+	
+	public int searchProvider (int number) {
+		for (ProviderAccounts pa : providerAccountsList) {
+			if (pa.getNumber() == number) {
+				return 0;			//Valid
+			}
+		}
+		return 1;					//Invalid; Invalid number
 	}
 	
 	public int searchMember (int number) {
