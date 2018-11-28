@@ -2,6 +2,7 @@ package chocan;
 import java.util.ArrayList;
 import java.io.FileWriter;
 
+
 public class RequestProviderDirectory {
 
     private ProviderDirectory provideDirect;
@@ -17,7 +18,9 @@ public class RequestProviderDirectory {
     public void printDirectory() {
             provideDirect = new ProviderDirectory();
             ArrayList<ProviderDirectoryEntry> list = provideDirect.getProviderDirectory();
+            
             FileWriter writer = new FileWriter("Provider Directory");
+            
             for (ProviderDirectoryEntry: arr){
                 
             }

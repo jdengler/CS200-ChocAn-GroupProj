@@ -2,7 +2,6 @@ package chocan;
 import java.util.*;
 
 
-
 public class BillChocAn {
 
     public void main(String[] args) {
