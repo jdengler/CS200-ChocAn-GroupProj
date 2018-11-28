@@ -30,16 +30,34 @@ public class OperatorTerminal extends Terminal {
 				
 			option = reader.nextInt();
 				
-			if (option == 1) {
-				// add member
+			if (option == 1) { // add member
+				String name = "Name";
+				int number = 1;
+				String address = "Address";
+				String city = "City";
+				String state = "State";
+				int zipCode = 01234;
+				int status = 1;
+				ManageAccounts ma = new ManageAccounts();
+				ma.addMember(name, number, address, city, state, zipCode, status);
 			}
 				
-			else if (option == 2) {
-				// delete member
+			else if (option == 2) { // delete member
+				int number = 1;
+				ManageAccounts ma = new ManageAccounts();
+				ma.deleteMember(number);
 			}
 				
-			else if (option == 3) {
-				// update member
+			else if (option == 3) { // update member
+				String name = "Name";
+				int number = 1;
+				String address = "Address";
+				String city = "City";
+				String state = "State";
+				int zipCode = 01234;
+				int status = 1;
+				ManageAccounts ma = new ManageAccounts();
+				ma.updateMember(name, number, address, city, state, zipCode, status);
 			}
 		}
 			
@@ -53,16 +71,32 @@ public class OperatorTerminal extends Terminal {
 				
 			option = reader.nextInt();
 				
-			if (option == 1) {
-				// add provider
+			if (option == 1) { // add provider
+				String name = "Name";
+				int number = 1;
+				String address = "Address";
+				String city = "City";
+				String state = "State";
+				int zipCode = 01234;
+				ManageAccounts pa = new ManageAccounts();
+				pa.addProvider(name, number, address, city, state, zipCode);
 			}
 				
-			else if (option == 2) {
-				// delete provider
+			else if (option == 2) { // delete provider
+				int number = 1;
+				ManageAccounts pa = new ManageAccounts();
+				pa.deleteProvider(number);
 			}
 				
-			else if (option == 3) {
-				// update provider
+			else if (option == 3) { // update provider
+				String name = "Name";
+				int number = 1;
+				String address = "Address";
+				String city = "City";
+				String state = "State";
+				int zipCode = 01234;
+				ManageAccounts pa = new ManageAccounts();
+				pa.updateProvider(name, number, address, city, state, zipCode);
 			}
 		}
 	}
@@ -81,7 +115,7 @@ public class OperatorTerminal extends Terminal {
 	        String city = input.next();
 	        String state = input.next();
 	        int zipCode = input.nextInt();
-	        boolean status = input.nextBoolean();
+	        int status = input.nextInt();
 	       
 	        ma.addMember(name, number, address, city, state, zipCode, status);
 	    }

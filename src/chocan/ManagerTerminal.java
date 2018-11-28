@@ -18,16 +18,16 @@ public class ManagerTerminal extends Terminal{
 		
 		option = reader.nextInt();
 		
-		if (option == 1) {
-			// generate summary report
+		if (option == 1) { // generate summary report
+			
 		}
 			
-		else if (option == 2) {
-			// generate member report
+		else if (option == 2) { // generate member report
+			
 		}
 			
-		else if (option == 3) {
-			// generate provider report
+		else if (option == 3) { // generate provider report
+			
 		}
 	}
 
