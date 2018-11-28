@@ -27,6 +27,11 @@ public class ValidateMember {
 		swipe.setMemberName(memberName);
 	}
 	
+	public ValidateMember(int memberNumber) {
+	  swipe.setMemberNumber(memberNumber);
+	  swipe.setMemberName("");
+	}
+	
 	public void main() {
 		ManageAccounts a = new ManageAccounts();
 		int validated;			//0 = valid, 1 = invalid num, 2 = status suspended

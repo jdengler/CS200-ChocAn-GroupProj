@@ -65,8 +65,8 @@ public class OperatorTerminal extends Terminal {
 		}
 	}
 	
-	public void readMembers() throws FileNotFoundException{
-		Scanner buffer = new Scanner(new File("Members.txt"));
+	public static ManageAccounts readMembers() throws FileNotFoundException{
+		Scanner buffer = new Scanner(new File("writtenFiles.MemberReports.members.txt"));
 	    
 	    Scanner input = new Scanner(buffer.toString()).useDelimiter(",|\n");
 	
@@ -86,6 +86,7 @@ public class OperatorTerminal extends Terminal {
 	    
 	    buffer.close();
 	    input.close();
+	    return ma;
 	}
 
 }
