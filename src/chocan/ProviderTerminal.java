@@ -47,5 +47,9 @@ public class ProviderTerminal {
   private static void requestDirectory() {
     
   }
+  
+  public static void main() {
+    providerMenu();
+  }
 
 }
