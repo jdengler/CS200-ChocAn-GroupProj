@@ -6,7 +6,8 @@ import java.util.*;
 
 public class OperatorTerminal extends Terminal {
 	
-	public void operaterMenu() {
+	public static void operaterMenu() {
+		
 		Scanner reader = new Scanner(System.in);
 		int option = 0;
 		

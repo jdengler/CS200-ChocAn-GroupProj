@@ -3,7 +3,7 @@ import java.util.*;
 
 public class ManagerTerminal extends Terminal{
 	
-	public void managerMenu() {
+	public static void managerMenu() {
 		
 		Scanner reader = new Scanner(System.in);
 		int option = 0;

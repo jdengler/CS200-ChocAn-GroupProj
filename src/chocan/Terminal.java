@@ -5,10 +5,6 @@ import javax.swing.*;
 import java.util.*;
 
 public class Terminal {
-	
-	ManagerTerminal manager = new ManagerTerminal();
-	ProviderTerminal provider = new ProviderTerminal();
-	OperatorTerminal operator = new OperatorTerminal();
 
   public void main(String[] args) {
 	  
@@ -102,15 +98,15 @@ public class Terminal {
   }
   
   public void OpenManagerTerminal () {
-	  manager.managerMenu();
+	  ManagerTerminal.managerMenu();
   }
   
   public void OpenProviderTerminal () {
-	  provider.providerMenu();
+	  ProviderTerminal.providerMenu();
   }
   
   public void OpenOperatorTerminal () {
-	  operator.operatorMenu();
+	  OperatorTerminal.operaterMenu();
   }
 
 }
