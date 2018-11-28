@@ -86,4 +86,8 @@ public class MemberAccounts {
 	public ArrayList<ServiceRecord> getServicesProvided() {
 		return servicesProvided;
 	}
+	
+	public void addService(ServiceRecord service){
+		servicesProvided.add(service);
+	}
 }
