@@ -37,7 +37,7 @@ public String getDateOfService() {
 	return dateOfService;
 }
 
-public void setDateOfService(Date dateOfService) {
+public void setDateOfService(String dateOfService) {
 	this.dateOfService = dateOfService;
 } 
   public String getProviderName() {
