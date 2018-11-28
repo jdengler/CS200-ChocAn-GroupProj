@@ -18,5 +18,5 @@ public class MemberReport {
 	  this.servicesProvided = servicesProvided;
 	}
 	
-	public void 
+	
 }
