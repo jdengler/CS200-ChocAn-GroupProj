@@ -76,7 +76,7 @@ public class ManageAccounts {
 	public int searchProvider (int number) {
 		for (ProviderAccounts pa : providerAccountsList) {
 			if (pa.getNumber() == number) {
-				return 0;			//Valid
+				return 0;			//Valid 
 			}
 		}
 		return 1;					//Invalid; Invalid number
