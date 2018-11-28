@@ -3,7 +3,9 @@ import java.util.*;
 
 public class ManagerTerminal extends Terminal{
 	
-	public static void managerMenu(Scanner reader) {
+	private static Scanner reader = new Scanner(System.in);
+	
+	public static void managerMenu() {
 		
 		int option = 0;
 		
@@ -13,8 +15,7 @@ public class ManagerTerminal extends Terminal{
 		System.out.println("3.) Generate Provider Report"); 
 		System.out.println("4.) Quit");
 		System.out.print(" Option: ");
-			
-		//Scanner reader = new Scanner(System.in);
+		
 		option = reader.nextInt();
 		
 		if (option == 1) {
@@ -28,7 +29,6 @@ public class ManagerTerminal extends Terminal{
 		else if (option == 3) {
 			// generate provider report
 		}
-		//reader.close();
 	}
 
 }

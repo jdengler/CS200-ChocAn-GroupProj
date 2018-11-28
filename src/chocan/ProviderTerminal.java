@@ -9,10 +9,14 @@ public class ProviderTerminal {
   private static Scanner sc = new Scanner(System.in);
   
   public static void providerMenu() {
-    System.out.println("--------Provider Terminal--------\n\n" +
-                       "Press (1) to validate a ChocAn member\n" +
-                       "Press (2) to bill ChocAn\n" +
-                       "Press (3) to request a provider directory");
+	  
+	System.out.println("\nProvider Terminal");
+	System.out.println("1.) validate a ChocAn member"); 
+	System.out.println("2.) bill ChocAn"); 
+	System.out.println("3.) request a provider directory"); 
+	System.out.println("4.) Quit");
+	System.out.print(" Option: ");
+	
     int userChoice = sc.nextInt();
     switch(userChoice) {
         case 1:

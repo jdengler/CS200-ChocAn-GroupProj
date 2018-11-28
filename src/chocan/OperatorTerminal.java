@@ -6,7 +6,9 @@ import java.util.*;
 
 public class OperatorTerminal extends Terminal {
 	
-	public static void operaterMenu(Scanner reader) {
+	private static Scanner reader = new Scanner(System.in);
+	
+	public static void operaterMenu() {
 		
 		int option = 0;
 		
@@ -19,7 +21,7 @@ public class OperatorTerminal extends Terminal {
 		option = reader.nextInt();
 			
 		if (option == 1) {
-			System.out.println("Manage Member");
+			System.out.println("\nManage Member");
 			System.out.println("1.) Add Member");
 			System.out.println("2.) Delete Member");
 			System.out.println("3.) Update Member");

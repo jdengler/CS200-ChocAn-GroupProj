@@ -34,7 +34,7 @@ public class Terminal {
 		}
 		
 		else if (option == 2) { // provider terminal
-			//OpenProviderTerminal(reader);
+			OpenProviderTerminal(reader);
 		}
 		
 		else if (option == 3) { // operator terminal
@@ -126,15 +126,15 @@ public class Terminal {
   }
   
   public static void OpenManagerTerminal (Scanner reader) {
-	  ManagerTerminal.managerMenu(reader);
+	  ManagerTerminal.managerMenu();
   }
   
   public static void OpenProviderTerminal (Scanner reader) {
-	  ProviderTerminal.providerMenu(reader);
+	  ProviderTerminal.providerMenu();
   }
   
   public static void OpenOperatorTerminal (Scanner reader) {
-	  OperatorTerminal.operaterMenu(reader);
+	  OperatorTerminal.operaterMenu();
   }
 
 }
