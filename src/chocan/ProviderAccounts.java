@@ -1,5 +1,7 @@
 package chocan;
 
+import java.util.ArrayList;
+
 public class ProviderAccounts {
 	private String name;
 	private int number;	
@@ -7,6 +9,7 @@ public class ProviderAccounts {
 	private String city;
 	private String state;
 	private int zipCode;
+	private ArrayList<ServiceRecord> servicesProvided;
 	
 	public ProviderAccounts () {
 		
@@ -67,5 +70,9 @@ public class ProviderAccounts {
 	
 	public int getZipCode() {
 		return zipCode;
+	}
+	
+	public ArrayList<ServiceRecord> getServicesProvided() {
+		return servicesProvided;
 	}
 }

@@ -1,5 +1,7 @@
 package chocan;
 
+import java.util.ArrayList;
+
 public class MemberAccounts {
 	
 	private String name;
@@ -9,6 +11,7 @@ public class MemberAccounts {
 	private String state;
 	private int zipCode;
 	private boolean status;
+	private ArrayList<ServiceRecord> servicesProvided;
 	
 	public MemberAccounts () {
 		
@@ -78,5 +81,9 @@ public class MemberAccounts {
 	
 	public boolean getStatus() {
 		return status;
+	}
+	
+	public ArrayList<ServiceRecord> getServicesProvided() {
+		return servicesProvided;
 	}
 }
