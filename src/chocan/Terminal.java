@@ -8,11 +8,12 @@ public class Terminal {
 
   public static void main(String[] args) {
 	  
-	Scanner reader = new Scanner(System.in);
 	int option=0;
 	
-	while(true) {
-		System.out.println("ChocAn System Menu");
+	Scanner reader = new Scanner(System.in);
+	
+	while(option != 4) {
+		System.out.println("\nChocAn System Menu");
 		System.out.println("1.) Open Manager Terminal"); 
 		System.out.println("2.) Open Provider Terminal"); 
 		System.out.println("3.) Open Operator Terminal");
@@ -22,24 +23,19 @@ public class Terminal {
 		option = reader.nextInt();
 		
 		if (option == 1) { // manager terminal
-			OpenManagerTerminal();
-			continue;
+			OpenManagerTerminal(reader);
 		}
 		
 		else if (option == 2) { // provider terminal
-			OpenProviderTerminal();
-			continue;
+			//OpenProviderTerminal(reader);
 		}
 		
 		else if (option == 3) { // operator terminal
-			OpenOperatorTerminal();
-			continue;
-		}
-		
-		else {
-			break;
+			OpenOperatorTerminal(reader);
 		}
 	}
+	
+	System.out.println("\nEnd");
 	
 	reader.close();
 	
@@ -98,16 +94,16 @@ public class Terminal {
 	*/
   }
   
-  public static void OpenManagerTerminal () {
-	  ManagerTerminal.managerMenu();
+  public static void OpenManagerTerminal (Scanner reader) {
+	  ManagerTerminal.managerMenu(reader);
   }
   
-  public static void OpenProviderTerminal () {
-	  ProviderTerminal.providerMenu();
+  public static void OpenProviderTerminal (Scanner reader) {
+	  ProviderTerminal.providerMenu(reader);
   }
   
-  public static void OpenOperatorTerminal () {
-	  OperatorTerminal.operaterMenu();
+  public static void OpenOperatorTerminal (Scanner reader) {
+	  OperatorTerminal.operaterMenu(reader);
   }
 
 }

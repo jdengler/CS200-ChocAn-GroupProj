@@ -6,87 +6,63 @@ import java.util.*;
 
 public class OperatorTerminal extends Terminal {
 	
-	public static void operaterMenu() {
+	public static void operaterMenu(Scanner reader) {
 		
-		Scanner reader = new Scanner(System.in);
 		int option = 0;
 		
-		while(true) {
-			System.out.println("\nOperator Menu");
-			System.out.println("1.) Manage Member");
-			System.out.println("2.) Manage Provider");
-			System.out.println("3.) Quit"); 
+		System.out.println("\nOperator Menu");
+		System.out.println("1.) Manage Member");
+		System.out.println("2.) Manage Provider");
+		System.out.println("3.) Quit"); 
+		System.out.print(" Option: ");
+			
+		option = reader.nextInt();
+			
+		if (option == 1) {
+			System.out.println("Manage Member");
+			System.out.println("1.) Add Member");
+			System.out.println("2.) Delete Member");
+			System.out.println("3.) Update Member");
+			System.out.println("4.) Quit"); 
 			System.out.print(" Option: ");
-			
+				
 			option = reader.nextInt();
-			
+				
 			if (option == 1) {
-				System.out.println("Manage Member");
-				System.out.println("1.) Add Member");
-				System.out.println("2.) Delete Member");
-				System.out.println("3.) Update Member");
-				System.out.println("4.) Quit"); 
-				System.out.print(" Option: ");
-				
-				option = reader.nextInt();
-				
-				if (option == 1) {
-					// add member
-					continue;
-				}
-				
-				else if (option == 2) {
-					// delete member
-					continue;
-				}
-				
-				else if (option == 3) {
-					// update member
-					continue;
-				}
-				
-				else {
-					break;
-				}
+				// add member
 			}
-			
+				
 			else if (option == 2) {
-				System.out.println("\nManage Provider");
-				System.out.println("1.) Add Provider");
-				System.out.println("2.) Delete Provider");
-				System.out.println("3.) Update Provider");
-				System.out.println("4.) Quit"); 
-				System.out.print(" Option: ");
-				
-				option = reader.nextInt();
-				
-				if (option == 1) {
-					// add provider
-					continue;
-				}
-				
-				else if (option == 2) {
-					// delete provider
-					continue;
-				}
-				
-				else if (option == 3) {
-					// update provider
-					continue;
-				}
-				
-				else {
-					break;
-				}
+				// delete member
 			}
-			
-			else {
-				break;
+				
+			else if (option == 3) {
+				// update member
 			}
 		}
-		
-		reader.close();
-	
+			
+		else if (option == 2) {
+			System.out.println("\nManage Provider");
+			System.out.println("1.) Add Provider");
+			System.out.println("2.) Delete Provider");
+			System.out.println("3.) Update Provider");
+			System.out.println("4.) Quit"); 
+			System.out.print(" Option: ");
+				
+			option = reader.nextInt();
+				
+			if (option == 1) {
+				// add provider
+			}
+				
+			else if (option == 2) {
+				// delete provider
+			}
+				
+			else if (option == 3) {
+				// update provider
+			}
+		}
 	}
 	
 	public void readMembers() throws FileNotFoundException{
