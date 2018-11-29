@@ -17,7 +17,7 @@ public class MemberAccounts {
 		
 	}
 	
-	public MemberAccounts (String name, int number, String address, String city, String state, int zipCode, boolean status) {
+	public MemberAccounts (String name, int number, String address, String city, String state, int zipCode, boolean status, ArrayList<ServiceRecord> servicesProvided ) {
 		this.name = name;
 		this.number = number;
 		this.address = address;
@@ -25,8 +25,13 @@ public class MemberAccounts {
 		this.state = state;
 		this.zipCode = zipCode;
 		this.status = status;
+		this.servicesProvided = servicesProvided;
 	}
 	
+	public void setServicesProvided(ArrayList<ServiceRecord> servicesProvided) {
+		this.servicesProvided = servicesProvided;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}

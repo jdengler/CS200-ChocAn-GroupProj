@@ -1,11 +1,22 @@
 package chocan;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
+
 import java.util.*;
 
 public class Terminal {
 
   static ManageAccounts ma = new ManageAccounts(); 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws FileNotFoundException, IOException {
 	  
 	int option=0;
 	
@@ -47,8 +58,11 @@ public class Terminal {
 	  ProviderTerminal.menu();
   }
   
-  public static void OpenOperatorTerminal () {
-	  OperatorTerminal.menu();
+
+  public static void OpenOperatorTerminal () throws FileNotFoundException, IOException {
+	  OperatorTerminal ot = new OperatorTerminal();
+	  ot.operaterMenu();
   }
+
 
 }

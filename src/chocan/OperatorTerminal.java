@@ -1,15 +1,29 @@
 package chocan;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
+
+import javax.print.DocFlavor.URL;
 
 public class OperatorTerminal extends Terminal {
 	
 	private static Scanner reader = new Scanner(System.in);
+	public  ManageAccounts ma = new ManageAccounts();
 	
-	public static void menu() {
+
+	public  void operaterMenu() throws FileNotFoundException, IOException {
+		ma = ReadMemberTextFile();
+
+	
 		
+
 		int option = 0;
 		
 		System.out.println("\nOperator Menu");
@@ -45,7 +59,7 @@ public class OperatorTerminal extends Terminal {
 				System.out.print("Enter member's zip code: ");
 				int zipCode = reader.nextInt();
 				ManageAccounts ma = new ManageAccounts();
-				ma.addMember(name, number, address, city, state, zipCode, true);
+				//ma.addMember(name, number, address, city, state, zipCode, true);
 			}
 				
 			else if (option == 2) { // delete member
@@ -130,7 +144,7 @@ public class OperatorTerminal extends Terminal {
 		}
 	}
 	
-	public static ManageAccounts readMembers() throws FileNotFoundException{
+	/*public static ManageAccounts readMembers() throws FileNotFoundException{
 		Scanner buffer = new Scanner(new File("writtenFiles.MemberReports.members.txt"));
 	    
 	    Scanner input = new Scanner(buffer.toString()).useDelimiter(",|\n");
@@ -152,6 +166,58 @@ public class OperatorTerminal extends Terminal {
 	    buffer.close();
 	    input.close();
 	    return ma;
-	}
-
+	}*/
+	
+	public ManageAccounts ReadMemberTextFile() throws FileNotFoundException, IOException{
+		Path mPath = Paths.get("C:/Eclipse/member.txt");
+		//java.net.URL url = getClass().getResource("member.txt");		
+		File mFile = mPath.toFile();
+		
+		ArrayList<MemberAccounts> listMemA = new ArrayList<MemberAccounts>();
+		
+		if(Files.exists(mPath)){
+			try(BufferedReader input = new BufferedReader(new FileReader(mFile))){
+				 String line = input.readLine();
+				while(line != null){
+					String[] fields = line.split(",");
+					MemberAccounts memA = new MemberAccounts();
+					memA.setName(fields[0]); 
+					memA.setNumber(Integer.parseInt(fields[1]));
+			        memA.setAddress(fields[2]);
+			        memA.setCity(fields[3]);
+			        memA.setState(fields[4]);
+			        memA.setZipCode(Integer.parseInt(fields[5]));
+			        memA.setStatus(Boolean.parseBoolean(fields[6]));			        
+			        
+			        line = input.readLine();
+			        ArrayList<ServiceRecord> servicesProvided = new ArrayList<ServiceRecord>();
+			        while(line != null){
+			        	String[] serviceFields = line.split(",");
+				        ServiceRecord sr = new ServiceRecord();
+				        if(serviceFields != null){
+				        	sr.setCurrentDateTime(serviceFields[0]);
+					        sr.setDateOfService(serviceFields[1]);
+					        sr.setProviderNumber(Integer.parseInt(serviceFields[2]));
+					        sr.setMemberNumber(Integer.parseInt(serviceFields[3]));
+					        sr.setServiceCode(Integer.parseInt(serviceFields[4]));
+					        sr.setComments(serviceFields[5]);
+				        }  
+				        servicesProvided.add(sr);
+				        line = input.readLine();
+			        }
+			        memA.setServicesProvided(servicesProvided);
+			        
+			        listMemA.add(memA);
+			       ma.setMemberAccountsList(listMemA);
+			        //ma.addMember(name, number, address, city, state, zipCode, status, servicesProvided);
+			        line = input.readLine();
+				}
+				}
+			}
+	
+		
+		return ma;
+		}
 }
+
+

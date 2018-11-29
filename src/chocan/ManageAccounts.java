@@ -7,6 +7,7 @@ public class ManageAccounts {
 	private ArrayList<ProviderAccounts> providerAccountsList;
 	private ArrayList<MemberAccounts> memberAccountsList;
 	
+	
 	public ManageAccounts () {
 		
 	}
@@ -16,8 +17,29 @@ public class ManageAccounts {
 		this.memberAccountsList = members;
 	}
 	
-	public void addMember(String name, int number, String address, String city, String state, int zipCode, boolean status) {
-		MemberAccounts ma = new MemberAccounts(name, number, address, city, state, zipCode, status);
+	public ArrayList<ProviderAccounts> getProviderAccountsList() {
+		return providerAccountsList;
+	}
+
+	public void setProviderAccountsList(ArrayList<ProviderAccounts> providerAccountsList) {
+		this.providerAccountsList = providerAccountsList;
+	}
+
+	public ArrayList<MemberAccounts> getMemberAccountsList() {
+		return memberAccountsList;
+	}
+
+	public void setMemberAccountsList(ArrayList<MemberAccounts> memberAccountsList) {
+		this.memberAccountsList = memberAccountsList;
+	}
+	
+	
+	public void addMember(String name, int number, String address, String city, String state, int zipCode, boolean status, ArrayList<ServiceRecord> servicesProvided) {
+		MemberAccounts ma = new MemberAccounts(name, number, address, city, state, zipCode, status, servicesProvided);
+		memberAccountsList.add(ma);
+	}
+	
+	public void addMember(MemberAccounts ma) {		
 		memberAccountsList.add(ma);
 	}
 	
