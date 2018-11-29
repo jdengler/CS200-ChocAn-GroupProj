@@ -8,7 +8,7 @@ import java.util.*;
 public class Terminal {
 
   static ManageAccounts ma = new ManageAccounts(); 
-  public void main(String[] args) throws FileNotFoundException, IOException {
+  public static void main(String[] args) throws FileNotFoundException, IOException {
 	  
 	int option=0;
 	
@@ -46,7 +46,7 @@ public class Terminal {
 	  ManagerTerminal.menu();
   }
   
-  public void OpenProviderTerminal () {
+  public static void OpenProviderTerminal () {
 	  ProviderTerminal pt = new ProviderTerminal();
 	  pt.menu();
   }

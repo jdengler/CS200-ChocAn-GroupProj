@@ -64,7 +64,7 @@ public class ProviderTerminal {
   }
   
   public ProviderDirectory ReadProviderDirectoryEntry(){
-      Path ePath = Paths.get("C:/Desktop/providerDirectory.txt");
+      Path ePath = Paths.get("/Users/ashleyphan/Downloads/providerDirectory.txt");
       
       File eFile = ePath.toFile();
       
