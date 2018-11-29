@@ -1,14 +1,29 @@
 package chocan;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+
+import javax.print.DocFlavor.URL;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class ProviderTerminal {
+  public ProviderDirectory pd = new ProviderDirectory();
   
   private static Scanner sc = new Scanner(System.in);
   
-  public static void menu() {
+  public void menu() {
+      
+      pd = ReadProviderDirectoryEntry();
 	  
 	System.out.println("\nProvider Terminal");
 	System.out.println("1.) Validate a ChocAn member"); 
@@ -47,5 +62,14 @@ public class ProviderTerminal {
   private static void requestDirectory() {
     
   }
-
+  
+  public ProviderDirectory ReadProviderDirectoryEntry(){
+      Path ePath = Paths.get("C:/Desktop/providerDirectory.txt");
+      
+      File eFile = ePath.toFile();
+      
+      ArrayList<ProviderDirectoryEntry> listPde = new ArrayList<ProviderDirectoryEntry>();
+      
+      return pd;
+  }
 }
