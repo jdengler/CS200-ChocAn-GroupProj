@@ -45,7 +45,7 @@ public class OperatorTerminal extends Terminal {
 				System.out.print("Enter member's zip code: ");
 				int zipCode = reader.nextInt();
 				ManageAccounts ma = new ManageAccounts();
-				ma.addMember(name, number, address, city, state, zipCode, 1);
+				ma.addMember(name, number, address, city, state, zipCode, true);
 			}
 				
 			else if (option == 2) { // delete member
@@ -71,7 +71,7 @@ public class OperatorTerminal extends Terminal {
 				System.out.print("Enter member's zip code: ");
 				int zipCode = reader.nextInt();
 				ManageAccounts ma = new ManageAccounts();
-				ma.updateMember(name, number, address, city, state, zipCode, 1);
+				ma.updateMember(name, number, address, city, state, zipCode, true);
 			}
 		}
 			
@@ -144,7 +144,7 @@ public class OperatorTerminal extends Terminal {
 	        String city = input.next();
 	        String state = input.next();
 	        int zipCode = input.nextInt();
-	        int status = input.nextInt();
+	        boolean status = input.nextBoolean();
 	       
 	        ma.addMember(name, number, address, city, state, zipCode, status);
 	    }

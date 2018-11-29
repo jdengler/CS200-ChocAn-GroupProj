@@ -35,7 +35,7 @@ public class ProviderTerminal {
   }
   
   private static void validateMember() {
-    System.out.print("Please enter member number: ");
+    System.out.print("\nEnter member number: ");
     int memNum = sc.nextInt();
     ValidateMember x = new ValidateMember(memNum);
   }

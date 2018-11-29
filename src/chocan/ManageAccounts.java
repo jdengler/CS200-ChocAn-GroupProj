@@ -16,7 +16,7 @@ public class ManageAccounts {
 		this.memberAccountsList = members;
 	}
 	
-	public void addMember(String name, int number, String address, String city, String state, int zipCode, int status) {
+	public void addMember(String name, int number, String address, String city, String state, int zipCode, boolean status) {
 		MemberAccounts ma = new MemberAccounts(name, number, address, city, state, zipCode, status);
 		memberAccountsList.add(ma);
 	}
@@ -31,7 +31,7 @@ public class ManageAccounts {
 		}
 	}
 	
-	public void updateMember (String name, int number, String address, String city, String state, int zipCode, int status) {
+	public void updateMember (String name, int number, String address, String city, String state, int zipCode, boolean status) {
 		for (MemberAccounts ma : memberAccountsList) {
 			if (ma.getNumber() == number) {
 				ma.setName(name);
@@ -83,14 +83,14 @@ public class ManageAccounts {
 	}
 	
 	
-	//FIXME
 	public int searchMember (int number) {
 		for (MemberAccounts ma : memberAccountsList) {
 			if (ma.getNumber() == number) {
-				return ma.getStatus();
+				if (ma.getStatus() == true) return 1; // not suspended
+				else return 2; // suspended
 			}
 		}
-		return 1;					//Invalid; Invalid number
+		return 3;					//Invalid; Invalid number
 	}
 	
 	

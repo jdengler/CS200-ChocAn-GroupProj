@@ -22,15 +22,15 @@ public class Terminal {
 		option = reader.nextInt();
 		
 		if (option == 1) { // manager terminal
-			OpenManagerTerminal(reader);
+			OpenManagerTerminal();
 		}
 		
 		else if (option == 2) { // provider terminal
-			OpenProviderTerminal(reader);
+			OpenProviderTerminal();
 		}
 		
 		else if (option == 3) { // operator terminal
-			OpenOperatorTerminal(reader);
+			OpenOperatorTerminal();
 		}
 	}
 	
@@ -39,15 +39,15 @@ public class Terminal {
 	reader.close();
   }
   
-  public static void OpenManagerTerminal (Scanner reader) {
+  public static void OpenManagerTerminal () {
 	  ManagerTerminal.menu();
   }
   
-  public static void OpenProviderTerminal (Scanner reader) {
+  public static void OpenProviderTerminal () {
 	  ProviderTerminal.menu();
   }
   
-  public static void OpenOperatorTerminal (Scanner reader) {
+  public static void OpenOperatorTerminal () {
 	  OperatorTerminal.menu();
   }
 
