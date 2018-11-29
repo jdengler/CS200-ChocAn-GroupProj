@@ -8,13 +8,13 @@ public class ProviderTerminal {
   
   private static Scanner sc = new Scanner(System.in);
   
-  public static void providerMenu() {
+  public static void menu() {
 	  
 	System.out.println("\nProvider Terminal");
-	System.out.println("1.) validate a ChocAn member"); 
-	System.out.println("2.) bill ChocAn"); 
-	System.out.println("3.) request a provider directory"); 
-	System.out.println("4.) Quit");
+	System.out.println("1.) Validate a ChocAn member"); 
+	System.out.println("2.) Bill ChocAn"); 
+	System.out.println("3.) Request a Provider Directory"); 
+	System.out.println("4.) Go back to main terminal");
 	System.out.print(" Option: ");
 	
     int userChoice = sc.nextInt();
@@ -46,10 +46,6 @@ public class ProviderTerminal {
   
   private static void requestDirectory() {
     
-  }
-  
-  public static void main() {
-    providerMenu();
   }
 
 }

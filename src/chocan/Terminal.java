@@ -40,15 +40,15 @@ public class Terminal {
   }
   
   public static void OpenManagerTerminal (Scanner reader) {
-	  ManagerTerminal.managerMenu();
+	  ManagerTerminal.menu();
   }
   
   public static void OpenProviderTerminal (Scanner reader) {
-	  ProviderTerminal.providerMenu();
+	  ProviderTerminal.menu();
   }
   
   public static void OpenOperatorTerminal (Scanner reader) {
-	  OperatorTerminal.operaterMenu();
+	  OperatorTerminal.menu();
   }
 
 }

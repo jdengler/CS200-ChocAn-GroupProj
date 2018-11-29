@@ -2,15 +2,15 @@ package chocan;
 
 public class GenerateReport {
 
-	public void GenerateSummaryReport(){
+	public static void GenerateSummaryReport(){
 		
 	}
 	
-	public void GenerateMemberReport(){
+	public static void GenerateMemberReport(int number){
 		
 	}
 
-	public void GenerateProviderReport(){
+	public static void GenerateProviderReport(int number){
 	
 	}
 }

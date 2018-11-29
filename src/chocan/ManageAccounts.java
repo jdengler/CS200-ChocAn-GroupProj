@@ -82,19 +82,16 @@ public class ManageAccounts {
 		return 1;					//Invalid; Invalid number
 	}
 	
-	/*
-	FIXME
+	
+	//FIXME
 	public int searchMember (int number) {
 		for (MemberAccounts ma : memberAccountsList) {
 			if (ma.getNumber() == number) {
-				if(ma.getStatus() == false) {
-					return 2;		//Invalid; Status suspended
-				}
-				return 0;			//Valid
+				return ma.getStatus();
 			}
 		}
 		return 1;					//Invalid; Invalid number
 	}
-	*/
+	
 	
 }
