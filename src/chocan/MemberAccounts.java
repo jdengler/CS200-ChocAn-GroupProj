@@ -28,6 +28,17 @@ public class MemberAccounts {
 		this.servicesProvided = servicesProvided;
 	}
 	
+	public MemberAccounts (String name, int number, String address, String city, String state, int zipCode, boolean status ) {
+		this.name = name;
+		this.number = number;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zipCode = zipCode;
+		this.status = status;
+		
+	}
+	
 	public void setServicesProvided(ArrayList<ServiceRecord> servicesProvided) {
 		this.servicesProvided = servicesProvided;
 	}

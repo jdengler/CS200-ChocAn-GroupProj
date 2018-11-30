@@ -34,8 +34,8 @@ public class ManageAccounts {
 	}
 	
 	
-	public void addMember(String name, int number, String address, String city, String state, int zipCode, boolean status, ArrayList<ServiceRecord> servicesProvided) {
-		MemberAccounts ma = new MemberAccounts(name, number, address, city, state, zipCode, status, servicesProvided);
+	public void addMember(String name, int number, String address, String city, String state, int zipCode, boolean status) {
+		MemberAccounts ma = new MemberAccounts(name, number, address, city, state, zipCode, status);
 		memberAccountsList.add(ma);
 	}
 	
