@@ -58,15 +58,15 @@ public class OperatorTerminal extends Terminal {
 				String state = reader.next();
 				System.out.print("Enter member's zip code: ");
 				int zipCode = reader.nextInt();
-				ManageAccounts ma = new ManageAccounts();
-				//ma.addMember(name, number, address, city, state, zipCode, true);
+				//ManageAccounts ma = new ManageAccounts();
+				ma.addMember(name, number, address, city, state, zipCode, true);
 			}
 				
 			else if (option == 2) { // delete member
 				System.out.println("\nDelete Member");
 				System.out.print("Enter member's number: ");
 				int number = reader.nextInt();
-				ManageAccounts ma = new ManageAccounts();
+				//ManageAccounts ma = new ManageAccounts();
 				ma.deleteMember(number);
 			}
 				
@@ -84,7 +84,7 @@ public class OperatorTerminal extends Terminal {
 				String state = reader.next();
 				System.out.print("Enter member's zip code: ");
 				int zipCode = reader.nextInt();
-				ManageAccounts ma = new ManageAccounts();
+				//ManageAccounts ma = new ManageAccounts();
 				ma.updateMember(name, number, address, city, state, zipCode, true);
 			}
 		}
@@ -144,41 +144,18 @@ public class OperatorTerminal extends Terminal {
 		}
 	}
 	
-	/*public static ManageAccounts readMembers() throws FileNotFoundException{
-		Scanner buffer = new Scanner(new File("writtenFiles.MemberReports.members.txt"));
-	    
-	    Scanner input = new Scanner(buffer.toString()).useDelimiter(",|\n");
-	
-	    ManageAccounts ma = new ManageAccounts();
-	    
-	    while(input.hasNext()) {
-	        String name = input.next();
-	        int number = input.nextInt();
-	        String address = input.next();
-	        String city = input.next();
-	        String state = input.next();
-	        int zipCode = input.nextInt();
-	        boolean status = input.nextBoolean();
-	       
-	        ma.addMember(name, number, address, city, state, zipCode, status);
-	    }
-	    
-	    buffer.close();
-	    input.close();
-	    return ma;
-	}*/
-	
 	public ManageAccounts ReadMemberTextFile() throws FileNotFoundException, IOException{
 		Path mPath = Paths.get("C:/Eclipse/member.txt");
 		//java.net.URL url = getClass().getResource("member.txt");		
 		File mFile = mPath.toFile();
+		String str;
 		
 		ArrayList<MemberAccounts> listMemA = new ArrayList<MemberAccounts>();
 		
 		if(Files.exists(mPath)){
 			try(BufferedReader input = new BufferedReader(new FileReader(mFile))){
-				 String line = input.readLine();
-				while(line != null){
+				 String line; //= input.readLine();
+				while((line = input.readLine()) != null && !line.equals("")){
 					String[] fields = line.split(",");
 					MemberAccounts memA = new MemberAccounts();
 					memA.setName(fields[0]); 
@@ -189,9 +166,9 @@ public class OperatorTerminal extends Terminal {
 			        memA.setZipCode(Integer.parseInt(fields[5]));
 			        memA.setStatus(Boolean.parseBoolean(fields[6]));			        
 			        
-			        line = input.readLine();
+			        //line = input.readLine();
 			        ArrayList<ServiceRecord> servicesProvided = new ArrayList<ServiceRecord>();
-			        while(line != null){
+			        while((line = input.readLine()) != null && !line.equals("")){
 			        	String[] serviceFields = line.split(",");
 				        ServiceRecord sr = new ServiceRecord();
 				        if(serviceFields != null){
@@ -203,15 +180,15 @@ public class OperatorTerminal extends Terminal {
 					        sr.setComments(serviceFields[5]);
 				        }  
 				        servicesProvided.add(sr);
-				        line = input.readLine();
+				        //line = input.readLine();
 			        }
 			        memA.setServicesProvided(servicesProvided);
 			        
 			        listMemA.add(memA);
-			       ma.setMemberAccountsList(listMemA);
+			        ma.setMemberAccountsList(listMemA);
 			        //ma.addMember(name, number, address, city, state, zipCode, status, servicesProvided);
-			        line = input.readLine();
-				}
+			        //line = input.readLine();
+					}
 				}
 			}
 	
