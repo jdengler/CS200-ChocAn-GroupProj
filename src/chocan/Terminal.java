@@ -46,7 +46,7 @@ public class Terminal {
 	  ManagerTerminal.menu();
   }
   
-  public static void OpenProviderTerminal () {
+  public static void OpenProviderTerminal () throws FileNotFoundException, IOException {
 	  ProviderTerminal pt = new ProviderTerminal();
 	  pt.menu();
   }

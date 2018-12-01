@@ -1,5 +1,5 @@
 package chocan;
-import java.io.BufferedReader;
+import java.nio.file.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,13 +15,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 import java.util.*;
+import java.io.BufferedReader;
 
 public class ProviderTerminal {
   public ProviderDirectory pd = new ProviderDirectory();
   
   private static Scanner sc = new Scanner(System.in);
   
-  public void menu() {
+  public void menu() throws FileNotFoundException, IOException {
       
       pd = ReadProviderDirectoryEntry();
 	  
@@ -63,13 +64,62 @@ public class ProviderTerminal {
     
   }
   
-  public ProviderDirectory ReadProviderDirectoryEntry(){
-      Path ePath = Paths.get("/Users/ashleyphan/Downloads/providerDirectory.txt");
+  public static String readFileAsString(String fileName) throws FileNotFoundException, IOException{ 
+    String data = ""; 
+    data = new String(Files.readAllBytes(Paths.get(fileName))); 
+    return data; 
+  }
+  
+  public ProviderDirectory ReadProviderDirectoryEntry() throws FileNotFoundException, IOException {
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/providerDirectory.txt";
+      Path mPath = Paths.get(filename);
+    
+      File mFile = mPath.toFile();
+      String str;
       
-      File eFile = ePath.toFile();
       
       ArrayList<ProviderDirectoryEntry> listPde = new ArrayList<ProviderDirectoryEntry>();
       
+      if(Files.exists(mPath)){
+          try(BufferedReader input = new BufferedReader(new FileReader(mFile))){
+              String line = input.readLine();
+          
+              while (line != null) {
+                  System.out.println(line);
+                  line = input.readLine();
+              }
+          }
+      }
+             /*while(line != null){
+                 String[] fields = line.split(",");
+                 ProviderDirectoryEntry pde2 = new ProviderDirectoryEntry();
+                 pde2.setServiceName(fields[0]); 
+                 pde2.setServiceCode(Integer.parseInt(fields[1]));
+                 pde2.setServiceFee(Double.parseDouble(fields[2]));               
+                 
+                 line = input.readLine();
+                 ArrayList<ServiceRecord> servicesProvided = new ArrayList<ServiceRecord>();
+                 while(line != null){
+                     String[] serviceFields = line.split(",");
+                     ServiceRecord sr = new ServiceRecord();
+                     if(serviceFields != null){
+                         sr.setCurrentDateTime(serviceFields[0]);
+                         sr.setDateOfService(serviceFields[1]);
+                         sr.setProviderNumber(Integer.parseInt(serviceFields[2]));
+                         sr.setMemberNumber(Integer.parseInt(serviceFields[3]));
+                         sr.setServiceCode(Integer.parseInt(serviceFields[4]));
+                         sr.setComments(serviceFields[5]);
+                     }  
+                     servicesProvided.add(sr);
+                     line = input.readLine();
+                 }
+                 memA.setServicesProvided(servicesProvided);
+                 
+                 listMemA.add(memA);
+                ma.setMemberAccountsList(listMemA);
+                 ma.addMember(name, number, address, city, state, zipCode, status, servicesProvided);
+                 line = input.readLine();*/
+      //}
       return pd;
   }
 }
