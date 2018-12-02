@@ -1,9 +1,9 @@
-Ronald Weasley
-987654321
-1000 Harrys Place
-Tuscaloosa
-Alabama
-35401
+Hermoine Granger
+12345678
+1234 Happy Lane
+Atlanta
+Georgia
+30019
 11-29-2018
 11-29-2018 02:44:12
 John Smith
@@ -14,7 +14,7 @@ John Smith
 12-02-2018 03:08:04
 John Smith
 123456789
-777777
-900.0
+333333
+500.0
 Total number of consultations with members: 2
-Total fee for the week: $1000.0
+Total fee for the week: $600.0

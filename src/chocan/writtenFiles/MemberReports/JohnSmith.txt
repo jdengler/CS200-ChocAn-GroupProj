@@ -1,12 +1,1 @@
-John Smith
-123456789
-32 Cty Rd 45
-Tuscaloosa
-Alabama
-35544
-11-29-2018
-Ronald Weasley
-service1
-12-20-2018
-Hermoine Granger
-service9
+

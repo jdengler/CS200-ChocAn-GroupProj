@@ -1,0 +1,5 @@
+Ronald Weasley,2,1000.0
+Hermoine Granger,2,600.0
+Total number of providers: 2
+Total number of consultations: 4
+Total number of fees: $1600.0
