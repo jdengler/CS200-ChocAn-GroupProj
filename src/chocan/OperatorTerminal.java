@@ -99,24 +99,10 @@ public class OperatorTerminal extends Terminal {
 	    
 	    
         System.out.print("Enter member's name: ");
-        String name = reader.next();
-        
-        /*for (MemberAccounts m : members) {
-            if (m.getName().equals(name)) {
-                System.out.println("A member with this name already exists, do you wish to continue? [Y/N] ");
-                reader.nextLine();
-                String check = reader.nextLine();
-                if (check.toUpperCase().equals("N")) {
-                    reader.close();
-                    return;
-                }
-            }
-        }*/
-        
-        
+        String name = reader.nextLine();
         ma.setName(name);
         System.out.print("Enter member's number: ");
-        reader.nextLine();
+       // reader.nextLine();
         int number = reader.nextInt();
         ma.setNumber(number);
         System.out.print("Enter member's address: ");

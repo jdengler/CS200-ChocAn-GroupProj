@@ -126,8 +126,8 @@ public class ProviderTerminal extends Terminal {
           reader.close();
           return;
       }
-      System.out.println("The service corresponding the code you have entered is " + valid.getServiceName());
-      System.out.println("Is this the correct service? [Y/N]");
+      System.out.println("The total fee for the service " + valid.getServiceName()+"is $"+valid.getServiceFee());
+      System.out.println("Would you like to continue? [Y/N]");
       reader.nextLine();
       String check = reader.nextLine();
       if (check.toUpperCase().equals("N")) {
@@ -163,7 +163,7 @@ public class ProviderTerminal extends Terminal {
   }
   
   private void printBill(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/Database/member.txt";
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/member.txt";
       
       
       File file = new File(filename);
