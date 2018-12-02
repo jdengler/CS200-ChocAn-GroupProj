@@ -154,7 +154,7 @@ public class ProviderTerminal extends Terminal {
           }
       }
       
-      printDatabase(me);
+      printMember(me);
       
       reader.close();
   }

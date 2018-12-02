@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class Terminal {
-  static ManageAccounts ma = new ManageAccounts(); 
+  //static ManageAccounts ma = new ManageAccounts(); 
   
   
   public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -223,7 +223,7 @@ public class Terminal {
   /*
    * Rewrites the member.txt (Used for operator purposes such as add/delete/update member)
    */
-  public void printDatabase(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
+  public void printMember(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
       Scanner reader = new Scanner(System.in);
       System.out.println("Please name the file: ");
       String name = reader.nextLine();
@@ -252,33 +252,6 @@ public class Terminal {
   }
   
 
-  /*
-   * Prints the providers (Used for operator purposes such as add/delete/update provider)
-   */
-  public void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/provider.txt";
-      Path oPath = Paths.get(filename);
-      
-      File oFile = oPath.toFile();
-      try(BufferedWriter input = new BufferedWriter(new FileWriter(oFile))){
-          for (ProviderAccounts provider : pa) {
-              input.write(provider.getName()+","+provider.getNumber()+","+provider.getAddress()+","+provider.getCity()+","+provider.getState()+","+provider.getZipCode()+"\n");
-          
-              ArrayList<ServiceRecord> sr = provider.getServicesProvided();
-              if (sr != null) {
-                  for(ServiceRecord service : sr) {
-                      input.write("s,"+ service.getCurrentDateTime()+","+service.getDateOfService()+","+service.getProviderNumber()+","+service.getMemberNumber()+","+service.getServiceCode()+","+service.getComments()+"\n");
-                  }  
-              }
-          }
-          input.close();
-      }
-  }
-  
-  
-  
-  
-  
   /*
    * Prints the providerDirectory
    */

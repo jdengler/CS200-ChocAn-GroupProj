@@ -1,9 +1,11 @@
 package chocan;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -134,7 +136,7 @@ public class OperatorTerminal extends Terminal {
         ma.setStatus(true);
 	    
         members.add(ma);
-        printDatabase(members);
+        printMember(members);
         
         reader.close();
         
@@ -160,7 +162,7 @@ public class OperatorTerminal extends Terminal {
             reader.close();
             return;
         }
-        printDatabase(members);
+        printMember(members);
         reader.close();
         
 	}
@@ -202,7 +204,7 @@ public class OperatorTerminal extends Terminal {
                 }
             }
         }
-        printDatabase(members);
+        printMember(members);
         reader.close();
 	}
 	
@@ -307,6 +309,31 @@ public class OperatorTerminal extends Terminal {
         System.out.println("\nThe provider was sucessfully updated");
         reader.close();
     }
+	
+	/*
+     * Prints the providers (Used for operator purposes such as add/delete/update provider)
+     */
+
+    private void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
+        String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/provider.txt";
+        Path oPath = Paths.get(filename);
+        
+        File oFile = oPath.toFile();
+        try(BufferedWriter input = new BufferedWriter(new FileWriter(oFile))){
+            for (ProviderAccounts provider : pa) {
+                input.write(provider.getName()+","+provider.getNumber()+","+provider.getAddress()+","+provider.getCity()+","+provider.getState()+","+provider.getZipCode()+"\n");
+            
+                ArrayList<ServiceRecord> sr = provider.getServicesProvided();
+                if (sr != null) {
+                    for(ServiceRecord service : sr) {
+                        input.write("s,"+ service.getCurrentDateTime()+","+service.getDateOfService()+","+service.getProviderNumber()+","+service.getMemberNumber()+","+service.getServiceCode()+","+service.getComments()+"\n");
+                    }  
+                }
+            }
+            input.close();
+        }
+    }
+    
 	/*public ManageAccounts ReadMemberTextFile() throws FileNotFoundException, IOException{
 		Path mPath = Paths.get("C:/Eclipse/member.txt");
 		//java.net.URL url = getClass().getResource("member.txt");		
