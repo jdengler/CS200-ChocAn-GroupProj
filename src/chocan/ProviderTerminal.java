@@ -163,11 +163,7 @@ public class ProviderTerminal extends Terminal {
   }
   
   private void printBill(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
-      Scanner reader = new Scanner(System.in);
-      System.out.println("Please name the file: ");
-      String name = reader.nextLine();
-      
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/"+name+".txt";
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/Database/member.txt";
       
       
       File file = new File(filename);
@@ -186,7 +182,6 @@ public class ProviderTerminal extends Terminal {
           }
           input.close();
       }
-      System.out.print("\n"+"The billed report was successfully generated and stored in "+name+".txt"+"\n");
-      reader.close();
+      System.out.print("\n"+"The billed report was successfully generated and stored in member.txt"+"\n");
   }
 }
