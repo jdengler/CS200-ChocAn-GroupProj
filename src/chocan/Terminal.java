@@ -271,18 +271,51 @@ public class Terminal {
       /*Path oPath = Paths.get(filename);
       File oFile = oPath.toFile();*/
       try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
-          input.write(member.getName()+","+member.getNumber()+","+member.getAddress()+","+member.getCity()+","+member.getState()+","+member.getZipCode()+","+member.getStatus()+"\n");
+          input.write(member.getName()+"\n"+member.getNumber()+"\n"+member.getAddress()+"\n"+member.getCity()+"\n"+member.getState()+"\n"+member.getZipCode()+"\n");
           
           ArrayList<ServiceRecord> sr = member.getServicesProvided();
           if (sr != null) {
               for(ServiceRecord service : sr) {
-                  input.write("s,"+ service.getCurrentDateTime()+","+service.getDateOfService()+","+service.getProviderNumber()+","+service.getMemberNumber()+","+service.getServiceCode()+","+service.getComments()+"\n");
+                  input.write(service.getDateOfService()+"\n"+service.getProviderName(service.getProviderNumber())+"\n"+service.getServiceName(service.getServiceCode())+"\n");
               }  
           }
 
           input.close();
       }
       
+      System.out.print("\n"+"The member report was successfully generated and stored in "+name+".txt"+"\n");
+      reader.close();
+  }
+  
+  public void printProviderReport(ProviderAccounts provider) throws FileNotFoundException, IOException{
+      //ArrayList<ProviderAccounts> pa = ReadProviders();
+      
+      Scanner reader = new Scanner(System.in);
+      System.out.println("Please name the file: ");
+      String name = reader.nextLine();
+      double totalFee = 0;
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/"+name+".txt";
+      
+      
+      File file = new File(filename);
+      /*Path oPath = Paths.get(filename);
+      File oFile = oPath.toFile();*/
+      try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
+          input.write(provider.getName()+"\n"+provider.getNumber()+"\n"+provider.getAddress()+"\n"+provider.getCity()+"\n"+provider.getState()+"\n"+provider.getZipCode()+"\n");
+          
+          ArrayList<ServiceRecord> sr = provider.getServicesProvided();
+          if (sr != null) {
+              for(ServiceRecord service : sr) {
+                  input.write(service.getDateOfService()+"\n"+service.getCurrentDateTime()+"\n"+service.getMemberName(service.getMemberNumber())+"\n"+service.getMemberNumber()+"\n"+service.getServiceCode()+"\n"+service.getServiceFee(service.getServiceCode())+"\n");
+                  totalFee = totalFee + service.getServiceFee(service.getServiceCode());
+              }  
+          }
+          System.out.println("Total number of consultations with members: "+sr.size());
+          System.out.println("Total fee for the week: $"+totalFee);
+          input.close();
+      }
+      
+      System.out.print("\n"+"The provider report was successfully generated and stored in "+name+".txt"+"\n");
       reader.close();
   }
   

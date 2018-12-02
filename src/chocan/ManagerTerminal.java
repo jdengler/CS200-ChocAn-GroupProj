@@ -32,9 +32,7 @@ public class ManagerTerminal extends Terminal{
 			
 		else if (option == 3) { // generate provider report
 			System.out.println("\nGenerate Provider Report");
-			System.out.print("Enter provider's number: ");
-			int number = reader.nextInt();
-			GenerateReport.GenerateProviderReport(number);
+			generateProvider();
 			
 		}
 	}
@@ -50,6 +48,21 @@ public class ManagerTerminal extends Terminal{
 	            printMemberReport(ma);
 	        }
 	    }
+	    
 	    return;
 	}
+	
+	private void generateProvider() throws FileNotFoundException, IOException{
+        ArrayList<ProviderAccounts> providers = ReadProviders();
+        System.out.print("Enter provider's number: ");
+        int number = reader.nextInt();
+        
+        for (ProviderAccounts pa : providers) {
+            if (pa.getNumber() == number) {
+                printProviderReport(pa);
+            }
+        }
+        
+        return;
+    }
 }

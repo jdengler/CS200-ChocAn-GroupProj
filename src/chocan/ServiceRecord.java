@@ -1,6 +1,10 @@
 package chocan;
 
-public class ServiceRecord {
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class ServiceRecord extends Terminal {
 	
   private String currentDateTime;
   private String dateOfService;
@@ -39,18 +43,37 @@ public String getDateOfService() {
 public void setDateOfService(String dateOfService) {
 	this.dateOfService = dateOfService;
 } 
-  public String getProviderName() {
-	return null;
-  }
   
-  public String getMemberName() {
-	return null; 
+public String getProviderName(int providerNumber) throws FileNotFoundException, IOException{
+    ArrayList<ProviderAccounts> pa = ReadProviders();
+    String name = null; 
+    
+    for (ProviderAccounts provide : pa) {
+        if (provide.getNumber() == providerNumber) {
+            name = provide.getName();
+        }
+    }
+    return name;
+}
+  
+  public String getMemberName(int memberNumber) throws FileNotFoundException,IOException{
+      ArrayList<MemberAccounts> ma = ReadMember();
+      String name = null; 
+      
+      for (MemberAccounts member : ma) {
+          if (member.getNumber() == memberNumber) {
+              name = member.getName();
+          }
+      }
+      return name;  
+	
   }
   
 
 public int getProviderNumber() {
 	return providerNumber;
 }
+
 
 public void setProviderNumber(int providerNumber) {
 	this.providerNumber = providerNumber;
@@ -85,5 +108,26 @@ public ProviderDirectoryEntry getProviderDirectoryInfo(int serviceCode) {
 	  return pd.findProviderDirectoryEntry(serviceCode);
   }
   
+public String getServiceName(int serviceCode) throws FileNotFoundException, IOException{
+   ArrayList<ProviderDirectoryEntry>pde = ReadProviderDirectoryEntry();
+   String name = null;
+   for (ProviderDirectoryEntry provide : pde) {
+       if (provide.getServiceCode() == serviceCode) {
+           name = provide.getServiceName();
+       }
+   }
+   return name;
+}
+
+public double getServiceFee(int serviceCode) throws FileNotFoundException, IOException{
+    ArrayList<ProviderDirectoryEntry>pde = ReadProviderDirectoryEntry();
+    double fee =0;
+    for (ProviderDirectoryEntry provide : pde) {
+        if (provide.getServiceCode() == serviceCode) {
+            fee = provide.getServiceFee();
+        }
+    }
+    return fee;
+ }
 
 }
