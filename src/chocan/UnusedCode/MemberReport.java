@@ -1,5 +1,8 @@
-package chocan;
+package chocan.UnusedCode;
 import java.util.Date;
+
+import chocan.ServiceRecord;
+
 import java.util.ArrayList;
 
 public class MemberReport {

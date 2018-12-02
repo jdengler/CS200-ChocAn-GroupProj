@@ -1,5 +1,8 @@
-package chocan;
+package chocan.UnusedCode;
 import java.util.ArrayList;
+
+import chocan.ProviderDirectoryEntry;
+import chocan.ServiceRecord;
 
 
 public class ProviderReport {

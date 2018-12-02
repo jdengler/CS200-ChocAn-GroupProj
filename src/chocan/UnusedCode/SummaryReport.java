@@ -1,6 +1,8 @@
-package chocan;
+package chocan.UnusedCode;
 
 import java.util.ArrayList;
+
+import chocan.ServiceRecord;
 
 public class SummaryReport {
     private ArrayList<ServiceRecord> servicesProvided;

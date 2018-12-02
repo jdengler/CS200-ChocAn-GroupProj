@@ -1,5 +1,9 @@
-package chocan;
+package chocan.UnusedCode;
 import java.util.ArrayList;
+
+import chocan.ProviderDirectory;
+import chocan.ProviderDirectoryEntry;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
