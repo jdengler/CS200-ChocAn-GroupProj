@@ -1,5 +1,7 @@
 package chocan;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProviderAccounts {
@@ -70,6 +72,18 @@ public class ProviderAccounts {
 	
 	public int getZipCode() {
 		return zipCode;
+	}
+	
+	public int getNumberServices() {
+	    return servicesProvided.size();
+	}
+	
+	public double getTotalFees(ArrayList<ServiceRecord> services) throws FileNotFoundException,IOException{
+	    double fee = 0;
+	    for(ServiceRecord se : services) {
+	        fee = fee + se.getServiceFee(se.getServiceCode());
+	    }
+	    return fee;
 	}
 	
 	public ArrayList<ServiceRecord> getServicesProvided() {

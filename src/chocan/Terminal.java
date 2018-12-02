@@ -238,6 +238,8 @@ public class Terminal {
       reader.close();
   }
   
+
+  
   public void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
       String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/provider.txt";
       Path oPath = Paths.get(filename);
@@ -256,7 +258,6 @@ public class Terminal {
           }
           input.close();
       }
-      
   }
   
   public void printMemberReport(MemberAccounts member) throws FileNotFoundException, IOException{
@@ -310,12 +311,42 @@ public class Terminal {
                   totalFee = totalFee + service.getServiceFee(service.getServiceCode());
               }  
           }
-          System.out.println("Total number of consultations with members: "+sr.size());
-          System.out.println("Total fee for the week: $"+totalFee);
+          input.write("Total number of consultations with members: "+sr.size()+"\n");
+          input.write("Total fee for the week: $"+totalFee+"\n");
           input.close();
       }
       
       System.out.print("\n"+"The provider report was successfully generated and stored in "+name+".txt"+"\n");
+      reader.close();
+  }
+  
+  public void printSummaryReport() throws FileNotFoundException,IOException{
+      ArrayList<ProviderAccounts> providers = ReadProviders();
+      Scanner reader = new Scanner(System.in);
+      System.out.println("Please name the file: ");
+      String name = reader.nextLine();
+      
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ServiceRecords/"+name+".txt";
+      double totalFee = 0;
+      int totalConsults = 0;
+      
+      File file = new File(filename);
+      /*Path oPath = Paths.get(filename);
+      File oFile = oPath.toFile();*/
+      try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
+          for (ProviderAccounts pa : providers) {
+              ArrayList<ServiceRecord> sr = pa.getServicesProvided();
+              input.write(pa.getName()+","+pa.getNumberServices()+","+pa.getTotalFees(sr)+"\n");
+              totalConsults = totalConsults + pa.getNumberServices();
+              totalFee = totalFee + pa.getTotalFees(sr);
+          }
+          input.write("Total number of providers: "+providers.size()+"\n");
+          input.write("Total number of consultations: "+totalConsults+"\n");
+          input.write("Total number of fees: $"+totalFee+"\n");
+      input.close();
+      }
+      
+      System.out.print("\n"+"The summary report was successfully generated and stored in "+name+".txt"+"\n");
       reader.close();
   }
   

@@ -22,7 +22,7 @@ public class ManagerTerminal extends Terminal{
 		
 		if (option == 1) { // generate summary report
 			System.out.println("Generate Summary Report");
-			GenerateReport.GenerateSummaryReport();
+			printSummaryReport();
 		}
 			
 		else if (option == 2) { // generate member report

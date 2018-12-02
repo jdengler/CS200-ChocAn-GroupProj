@@ -16,3 +16,5 @@ John Smith
 123456789
 777777
 900.0
+Total number of consultations with members: 2
+Total fee for the week: $1000.0
