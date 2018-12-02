@@ -79,4 +79,8 @@ public class ProviderAccounts {
 	public void addService(ServiceRecord service){
 		servicesProvided.add(service);
 	}
+	
+	public void setServicesProvided(ArrayList<ServiceRecord> servicesProvided) {
+        this.servicesProvided = servicesProvided;
+    }
 }
