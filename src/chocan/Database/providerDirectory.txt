@@ -1,10 +1,6 @@
-service1,123456,100
-service2,000000,200
-service3,111111,300
-service4,222222,400
-service5,333333,500
-service6,444444,600
-service7,555555,700
-service8,666666,800
-service9,777777,900
-service10,88888,10
+Potion Diet,123456,100
+Memory Eraser,000000,200
+Broom Workout,111111,300
+Tea Detox,222222,400
+Muggles Obesity,333333,500
+Check up,888888,10
