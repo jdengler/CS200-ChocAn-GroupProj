@@ -10,7 +10,7 @@ public class ManagerTerminal extends Terminal{
 	
 	private static Scanner reader = new Scanner(System.in);
 	
-	public void managerMenu() throws FileNotFoundException, IOException{
+	public static void managerMenu() throws FileNotFoundException, IOException{
 		
 		int option = 0;
 		
@@ -41,7 +41,7 @@ public class ManagerTerminal extends Terminal{
 	}
 
 	
-	public void generateMember() throws FileNotFoundException, IOException{
+	public static void generateMember() throws FileNotFoundException, IOException{
 	    ArrayList<MemberAccounts> members = ReadMember();
 	    System.out.print("Enter member's number: ");
 	    int number = reader.nextInt();
@@ -55,7 +55,7 @@ public class ManagerTerminal extends Terminal{
 	    return;
 	}
 	
-	public void generateProvider() throws FileNotFoundException, IOException{
+	public static void generateProvider() throws FileNotFoundException, IOException{
         ArrayList<ProviderAccounts> providers = ReadProviders();
         System.out.print("Enter provider's number: ");
         int number = reader.nextInt();
@@ -72,7 +72,7 @@ public class ManagerTerminal extends Terminal{
 	/*
      * Prints the summary report (used by Manager)
      */
-	public void printSummaryReport() throws FileNotFoundException,IOException{
+	public static void printSummaryReport() throws FileNotFoundException,IOException{
 	      ArrayList<ProviderAccounts> providers = ReadProviders();
 	      Scanner reader = new Scanner(System.in);
 	      System.out.println("Please name the file: ");
@@ -105,7 +105,7 @@ public class ManagerTerminal extends Terminal{
 	/*
      * Prints the member report (used by Manager)
      */
-	  public void printMemberReport(MemberAccounts member) throws FileNotFoundException, IOException{
+	  public static void printMemberReport(MemberAccounts member) throws FileNotFoundException, IOException{
 	      Scanner reader = new Scanner(System.in);
 	      System.out.println("Please name the file: ");
 	      String name = reader.nextLine();
@@ -137,7 +137,7 @@ public class ManagerTerminal extends Terminal{
 	  /*
        * Prints the provider report (used by Manager)
        */
-	  public void printProviderReport(ProviderAccounts provider) throws FileNotFoundException, IOException{
+	  public static void printProviderReport(ProviderAccounts provider) throws FileNotFoundException, IOException{
 	      //ArrayList<ProviderAccounts> pa = ReadProviders();
 	      
 	      Scanner reader = new Scanner(System.in);

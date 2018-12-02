@@ -54,8 +54,8 @@ public class Terminal {
   }
   
   public static void OpenManagerTerminal () throws FileNotFoundException, IOException {
-	  ManagerTerminal mt = new ManagerTerminal();
-	  mt.managerMenu();
+	  //ManagerTerminal mt = new ManagerTerminal();
+	  ManagerTerminal.managerMenu();
 	  
   }
   
@@ -74,7 +74,7 @@ public class Terminal {
 /*
  * Reads in the providerDirectory
  */
-  public ArrayList<ProviderDirectoryEntry> ReadProviderDirectoryEntry() throws FileNotFoundException, IOException {
+  public static ArrayList<ProviderDirectoryEntry> ReadProviderDirectoryEntry() throws FileNotFoundException, IOException {
       String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/providerDirectory.txt";
       Path pPath = Paths.get(filename);
     
@@ -107,7 +107,7 @@ public class Terminal {
   /*
    * Reads in members and the services they've had
    */
-  public ArrayList<MemberAccounts> ReadMember() throws FileNotFoundException, IOException{
+  public static ArrayList<MemberAccounts> ReadMember() throws FileNotFoundException, IOException{
       String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/member.txt";
       Path mPath = Paths.get(filename);
       
@@ -163,7 +163,7 @@ public class Terminal {
   /*
    * Reads in the providers and the services they've provided
    */
-  public ArrayList<ProviderAccounts> ReadProviders() throws FileNotFoundException, IOException{
+  public static ArrayList<ProviderAccounts> ReadProviders() throws FileNotFoundException, IOException{
       String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/provider.txt";
       Path mPath = Paths.get(filename);
       
@@ -225,7 +225,7 @@ public class Terminal {
   /*
    * Prints the providerDirectory
    */
-  public void rewriteDirectory() throws FileNotFoundException, IOException{
+  public static void rewriteDirectory() throws FileNotFoundException, IOException{
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
 
       String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/test2";
