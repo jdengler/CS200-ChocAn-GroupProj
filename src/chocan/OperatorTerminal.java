@@ -17,10 +17,10 @@ import javax.print.DocFlavor.URL;
 public class OperatorTerminal extends Terminal {
 	
 	private static Scanner reader = new Scanner(System.in);
-	public  MemberAccounts ma = new MemberAccounts();
-	public  ProviderAccounts pacc = new ProviderAccounts();
+	public static  MemberAccounts ma = new MemberAccounts();
+	public static  ProviderAccounts pacc = new ProviderAccounts();
 
-	public  void operaterMenu() throws FileNotFoundException, IOException {
+	public static void operaterMenu() throws FileNotFoundException, IOException {
 
 		int option = 0;
 		
@@ -93,7 +93,7 @@ public class OperatorTerminal extends Terminal {
 		}
 	}
 	
-	private void addMember() throws FileNotFoundException, IOException{
+	public static void addMember() throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
 	    Scanner reader = new Scanner(System.in);
 	    
@@ -128,7 +128,7 @@ public class OperatorTerminal extends Terminal {
         
 	}
 	
-	private void deleteMember() throws FileNotFoundException, IOException{
+	public static void deleteMember() throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
         Scanner reader = new Scanner(System.in);
         
@@ -153,7 +153,7 @@ public class OperatorTerminal extends Terminal {
         
 	}
 	
-	private void updateMember() throws FileNotFoundException, IOException{
+	public static void updateMember() throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
         Scanner reader = new Scanner(System.in);
         
@@ -194,7 +194,7 @@ public class OperatorTerminal extends Terminal {
         reader.close();
 	}
 	
-	private void printMember(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
+	public static void printMember(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
 	      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/member.txt";
 	      
 	      
@@ -216,7 +216,7 @@ public class OperatorTerminal extends Terminal {
 	      }
 	  }
 	
-	private void addProvider() throws FileNotFoundException, IOException{
+	public static void addProvider() throws FileNotFoundException, IOException{
 	    ArrayList<ProviderAccounts> providers = ReadProviders();
 	    Scanner reader = new Scanner(System.in);
 	    
@@ -250,7 +250,7 @@ public class OperatorTerminal extends Terminal {
         reader.close();
 	}
 	
-	private void deleteProvider() throws FileNotFoundException, IOException{
+	public static void deleteProvider() throws FileNotFoundException, IOException{
 	    ArrayList<ProviderAccounts> providers = ReadProviders();
         Scanner reader = new Scanner(System.in);
         
@@ -276,7 +276,7 @@ public class OperatorTerminal extends Terminal {
      
 	}
 	
-	private void updateProvider() throws FileNotFoundException, IOException{
+	public static void updateProvider() throws FileNotFoundException, IOException{
         ArrayList <ProviderAccounts> providers = ReadProviders();
         Scanner reader = new Scanner(System.in);
         
@@ -322,7 +322,7 @@ public class OperatorTerminal extends Terminal {
      * Prints the providers (Used for operator purposes such as add/delete/update provider)
      */
 
-    private void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
+     public static void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
         String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/provider.txt";
         Path oPath = Paths.get(filename);
         

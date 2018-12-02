@@ -28,7 +28,7 @@ public class ProviderTerminal extends Terminal {
   
   private static Scanner sc = new Scanner(System.in);
   
-  public void providerMenu() throws FileNotFoundException, IOException {
+  public static void providerMenu() throws FileNotFoundException, IOException {
 	System.out.println("\nProvider Terminal");
 	System.out.println("1.) Validate a ChocAn member"); 
 	System.out.println("2.) Bill ChocAn"); 
@@ -54,7 +54,7 @@ public class ProviderTerminal extends Terminal {
     //sc.close();
   }
   
-  private MemberAccounts validateMember() throws FileNotFoundException, IOException{
+  public static MemberAccounts validateMember() throws FileNotFoundException, IOException{
     ArrayList<MemberAccounts> me = ReadMember();
     System.out.println("Enter member number: ");
     int found = -1;
@@ -78,7 +78,7 @@ public class ProviderTerminal extends Terminal {
     return ma;
   }
   
-  private ProviderDirectoryEntry validEntry(int code) throws FileNotFoundException,IOException{
+  public static ProviderDirectoryEntry validEntry(int code) throws FileNotFoundException,IOException{
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
       ProviderDirectoryEntry entry = new ProviderDirectoryEntry();
       for (ProviderDirectoryEntry pd : pde) {
@@ -89,7 +89,7 @@ public class ProviderTerminal extends Terminal {
       return entry;
   }
   
-  private void billChocan()throws FileNotFoundException, IOException{
+  public static void billChocan()throws FileNotFoundException, IOException{
       ArrayList<MemberAccounts> me = ReadMember();
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
       ServiceRecord sr = new ServiceRecord();
@@ -158,11 +158,11 @@ public class ProviderTerminal extends Terminal {
       reader.close();
   }
   
-  private void requestDirectory() throws FileNotFoundException, IOException {
+  public static void requestDirectory() throws FileNotFoundException, IOException {
       rewriteDirectory();
   }
   
-  private void printBill(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
+  public static void printBill(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
       String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/member.txt";
       
       
