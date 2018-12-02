@@ -152,7 +152,7 @@ public class Terminal {
   }
   
   public ArrayList<ProviderAccounts> ReadProviders() throws FileNotFoundException, IOException{
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/provider.txt";
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/provider.txt";
       Path mPath = Paths.get(filename);
       
       File mFile = mPath.toFile();
@@ -177,7 +177,10 @@ public class Terminal {
                   
                   
                   line = input.readLine();
-                  if (line == null) break;
+                  if (line == null) {
+                      listProvA.add(provA);
+                      break;
+                  }
                   String[] serviceFields = line.split(",");
                   
                   while (serviceFields[0].equals("s") == true && serviceFields != null) {
@@ -198,6 +201,7 @@ public class Terminal {
                   listProvA.add(provA);
                   
               }
+              
               input.close();
           }
       }
@@ -226,7 +230,7 @@ public class Terminal {
   }
   
   public void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/provider.txt";
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/provider.txt";
       Path oPath = Paths.get(filename);
       
       File oFile = oPath.toFile();
