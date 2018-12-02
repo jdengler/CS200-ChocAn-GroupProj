@@ -22,7 +22,6 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.util.Scanner;
 
 
 public class ProviderTerminal extends Terminal {
@@ -154,7 +153,7 @@ public class ProviderTerminal extends Terminal {
           }
       }
       
-      printMember(me);
+      printBill(me);
       
       reader.close();
   }
@@ -163,4 +162,31 @@ public class ProviderTerminal extends Terminal {
       rewriteDirectory();
   }
   
+  private void printBill(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
+      Scanner reader = new Scanner(System.in);
+      System.out.println("Please name the file: ");
+      String name = reader.nextLine();
+      
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/"+name+".txt";
+      
+      
+      File file = new File(filename);
+      /*Path oPath = Paths.get(filename);
+      File oFile = oPath.toFile();*/
+      try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
+          for (MemberAccounts member : ma) {
+              input.write(member.getName()+","+member.getNumber()+","+member.getAddress()+","+member.getCity()+","+member.getState()+","+member.getZipCode()+","+member.getStatus()+"\n");
+          
+              ArrayList<ServiceRecord> sr = member.getServicesProvided();
+              if (sr != null) {
+                  for(ServiceRecord service : sr) {
+                      input.write("s,"+ service.getCurrentDateTime()+","+service.getDateOfService()+","+service.getProviderNumber()+","+service.getMemberNumber()+","+service.getServiceCode()+","+service.getComments()+"\n");
+                  }  
+              }
+          }
+          input.close();
+      }
+      
+      reader.close();
+  }
 }

@@ -208,6 +208,28 @@ public class OperatorTerminal extends Terminal {
         reader.close();
 	}
 	
+	private void printMember(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
+	      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/member.txt";
+	      
+	      
+	      File file = new File(filename);
+	      /*Path oPath = Paths.get(filename);
+	      File oFile = oPath.toFile();*/
+	      try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
+	          for (MemberAccounts member : ma) {
+	              input.write(member.getName()+","+member.getNumber()+","+member.getAddress()+","+member.getCity()+","+member.getState()+","+member.getZipCode()+","+member.getStatus()+"\n");
+	          
+	              ArrayList<ServiceRecord> sr = member.getServicesProvided();
+	              if (sr != null) {
+	                  for(ServiceRecord service : sr) {
+	                      input.write("s,"+ service.getCurrentDateTime()+","+service.getDateOfService()+","+service.getProviderNumber()+","+service.getMemberNumber()+","+service.getServiceCode()+","+service.getComments()+"\n");
+	                  }  
+	              }
+	          }
+	          input.close();
+	      }
+	  }
+	
 	private void addProvider() throws FileNotFoundException, IOException{
 	    ArrayList<ProviderAccounts> providers = ReadProviders();
 	    Scanner reader = new Scanner(System.in);
@@ -315,7 +337,7 @@ public class OperatorTerminal extends Terminal {
      */
 
     private void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
-        String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/provider.txt";
+        String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/Database/provider.txt";
         Path oPath = Paths.get(filename);
         
         File oFile = oPath.toFile();
