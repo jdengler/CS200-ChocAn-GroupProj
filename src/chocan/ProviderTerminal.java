@@ -186,7 +186,7 @@ public class ProviderTerminal extends Terminal {
           }
           input.close();
       }
-      
+      System.out.print("\n"+"The billed report was successfully generated and stored in "+name+".txt"+"\n");
       reader.close();
   }
 }
