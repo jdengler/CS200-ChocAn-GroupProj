@@ -78,7 +78,7 @@ public class ManagerTerminal extends Terminal{
 	      System.out.println("Please name the file: ");
 	      String name = reader.nextLine();
 	      
-	      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ServiceRecords/"+name+".txt";
+	      String filename = "writtenFiles/ServiceRecords/"+name+".txt";
 	      double totalFee = 0;
 	      int totalConsults = 0;
 	      
@@ -110,7 +110,7 @@ public class ManagerTerminal extends Terminal{
 	      System.out.println("Please name the file: ");
 	      String name = reader.nextLine();
 	      
-	      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/"+name+".txt";
+	      String filename = "writtenFiles/MemberReports/"+name+".txt";
 	      
 	      
 	      File file = new File(filename);
@@ -144,7 +144,7 @@ public class ManagerTerminal extends Terminal{
 	      System.out.println("Please name the file: ");
 	      String name = reader.nextLine();
 	      double totalFee = 0;
-	      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/"+name+".txt";
+	      String filename = "writtenFiles/ProviderReports/"+name+".txt";
 	      
 	      
 	      File file = new File(filename);

@@ -163,7 +163,7 @@ public class ProviderTerminal extends Terminal {
   }
   
   public static void printBill(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/member.txt";
+      String filename = "Database/member.txt";
       
       
       File file = new File(filename);
