@@ -209,11 +209,17 @@ public class Terminal {
   }
   
   public void printDatabase(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/member.txt";
-      Path oPath = Paths.get(filename);
+      Scanner reader = new Scanner(System.in);
+      System.out.println("Please name the file: ");
+      String name = reader.nextLine();
       
-      File oFile = oPath.toFile();
-      try(BufferedWriter input = new BufferedWriter(new FileWriter(oFile))){
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/"+name+".txt";
+      
+      
+      File file = new File(filename);
+      /*Path oPath = Paths.get(filename);
+      File oFile = oPath.toFile();*/
+      try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
           for (MemberAccounts member : ma) {
               input.write(member.getName()+","+member.getNumber()+","+member.getAddress()+","+member.getCity()+","+member.getState()+","+member.getZipCode()+","+member.getStatus()+"\n");
           
@@ -227,6 +233,7 @@ public class Terminal {
           input.close();
       }
       
+      reader.close();
   }
   
   public void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
