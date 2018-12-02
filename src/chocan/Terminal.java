@@ -75,7 +75,7 @@ public class Terminal {
  * Reads in the providerDirectory
  */
   public ArrayList<ProviderDirectoryEntry> ReadProviderDirectoryEntry() throws FileNotFoundException, IOException {
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/Database/providerDirectory.txt";
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/providerDirectory.txt";
       Path pPath = Paths.get(filename);
     
       File mFile = pPath.toFile();
@@ -108,7 +108,7 @@ public class Terminal {
    * Reads in members and the services they've had
    */
   public ArrayList<MemberAccounts> ReadMember() throws FileNotFoundException, IOException{
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/Database/member.txt";
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/member.txt";
       Path mPath = Paths.get(filename);
       
       File mFile = mPath.toFile();
@@ -164,7 +164,7 @@ public class Terminal {
    * Reads in the providers and the services they've provided
    */
   public ArrayList<ProviderAccounts> ReadProviders() throws FileNotFoundException, IOException{
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/Database/provider.txt";
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/provider.txt";
       Path mPath = Paths.get(filename);
       
       File mFile = mPath.toFile();

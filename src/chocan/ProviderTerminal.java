@@ -167,7 +167,7 @@ public class ProviderTerminal extends Terminal {
       System.out.println("Please name the file: ");
       String name = reader.nextLine();
       
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/"+name+".txt";
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/"+name+".txt";
       
       
       File file = new File(filename);

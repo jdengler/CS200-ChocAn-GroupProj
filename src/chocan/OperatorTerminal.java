@@ -209,7 +209,7 @@ public class OperatorTerminal extends Terminal {
 	}
 	
 	private void printMember(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
-	      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/member.txt";
+	      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/member.txt";
 	      
 	      
 	      File file = new File(filename);
@@ -337,7 +337,7 @@ public class OperatorTerminal extends Terminal {
      */
 
     private void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
-        String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/Database/provider.txt";
+        String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/Database/provider.txt";
         Path oPath = Paths.get(filename);
         
         File oFile = oPath.toFile();
