@@ -3,29 +3,33 @@ import java.nio.file.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.print.DocFlavor.URL;
+
+//import com.sun.corba.se.spi.ior.Writeable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 import java.util.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.util.Scanner;
 
-public class ProviderTerminal {
-  public ProviderDirectory pd = new ProviderDirectory();
+
+public class ProviderTerminal extends Terminal {
   
   private static Scanner sc = new Scanner(System.in);
   
-  public void menu() throws FileNotFoundException, IOException {
-      
-      pd = ReadProviderDirectoryEntry();
-	  
+  public void providerMenu() throws FileNotFoundException, IOException {
 	System.out.println("\nProvider Terminal");
 	System.out.println("1.) Validate a ChocAn member"); 
 	System.out.println("2.) Bill ChocAn"); 
@@ -48,78 +52,115 @@ public class ProviderTerminal {
           System.out.println("Please enter a valid choice...");
           break;
     }
+    //sc.close();
   }
   
-  private static void validateMember() {
-    System.out.print("\nEnter member number: ");
+  private MemberAccounts validateMember() throws FileNotFoundException, IOException{
+    ArrayList<MemberAccounts> me = ReadMember();
+    System.out.println("Enter member number: ");
+    int found = -1;
+    MemberAccounts ma = new MemberAccounts();
     int memNum = sc.nextInt();
-    ValidateMember x = new ValidateMember(memNum);
+    for(MemberAccounts account : me) {
+        if(account.getNumber() == memNum) {
+            found = 0;
+            if (account.getStatus() == false) {
+                System.out.println("\nSuspended");
+            }
+            else {
+                System.out.println("\nValidated");
+            }
+            ma = account;
+        }
+    }
+    if (found == -1) {
+        System.out.println("\nInvalid");
+    }
+    return ma;
   }
   
-  private static void billChocan() {
-    
-  }
-  
-  private static void requestDirectory() {
-    
-  }
-  
-  public static String readFileAsString(String fileName) throws FileNotFoundException, IOException{ 
-    String data = ""; 
-    data = new String(Files.readAllBytes(Paths.get(fileName))); 
-    return data; 
-  }
-  
-  public ProviderDirectory ReadProviderDirectoryEntry() throws FileNotFoundException, IOException {
-      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/ProviderReports/providerDirectory.txt";
-      Path mPath = Paths.get(filename);
-    
-      File mFile = mPath.toFile();
-      String str;
-      
-      
-      ArrayList<ProviderDirectoryEntry> listPde = new ArrayList<ProviderDirectoryEntry>();
-      
-      if(Files.exists(mPath)){
-          try(BufferedReader input = new BufferedReader(new FileReader(mFile))){
-              String line = input.readLine();
-          
-              while (line != null) {
-                  System.out.println(line);
-                  line = input.readLine();
-              }
+  private ProviderDirectoryEntry validEntry(int code) throws FileNotFoundException,IOException{
+      ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
+      ProviderDirectoryEntry entry = new ProviderDirectoryEntry();
+      for (ProviderDirectoryEntry pd : pde) {
+          if (pd.getServiceCode() == code) {
+              entry = pd;
           }
       }
-             /*while(line != null){
-                 String[] fields = line.split(",");
-                 ProviderDirectoryEntry pde2 = new ProviderDirectoryEntry();
-                 pde2.setServiceName(fields[0]); 
-                 pde2.setServiceCode(Integer.parseInt(fields[1]));
-                 pde2.setServiceFee(Double.parseDouble(fields[2]));               
-                 
-                 line = input.readLine();
-                 ArrayList<ServiceRecord> servicesProvided = new ArrayList<ServiceRecord>();
-                 while(line != null){
-                     String[] serviceFields = line.split(",");
-                     ServiceRecord sr = new ServiceRecord();
-                     if(serviceFields != null){
-                         sr.setCurrentDateTime(serviceFields[0]);
-                         sr.setDateOfService(serviceFields[1]);
-                         sr.setProviderNumber(Integer.parseInt(serviceFields[2]));
-                         sr.setMemberNumber(Integer.parseInt(serviceFields[3]));
-                         sr.setServiceCode(Integer.parseInt(serviceFields[4]));
-                         sr.setComments(serviceFields[5]);
-                     }  
-                     servicesProvided.add(sr);
-                     line = input.readLine();
-                 }
-                 memA.setServicesProvided(servicesProvided);
-                 
-                 listMemA.add(memA);
-                ma.setMemberAccountsList(listMemA);
-                 ma.addMember(name, number, address, city, state, zipCode, status, servicesProvided);
-                 line = input.readLine();*/
-      //}
-      return pd;
+      return entry;
   }
+  
+  private void billChocan()throws FileNotFoundException, IOException{
+      ArrayList<MemberAccounts> me = ReadMember();
+      ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
+      ServiceRecord sr = new ServiceRecord();
+      
+      Scanner reader = new Scanner(System.in);
+      MemberAccounts found = validateMember();
+      
+      if (found.getStatus() == false) {
+          reader.close();
+          return;
+      }
+      
+      DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+      Date date = new Date();
+      String strDate = dateFormat.format(date);
+      sr.setCurrentDateTime(strDate);
+      
+      System.out.println("Enter date of service (MM-DD-YYYY): ");
+      String actDate = reader.nextLine();
+      sr.setDateOfService(actDate);
+      
+      System.out.println("Enter provider number: ");
+      int providerNum = reader.nextInt();
+      sr.setProviderNumber(providerNum);
+      
+      for (ProviderDirectoryEntry pd: pde){
+          System.out.println(pd.getServiceName()+","+pd.getServiceCode()+","+pd.getServiceFee());
+      }
+      
+      System.out.println("Enter the six-digit service code: ");
+      int serviceCode = reader.nextInt();
+      ProviderDirectoryEntry valid = validEntry(serviceCode);
+      if (valid == null) {
+          reader.close();
+          return;
+      }
+      System.out.println("The service corresponding the code you have entered is " + valid.getServiceName());
+      System.out.println("Is this the correct service? [Y/N]");
+      reader.nextLine();
+      String check = reader.nextLine();
+      if (check.toUpperCase().equals("N")) {
+          reader.close();
+          return;
+      }
+      sr.setServiceCode(serviceCode);
+      
+      
+      System.out.println("Enter comments [Press Enter If No Comments]: ");
+      //reader.nextLine();
+      String comment = reader.nextLine();
+      sr.setComments(comment);
+      
+      sr.setMemberNumber(found.getNumber());
+      found.addService(sr);
+
+      
+      for(MemberAccounts member:me) {
+          if (member.getNumber() == found.getNumber()) {
+              member.addService(sr);
+              break;
+          }
+      }
+      
+      printDatabase(me);
+      
+      reader.close();
+  }
+  
+  private void requestDirectory() throws FileNotFoundException, IOException {
+      rewriteDirectory();
+  }
+  
 }

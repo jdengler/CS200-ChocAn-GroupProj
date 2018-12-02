@@ -21,8 +21,6 @@ public class OperatorTerminal extends Terminal {
 	public  void operaterMenu() throws FileNotFoundException, IOException {
 		ma = ReadMemberTextFile();
 
-	
-		
 
 		int option = 0;
 		
@@ -186,8 +184,6 @@ public class OperatorTerminal extends Terminal {
 			        
 			        listMemA.add(memA);
 			        ma.setMemberAccountsList(listMemA);
-			        //ma.addMember(name, number, address, city, state, zipCode, status, servicesProvided);
-			        //line = input.readLine();
 					}
 				}
 			}
