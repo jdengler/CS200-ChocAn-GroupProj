@@ -35,6 +35,7 @@ public class ManagerTerminal extends Terminal{
 			System.out.print("Enter provider's number: ");
 			int number = reader.nextInt();
 			GenerateReport.GenerateProviderReport(number);
+			
 		}
 	}
 
