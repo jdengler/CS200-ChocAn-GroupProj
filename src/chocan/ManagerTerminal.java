@@ -1,11 +1,13 @@
 package chocan;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 public class ManagerTerminal extends Terminal{
 	
 	private static Scanner reader = new Scanner(System.in);
 	
-	public static void menu() {
+	public void managerMenu() throws FileNotFoundException, IOException{
 		
 		int option = 0;
 		
@@ -25,9 +27,7 @@ public class ManagerTerminal extends Terminal{
 			
 		else if (option == 2) { // generate member report
 			System.out.println("\nGenerate Member Report");
-			System.out.print("Enter member's number: ");
-			int number = reader.nextInt();
-			GenerateReport.GenerateMemberReport(number);
+			generateMember();
 		}
 			
 		else if (option == 3) { // generate provider report
@@ -39,5 +39,16 @@ public class ManagerTerminal extends Terminal{
 	}
 
 	
-	
+	private void generateMember() throws FileNotFoundException, IOException{
+	    ArrayList<MemberAccounts> members = ReadMember();
+	    System.out.print("Enter member's number: ");
+	    int number = reader.nextInt();
+	    
+	    for (MemberAccounts ma : members) {
+	        if (ma.getNumber() == number) {
+	            printMemberReport(ma);
+	        }
+	    }
+	    return;
+	}
 }

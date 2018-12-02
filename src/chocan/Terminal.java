@@ -53,8 +53,10 @@ public class Terminal {
 	reader.close();
   }
   
-  public static void OpenManagerTerminal () {
-	  ManagerTerminal.menu();
+  public static void OpenManagerTerminal () throws FileNotFoundException, IOException {
+	  ManagerTerminal mt = new ManagerTerminal();
+	  mt.managerMenu();
+	  
   }
   
   public static void OpenProviderTerminal () throws FileNotFoundException, IOException {
@@ -255,6 +257,33 @@ public class Terminal {
           input.close();
       }
       
+  }
+  
+  public void printMemberReport(MemberAccounts member) throws FileNotFoundException, IOException{
+      Scanner reader = new Scanner(System.in);
+      System.out.println("Please name the file: ");
+      String name = reader.nextLine();
+      
+      String filename = "/Users/ashleyphan/git/cs200fall2018team2/src/chocan/writtenFiles/MemberReports/"+name+".txt";
+      
+      
+      File file = new File(filename);
+      /*Path oPath = Paths.get(filename);
+      File oFile = oPath.toFile();*/
+      try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
+          input.write(member.getName()+","+member.getNumber()+","+member.getAddress()+","+member.getCity()+","+member.getState()+","+member.getZipCode()+","+member.getStatus()+"\n");
+          
+          ArrayList<ServiceRecord> sr = member.getServicesProvided();
+          if (sr != null) {
+              for(ServiceRecord service : sr) {
+                  input.write("s,"+ service.getCurrentDateTime()+","+service.getDateOfService()+","+service.getProviderNumber()+","+service.getMemberNumber()+","+service.getServiceCode()+","+service.getComments()+"\n");
+              }  
+          }
+
+          input.close();
+      }
+      
+      reader.close();
   }
   
   public void rewriteDirectory() throws FileNotFoundException, IOException{

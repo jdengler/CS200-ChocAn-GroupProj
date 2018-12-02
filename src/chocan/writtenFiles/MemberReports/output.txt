@@ -1,0 +1,6 @@
+John Smith,123456789,32 Cty Rd 45,Tuscaloosa,Alabama,35544,true
+s,11-29-2018 02:44:12,11-29-2018,987654321,123456789,123456,Test
+s,12-02-2018 03:08:04,12-20-2018,123345,123456789,777777,none
+Ashley Phan,1,908 10th Street,Tuscaloosa,Alabama,3540,false
+s,12-01-2018 09:33:13,12-01-2018,987654321,1,123456,Whats up
+Ashley,12233456,908 12th Street,Tuscaloosa,Alabama,35401,true
