@@ -41,7 +41,7 @@ public class ManagerTerminal extends Terminal{
 	}
 
 	
-	private void generateMember() throws FileNotFoundException, IOException{
+	public void generateMember() throws FileNotFoundException, IOException{
 	    ArrayList<MemberAccounts> members = ReadMember();
 	    System.out.print("Enter member's number: ");
 	    int number = reader.nextInt();
@@ -55,7 +55,7 @@ public class ManagerTerminal extends Terminal{
 	    return;
 	}
 	
-	private void generateProvider() throws FileNotFoundException, IOException{
+	public void generateProvider() throws FileNotFoundException, IOException{
         ArrayList<ProviderAccounts> providers = ReadProviders();
         System.out.print("Enter provider's number: ");
         int number = reader.nextInt();
@@ -72,7 +72,7 @@ public class ManagerTerminal extends Terminal{
 	/*
      * Prints the summary report (used by Manager)
      */
-	private void printSummaryReport() throws FileNotFoundException,IOException{
+	public void printSummaryReport() throws FileNotFoundException,IOException{
 	      ArrayList<ProviderAccounts> providers = ReadProviders();
 	      Scanner reader = new Scanner(System.in);
 	      System.out.println("Please name the file: ");
