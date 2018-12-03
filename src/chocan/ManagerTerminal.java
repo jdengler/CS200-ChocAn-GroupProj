@@ -26,32 +26,47 @@ public class ManagerTerminal extends Terminal{
 		
 		if (option == 1) { // generate summary report
 			System.out.println("\nGenerate Summary Report");
-			printSummaryReport();
+			
+			System.out.print("Please name the file: ");
+		    String name = reader.next();
+		    
+			printSummaryReport(name);
 		}
 			
 		else if (option == 2) { // generate member report
 			System.out.println("\nGenerate Member Report");
-			generateMember();
+			
+			System.out.print("Please name the file: ");
+		    String name = reader.next();
+		    System.out.print("Enter member's number: ");
+		    int number = reader.nextInt();
+		    reader.nextLine();
+			
+			generateMember(name, number);
 		}
 			
 		else if (option == 3) { // generate provider report
 			System.out.println("\nGenerate Provider Report");
-			generateProvider();
+			
+			System.out.println("Please name the file: ");
+		    String name = reader.next();
+		    System.out.print("Enter provider's number: ");
+	        int number = reader.nextInt();
+	        reader.nextLine();
+			
+			generateProvider(name, number);
 		}
 		
 		return;
 	}
 
 	
-	public static void generateMember() throws FileNotFoundException, IOException{
+	public static void generateMember(String name, int number) throws FileNotFoundException, IOException{
 	    ArrayList<MemberAccounts> members = ReadMember();
-	    System.out.print("Enter member's number: ");
-	    int number = reader.nextInt();
-	    reader.nextLine();
 	    
 	    for (MemberAccounts ma : members) {
 	        if (ma.getNumber() == number) {
-	            printMemberReport(ma);
+	            printMemberReport(ma, name);
 	            return;
 	        }
 	    }
@@ -60,15 +75,12 @@ public class ManagerTerminal extends Terminal{
 	    return;
 	}
 	
-	public static void generateProvider() throws FileNotFoundException, IOException{
+	public static void generateProvider(String name, int number) throws FileNotFoundException, IOException{
         ArrayList<ProviderAccounts> providers = ReadProviders();
-        System.out.print("Enter provider's number: ");
-        int number = reader.nextInt();
-        reader.nextLine();
         
         for (ProviderAccounts pa : providers) {
             if (pa.getNumber() == number) {
-                printProviderReport(pa);
+                printProviderReport(pa, name);
                 return;
             }
         }
@@ -80,10 +92,8 @@ public class ManagerTerminal extends Terminal{
 	/*
      * Prints the summary report (used by Manager)
      */
-	public static void printSummaryReport() throws FileNotFoundException,IOException{
+	public static void printSummaryReport(String name) throws FileNotFoundException,IOException{
 	      ArrayList<ProviderAccounts> providers = ReadProviders();
-	      System.out.print("Please name the file: ");
-	      String name = reader.next();
 	      
 	      String filename = "writtenFiles/ServiceRecords/"+name+".txt";
 	      double totalFee = 0;
@@ -120,9 +130,7 @@ public class ManagerTerminal extends Terminal{
 	/*
      * Prints the member report (used by Manager)
      */
-	  public static void printMemberReport(MemberAccounts member) throws FileNotFoundException, IOException{
-	      System.out.print("Please name the file: ");
-	      String name = reader.next();
+	  public static void printMemberReport(MemberAccounts member, String name) throws FileNotFoundException, IOException{
 	      
 	      String filename = "writtenFiles/MemberReports/"+name+".txt";
 	      
@@ -149,10 +157,8 @@ public class ManagerTerminal extends Terminal{
 	  /*
        * Prints the provider report (used by Manager)
        */
-	  public static void printProviderReport(ProviderAccounts provider) throws FileNotFoundException, IOException{
+	  public static void printProviderReport(ProviderAccounts provider, String name) throws FileNotFoundException, IOException{
 	      //ArrayList<ProviderAccounts> pa = ReadProviders();
-	      System.out.println("Please name the file: ");
-	      String name = reader.next();
 	      
 	      double totalFee = 0;
 	      String filename = "writtenFiles/ProviderReports/"+name+".txt";
