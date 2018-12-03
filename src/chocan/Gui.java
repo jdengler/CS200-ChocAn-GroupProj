@@ -66,6 +66,11 @@ public class Gui extends JFrame{
 		//JLabel testLabel = new JLabel("Test");
 		JButton buttonTest = new JButton("Test");
 		panel = makeInputPanel(buttonTest);
+		
+		manTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		provTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		opTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
 	    
 	    frame.getContentPane().add(BorderLayout.LINE_START, manTerminal);
 	    frame.getContentPane().add(BorderLayout.CENTER, provTerminal);
@@ -98,7 +103,9 @@ public class Gui extends JFrame{
 	  JButton button1 = new JButton(new AbstractAction("Generate Summary Report") {
 		 @Override
 		 public void actionPerformed(ActionEvent e) {
-			 try{ManagerTerminal.printSummaryReport();}
+			 try{
+				 //ManagerTerminal.printSummaryReport();
+				 }
 			 catch(Exception ex){}
 		 }
 	  });
@@ -108,7 +115,9 @@ public class Gui extends JFrame{
 		 int number;
 		 @Override
 		 public void actionPerformed(ActionEvent e) {
-			 try{ManagerTerminal.generateMember();}
+			 try{
+				 //ManagerTerminal.generateMember();
+				 }
 			 catch(Exception ex){}
 		 }
 	  });
@@ -116,7 +125,9 @@ public class Gui extends JFrame{
 	  JButton button3 = new JButton(new AbstractAction("Generate Provider Report") {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			  try {ManagerTerminal.generateProvider();}
+			  try {
+				  //ManagerTerminal.generateProvider();
+				  }
 			  catch(Exception ex) {}
 		  }
 	  });
@@ -152,7 +163,7 @@ public class Gui extends JFrame{
 		  public void actionPerformed(ActionEvent e) {
 			 try{
 				 labelG.setText("Enter member number : ");
-				 setFrame(makeInputPanel(validateButton));
+				 setFrame(makeValidatePanel(validateButton));
 			 	}
 			 catch(Exception ex){}
 		 }
@@ -163,7 +174,7 @@ public class Gui extends JFrame{
 		 public void actionPerformed(ActionEvent e) {
 			 try{
 				 labelG.setText("Enter member number : ");
-				 setFrame(makeInputPanel(validateButton));
+				 setFrame(makeValidatePanel(validateButton));
 				 //if()
 				 setFrame(makeBillChocAnInputPanel(submitBillButton));
 				 
@@ -318,6 +329,16 @@ public class Gui extends JFrame{
 	 		catch(Exception ex){}
 		 }
 	 });
+	 
+	 static JButton backToPTTerminalButton = new JButton(new AbstractAction("Back") {
+		 @Override
+		 public void actionPerformed(ActionEvent e) {
+			try {				
+				OpenPTerminal();
+				}
+	 		catch(Exception ex){}
+		 }
+	 });
   
   public static JPanel makeInputPanel(JButton button) {
 	  
@@ -331,6 +352,40 @@ public class Gui extends JFrame{
 	  
 	  
 		ButtonListener buttonListener = new ButtonListener(); 
+	
+	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+	    panel.setOpaque(true);
+		
+		JPanel inputpanel = new JPanel();
+	    inputpanel.setLayout(new FlowLayout());
+	    input = new JTextField(20);
+	    enterButton = new JButton("Enter");
+	    enterButton.setActionCommand(ENTER);
+	    enterButton.addActionListener(buttonListener);
+
+	    input.setActionCommand(ENTER);
+	    input.addActionListener(buttonListener);
+	    
+	    //panel.add(scroller);
+	    //if(labelG != null)
+	    //	inputpanel.add(labelG);
+	    //inputpanel.add(input);
+	    //inputpanel.add(enterButton);
+	    //inputpanel.add(button);
+	    panel.add(inputpanel);
+	    
+	    return panel;
+}
+  
+  public static JPanel makeValidatePanel(JButton button) {
+	  
+	  	JPanel panel = new JPanel();
+
+	  
+		ButtonListener buttonListener = new ButtonListener(); 
+		
+		JButton backButton = backToPTTerminalButton;
+		
 
 	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 	    panel.setOpaque(true);
@@ -341,6 +396,8 @@ public class Gui extends JFrame{
 	    enterButton = new JButton("Enter");
 	    enterButton.setActionCommand(ENTER);
 	    enterButton.addActionListener(buttonListener);
+	    
+	    inputpanel.add(backButton);
 
 	    input.setActionCommand(ENTER);
 	    input.addActionListener(buttonListener);
@@ -362,6 +419,8 @@ public class Gui extends JFrame{
 	  	JPanel BillChocAnpanel = new JPanel();	  
 	  
 		ButtonListener buttonListener = new ButtonListener(); 
+		
+		JButton backButton = backToPTTerminalButton;
 
 		BillChocAnpanel.setLayout(new BoxLayout(BillChocAnpanel, BoxLayout.Y_AXIS));
 		BillChocAnpanel.setOpaque(true);
@@ -372,6 +431,8 @@ public class Gui extends JFrame{
 	    lblDateOfService.setAlignmentY(LEFT_ALIGNMENT);
 	    JTextField txtDateOfService = new JTextField(20);
 	    txtDateOfService.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    inputpanel.add(backButton);
 	    
 	    JLabel lblProviderNumber = new JLabel("Enter provider number: ");
 	    JTextField txtProviderNumber = new JTextField(20);
