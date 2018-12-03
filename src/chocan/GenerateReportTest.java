@@ -14,6 +14,14 @@ public class GenerateReportTest {
   }
 
   @Test
-  public void testGenerateMember() throws FileNotFoundException, IOException {
+  public void testGenerateMemberSuccess() throws FileNotFoundException, IOException {
+    GenerateReport.generateMember("Harry Potter", 123456789);
   }
+
+  @Test(expected = FileNotFoundException.class)
+  public void testGenerateMemberException() throws FileNotFoundException, IOException{
+    GenerateReport.generateMember("Doesnt Exist", 123456789);
+  }
+
+
 }
