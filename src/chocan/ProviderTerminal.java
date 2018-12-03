@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.print.DocFlavor.URL;
+import javax.swing.JOptionPane;
 
 //import com.sun.corba.se.spi.ior.Writeable;
 
@@ -65,15 +66,18 @@ public class ProviderTerminal extends Terminal {
 	            found = 0;
 	            if (account.getStatus() == false) {
 	                System.out.println("\nSuspended");
+	                JOptionPane.showMessageDialog(null, "The member with member number "+memNum+" has been suspended.");
 	            }
 	            else {
 	                System.out.println("\nValidated");
+	                JOptionPane.showMessageDialog(null, "Validated member number");
 	            }
 	            ma = account;
 	        }
 	    }
 	    if (found == -1) {
 	        System.out.println("\nInvalid");
+	        JOptionPane.showMessageDialog(null, "Invalid member number");
 	    }
 	    return ma;
 	  }
@@ -89,14 +93,14 @@ public class ProviderTerminal extends Terminal {
       return entry;
   }
   
-  public static void billChocan(String actDate, int providerNum, int serviceCode )throws FileNotFoundException, IOException{
+  public static void billChocan(String actDate, int providerNum, int serviceCode, int memNum)throws FileNotFoundException, IOException{
       ArrayList<MemberAccounts> me = ReadMember();
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
       ServiceRecord sr = new ServiceRecord();
       
       Scanner reader = new Scanner(System.in);
       
-      int memNum = 123456789;
+      
       MemberAccounts found = validateMember(memNum);
       
       if (found.getStatus() == false) {
@@ -109,45 +113,52 @@ public class ProviderTerminal extends Terminal {
       String strDate = dateFormat.format(date);
       sr.setCurrentDateTime(strDate);
       
-      System.out.println("Enter date of service (MM-DD-YYYY): ");
+      //System.out.println("Enter date of service (MM-DD-YYYY): ");
       //String actDate = reader.nextLine();
       sr.setDateOfService(actDate);
       
-      System.out.println("Enter provider number: ");
+      //System.out.println("Enter provider number: ");
       //int providerNum = reader.nextInt();
       sr.setProviderNumber(providerNum);
       
       for (ProviderDirectoryEntry pd: pde){
-          System.out.println(pd.getServiceName()+","+pd.getServiceCode()+","+pd.getServiceFee());
+          //System.out.println(pd.getServiceName()+","+pd.getServiceCode()+","+pd.getServiceFee());
       }
       
-      System.out.println("Enter the six-digit service code: ");
+      //System.out.println("Enter the six-digit service code: ");
       //int serviceCode = reader.nextInt();
       ProviderDirectoryEntry valid = validEntry(serviceCode);
       if (valid == null) {
           reader.close();
           return;
       }
-      System.out.println("The total fee for the service " + valid.getServiceName()+"is $"+valid.getServiceFee());
-      System.out.println("Would you like to continue? [Y/N]");
-      reader.nextLine();
-      String check = reader.nextLine();
-      if (check.toUpperCase().equals("N")) {
+      //System.out.println("The total fee for the service " + valid.getServiceName()+"is $"+valid.getServiceFee());
+      JOptionPane.showMessageDialog(null, "The total fee for the service " + valid.getServiceName()+"is $"+valid.getServiceFee());
+      int dialogResult = JOptionPane.showConfirmDialog (null, "Would you like to continue? ","Attention",JOptionPane.YES_NO_OPTION);
+      if(dialogResult == JOptionPane.YES_OPTION){
+        // Saving code here
+      }
+      
+      //System.out.println("Would you like to continue? [Y/N]");
+      //reader.nextLine();
+      //String check = reader.nextLine();
+      if (dialogResult == JOptionPane.NO_OPTION) {
           reader.close();
           return;
       }
       sr.setServiceCode(serviceCode);
       
       
-      System.out.println("Enter comments [Press Enter If No Comments]: ");
+      //System.out.println("Enter comments [Press Enter If No Comments]: ");
       //reader.nextLine();
-      String comment = reader.nextLine();
+      String comment = JOptionPane.showInputDialog("Enter comments : ");
+      //String comment = reader.nextLine();
       sr.setComments(comment);
       
       sr.setMemberNumber(found.getNumber());
       found.addService(sr);
 
-      
+      //Is this redundant?
       for(MemberAccounts member:me) {
           if (member.getNumber() == found.getNumber()) {
               member.addService(sr);
@@ -185,5 +196,7 @@ public class ProviderTerminal extends Terminal {
           input.close();
       }
       System.out.print("\n"+"The billed report was successfully generated and stored in member.txt"+"\n");
+      JOptionPane.showMessageDialog(null, "The billed report was successfully generated and stored in member.txt");
+      
   }
 }

@@ -300,7 +300,7 @@ public class Gui extends JFrame{
 		 public void actionPerformed(ActionEvent e) {
 			try {
 				
-				JPanel contentPane = (JPanel) frame.getContentPane();
+				JPanel contentPane = panel;
 				Component[] components = contentPane.getComponents();
 				
 				ArrayList<JTextField> list = new ArrayList<JTextField>();
@@ -313,7 +313,7 @@ public class Gui extends JFrame{
 				}
 				
 				
-				ProviderTerminal.billChocan(list.get(0).getText(), Integer.parseInt(list.get(1).getText()),Integer.parseInt(list.get(2).getText()));
+				ProviderTerminal.billChocan(list.get(0).getText(), Integer.parseInt(list.get(1).getText()),Integer.parseInt(list.get(2).getText()), Integer.parseInt(list.get(3).getText()));
 			}
 	 		catch(Exception ex){}
 		 }
@@ -359,16 +359,16 @@ public class Gui extends JFrame{
   
   public static JPanel makeBillChocAnInputPanel(JButton button) {
 	  
-	  	JPanel panel = new JPanel();	  
+	  	JPanel BillChocAnpanel = new JPanel();	  
 	  
 		ButtonListener buttonListener = new ButtonListener(); 
 
-	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-	    panel.setOpaque(true);
+		BillChocAnpanel.setLayout(new BoxLayout(BillChocAnpanel, BoxLayout.Y_AXIS));
+		BillChocAnpanel.setOpaque(true);
 		
 		JPanel inputpanel = new JPanel();
 	    inputpanel.setLayout(new FlowLayout());
-	    JLabel lblDateOfService = new JLabel("Enter date of service: ");	
+	    JLabel lblDateOfService = new JLabel("Enter date of service (MM-DD-YYYY): ");	
 	    lblDateOfService.setAlignmentY(LEFT_ALIGNMENT);
 	    JTextField txtDateOfService = new JTextField(20);
 	    txtDateOfService.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -377,14 +377,19 @@ public class Gui extends JFrame{
 	    JTextField txtProviderNumber = new JTextField(20);
 	    txtProviderNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    
-	    JLabel lblServiceCode = new JLabel("Enter service code: ");
+	    JLabel lblServiceCode = new JLabel("Enter the six-digit service code: ");
 	    JTextField txtServiceCode = new JTextField(20);
 	    txtServiceCode.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JLabel lblMemberNumber = new JLabel("Enter the member number: ");
+	    JTextField txtMemberNumber = new JTextField(20);
+	    txtMemberNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    
 	    JButton submitButton = new JButton("Submit");
 	    submitButton.setActionCommand(ENTER);
 	    submitButton.addActionListener(buttonListener);
 	    submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    submitButton = button;
 
 
 	    input.setActionCommand(ENTER);
@@ -396,11 +401,14 @@ public class Gui extends JFrame{
 	    inputpanel.add(txtProviderNumber);
 	    inputpanel.add(lblServiceCode);
 	    inputpanel.add(txtServiceCode);
+	    inputpanel.add(lblMemberNumber);
+	    inputpanel.add(txtMemberNumber);
 	  
 	    inputpanel.add(submitButton);
 	    inputpanel.setLayout(new BoxLayout(inputpanel, BoxLayout.Y_AXIS));
-	    panel.add(inputpanel);
+	    BillChocAnpanel.add(inputpanel);
+	    panel = inputpanel;
 	    
-	    return panel;
+	    return BillChocAnpanel;
 }
 }
