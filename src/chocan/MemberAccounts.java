@@ -103,7 +103,7 @@ public class MemberAccounts {
 		return servicesProvided;
 	}
 	
-	public void addService(ServiceRecord service){
+	public void addService(ServiceRecord service) {
 		servicesProvided.add(service);
 	}
 }
