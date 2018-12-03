@@ -17,16 +17,6 @@ public class BillChocAn {
 	
 	private static Scanner reader = new Scanner(System.in);
 
-	public static ProviderDirectoryEntry validEntry(int code) throws FileNotFoundException,IOException{
-		ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
-	    ProviderDirectoryEntry entry = new ProviderDirectoryEntry();
-	    for (ProviderDirectoryEntry pd : pde) {
-	    	if (pd.getServiceCode() == code) {
-	    		entry = pd;
-	        }
-	    }
-	    return entry;
-	}
 	
 	public static void billChocan(String actDate, int providerNum, int serviceCode, int memberNum)throws FileNotFoundException, IOException{
 	      ArrayList<MemberAccounts> me = Terminal.ReadMember();
@@ -53,7 +43,7 @@ public class BillChocAn {
 	          System.out.println(pd.getServiceName()+","+pd.getServiceCode()+","+pd.getServiceFee());
 	      }
 	      
-	      ProviderDirectoryEntry valid = validEntry(serviceCode);
+	      ProviderDirectoryEntry valid = ProviderDirectory.validEntry(serviceCode);
 	      if (valid == null) {
 	          reader.close();
 	          return;
