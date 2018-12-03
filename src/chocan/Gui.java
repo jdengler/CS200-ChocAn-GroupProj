@@ -66,6 +66,11 @@ public class Gui extends JFrame{
 		//JLabel testLabel = new JLabel("Test");
 		JButton buttonTest = new JButton("Test");
 		panel = makeInputPanel(buttonTest);
+		
+		manTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		provTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		opTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
 	    
 	    frame.getContentPane().add(BorderLayout.LINE_START, manTerminal);
 	    frame.getContentPane().add(BorderLayout.CENTER, provTerminal);
@@ -362,11 +367,11 @@ public class Gui extends JFrame{
 	    input.addActionListener(buttonListener);
 	    
 	    //panel.add(scroller);
-	    if(labelG != null)
-	    	inputpanel.add(labelG);
-	    inputpanel.add(input);
+	    //if(labelG != null)
+	    //	inputpanel.add(labelG);
+	    //inputpanel.add(input);
 	    //inputpanel.add(enterButton);
-	    inputpanel.add(button);
+	    //inputpanel.add(button);
 	    panel.add(inputpanel);
 	    
 	    return panel;
@@ -414,6 +419,8 @@ public class Gui extends JFrame{
 	  	JPanel BillChocAnpanel = new JPanel();	  
 	  
 		ButtonListener buttonListener = new ButtonListener(); 
+		
+		JButton backButton = backToPTTerminalButton;
 
 		BillChocAnpanel.setLayout(new BoxLayout(BillChocAnpanel, BoxLayout.Y_AXIS));
 		BillChocAnpanel.setOpaque(true);
@@ -424,6 +431,8 @@ public class Gui extends JFrame{
 	    lblDateOfService.setAlignmentY(LEFT_ALIGNMENT);
 	    JTextField txtDateOfService = new JTextField(20);
 	    txtDateOfService.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    inputpanel.add(backButton);
 	    
 	    JLabel lblProviderNumber = new JLabel("Enter provider number: ");
 	    JTextField txtProviderNumber = new JTextField(20);
