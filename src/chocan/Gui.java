@@ -282,7 +282,10 @@ public class Gui extends JFrame{
 	  JButton button3 = new JButton(new AbstractAction("Delete Member") {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			  try {createFrame();}
+			  try {
+				  
+				  setFrame(makeDeleteMemberInputPanel(saveDeleteMemberButton));
+			  }
 			  catch(Exception ex) {}
 		  }
 	  });
@@ -419,6 +422,38 @@ public class Gui extends JFrame{
 				
 				OperatorTerminal.updateMember(list.get(0).getText(),list.get(1).getText(),list.get(2).getText(),list.get(3).getText(),Integer.parseInt(list.get(4).getText()));
 				
+			}
+	 		catch(Exception ex){}
+		 }
+	 });
+	 
+	 static JButton saveDeleteMemberButton = new JButton(new AbstractAction("Delete") {
+		 @Override
+		 public void actionPerformed(ActionEvent e) {
+			try {
+				
+				JPanel contentPane = panel;
+				Component[] components = contentPane.getComponents();
+				
+				ArrayList<JTextField> list = new ArrayList<JTextField>();
+				
+
+				for (Component component : components) {
+				    if (component.getClass().equals(JTextField.class)) {
+				        list.add((JTextField)component);
+				    }
+				}
+
+			      int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to delete this member?","Attention",JOptionPane.YES_NO_OPTION);
+			      if(dialogResult == JOptionPane.YES_OPTION){
+			        // Delete code here
+			    	  OperatorTerminal.deleteMember(Integer.parseInt(list.get(0).getText()));
+			    	  JOptionPane.showMessageDialog(null, "The member was deleted");
+			      }
+				
+				
+				 
+			      
 			}
 	 		catch(Exception ex){}
 		 }
@@ -702,5 +737,47 @@ public class Gui extends JFrame{
 	    panel = inputpanel;
 	    
 	    return updateMemberPanel;
+}
+  
+  public static JPanel makeDeleteMemberInputPanel(JButton button) {
+	  
+	  	JPanel deleteMemberPanel = new JPanel();	  
+	  
+		ButtonListener buttonListener = new ButtonListener(); 
+		
+		JButton backButton = backToPTTerminalButton;
+
+		deleteMemberPanel.setLayout(new BoxLayout(deleteMemberPanel, BoxLayout.Y_AXIS));
+		deleteMemberPanel.setOpaque(true);
+		
+		JPanel inputpanel = new JPanel();
+	    inputpanel.setLayout(new FlowLayout());
+	    JLabel lblMemberName = new JLabel("Enter the member's number: ");	
+	    lblMemberName.setAlignmentY(LEFT_ALIGNMENT);
+	    JTextField txtMemberName = new JTextField(20);
+	    txtMemberName.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    inputpanel.add(backButton);
+
+	    JButton submitButton = new JButton("Submit");
+	    submitButton.setActionCommand(ENTER);
+	    submitButton.addActionListener(buttonListener);
+	    submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    submitButton = button;
+
+
+	    input.setActionCommand(ENTER);
+	    input.addActionListener(buttonListener);
+	    
+	    inputpanel.add(lblMemberName);
+	    inputpanel.add(txtMemberName);	    
+	    
+	  
+	    inputpanel.add(submitButton);
+	    inputpanel.setLayout(new BoxLayout(inputpanel, BoxLayout.Y_AXIS));
+	    deleteMemberPanel.add(inputpanel);
+	    panel = inputpanel;
+	    
+	    return deleteMemberPanel;
 }
 }
