@@ -28,31 +28,30 @@ public class ProviderTerminal extends Terminal {
   
   private static Scanner sc = new Scanner(System.in);
   
-//  public static void providerMenu() throws FileNotFoundException, IOException {
-//	System.out.println("\nProvider Terminal");
-//	System.out.println("1.) Validate a ChocAn member"); 
-//	System.out.println("2.) Bill ChocAn"); 
-//	System.out.println("3.) Request a Provider Directory"); 
-//	System.out.println("4.) Go back to main terminal");
-//	System.out.print(" Option: ");
-//	
-//    int userChoice = sc.nextInt();
-//    switch(userChoice) {
-//        case 1:
-//          validateMember();
-//          break;
-//        case 2:
-//          billChocan();
-//          break;
-//        case 3:
-//          requestDirectory();
-//          break;
-//        default:
-//          System.out.println("Please enter a valid choice...");
-//          break;
-//    }
-//    //sc.close();
-//  }
+  public static void providerMenu() throws FileNotFoundException, IOException {
+	System.out.println("\nProvider Terminal");
+	System.out.println("1.) Validate a ChocAn member"); 
+	System.out.println("2.) Bill ChocAn"); 
+	System.out.println("3.) Request a Provider Directory"); 
+	System.out.println("4.) Go back to main terminal");
+	System.out.print(" Option: ");
+	
+    int userChoice = sc.nextInt();
+    switch(userChoice) {
+        case 1:
+          //validateMember();
+          break;
+        case 2:
+          //billChocan();
+          break;
+        case 3:
+          requestDirectory();
+          break;
+        default:
+          System.out.println("Please enter a valid choice...");
+          break;
+    }
+  }
   
   public static MemberAccounts validateMember(int memNum) throws FileNotFoundException, IOException{
 	    ArrayList<MemberAccounts> me = ReadMember();

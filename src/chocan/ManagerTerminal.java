@@ -24,7 +24,7 @@ public class ManagerTerminal extends Terminal{
 		option = reader.nextInt();
 		
 		if (option == 1) { // generate summary report
-			System.out.println("Generate Summary Report");
+			System.out.println("\nGenerate Summary Report");
 			printSummaryReport();
 		}
 			
@@ -36,7 +36,6 @@ public class ManagerTerminal extends Terminal{
 		else if (option == 3) { // generate provider report
 			System.out.println("\nGenerate Provider Report");
 			generateProvider();
-			
 		}
 		
 		return;
@@ -76,9 +75,8 @@ public class ManagerTerminal extends Terminal{
      */
 	public static void printSummaryReport() throws FileNotFoundException,IOException{
 	      ArrayList<ProviderAccounts> providers = ReadProviders();
-	      Scanner reader = new Scanner(System.in);
-	      System.out.println("Please name the file: ");
-	      String name = reader.nextLine();
+	      System.out.print("Please name the file: ");
+	      String name = reader.next();
 	      
 	      String filename = "writtenFiles/ServiceRecords/"+name+".txt";
 	      double totalFee = 0;
@@ -101,7 +99,6 @@ public class ManagerTerminal extends Terminal{
 	      }
 	      
 	      System.out.print("\n"+"The summary report was successfully generated and stored in "+name+".txt"+"\n");
-	      reader.close();
 	      
 	      return;
 	}
@@ -110,12 +107,10 @@ public class ManagerTerminal extends Terminal{
      * Prints the member report (used by Manager)
      */
 	  public static void printMemberReport(MemberAccounts member) throws FileNotFoundException, IOException{
-	      Scanner reader = new Scanner(System.in);
-	      System.out.println("Please name the file: ");
-	      String name = reader.nextLine();
+	      System.out.print("Please name the file: ");
+	      String name = reader.next();
 	      
 	      String filename = "writtenFiles/MemberReports/"+name+".txt";
-	      
 	      
 	      File file = new File(filename);
 	      /*Path oPath = Paths.get(filename);
@@ -134,7 +129,6 @@ public class ManagerTerminal extends Terminal{
 	      }
 	      
 	      System.out.print("\n"+"The member report was successfully generated and stored in "+name+".txt"+"\n");
-	      reader.close();
 	  }
 	  
 	
@@ -143,10 +137,8 @@ public class ManagerTerminal extends Terminal{
        */
 	  public static void printProviderReport(ProviderAccounts provider) throws FileNotFoundException, IOException{
 	      //ArrayList<ProviderAccounts> pa = ReadProviders();
-	      
-	      Scanner reader = new Scanner(System.in);
 	      System.out.println("Please name the file: ");
-	      String name = reader.nextLine();
+	      String name = reader.next();
 	      double totalFee = 0;
 	      String filename = "writtenFiles/ProviderReports/"+name+".txt";
 	      
@@ -170,6 +162,5 @@ public class ManagerTerminal extends Terminal{
 	      }
 	      
 	      System.out.print("\n"+"The provider report was successfully generated and stored in "+name+".txt"+"\n");
-	      reader.close();
 	  }
 }

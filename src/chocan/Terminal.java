@@ -14,11 +14,12 @@ import java.util.*;
 
 public class Terminal {
   //static ManageAccounts ma = new ManageAccounts(); 
+	
+	private static Scanner reader = new Scanner(System.in);
   
   
   public static void main(String[] args) throws FileNotFoundException, IOException {
 	int option=0;
-	Scanner reader = new Scanner(System.in);
 	
 	
 	while(option != 4) {
@@ -53,8 +54,6 @@ public class Terminal {
 	}
 	
 	System.out.println("\nEnd");
-	
-	reader.close();
   }
   
   public static void OpenManagerTerminal () throws FileNotFoundException, IOException {
@@ -65,7 +64,7 @@ public class Terminal {
   
   public static void OpenProviderTerminal () throws FileNotFoundException, IOException {
 	  //ProviderTerminal pt = new ProviderTerminal();
-	  //ProviderTerminal.providerMenu();
+	  ProviderTerminal.providerMenu();
   }
   
 

@@ -95,8 +95,6 @@ public class OperatorTerminal extends Terminal {
 	
 	public static void addMember() throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
-	    Scanner reader = new Scanner(System.in);
-	    
 	    
         System.out.print("Enter member's name: ");
         String name = reader.nextLine();
@@ -123,14 +121,10 @@ public class OperatorTerminal extends Terminal {
 	    
         members.add(ma);
         printMember(members);
-        
-        reader.close();
-        
 	}
 	
 	public static void deleteMember() throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
-        Scanner reader = new Scanner(System.in);
         
         System.out.println("\nDelete Member");
         System.out.print("Enter member's number: ");
@@ -149,13 +143,10 @@ public class OperatorTerminal extends Terminal {
             return;
         }
         printMember(members);
-        reader.close();
-        
 	}
 	
 	public static void updateMember() throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
-        Scanner reader = new Scanner(System.in);
         
         System.out.print("Enter member's name: ");
         String name = reader.nextLine();
@@ -191,7 +182,6 @@ public class OperatorTerminal extends Terminal {
             }
         }
         printMember(members);
-        reader.close();
 	}
 	
 	public static void printMember(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
@@ -218,7 +208,6 @@ public class OperatorTerminal extends Terminal {
 	
 	public static void addProvider() throws FileNotFoundException, IOException{
 	    ArrayList<ProviderAccounts> providers = ReadProviders();
-	    Scanner reader = new Scanner(System.in);
 	    
 	    System.out.print("Enter provider's name: ");
         String name = reader.nextLine();
@@ -247,12 +236,10 @@ public class OperatorTerminal extends Terminal {
         printProviders(providers);
         
         System.out.println("\nThe provider was sucessfully added");
-        reader.close();
 	}
 	
 	public static void deleteProvider() throws FileNotFoundException, IOException{
 	    ArrayList<ProviderAccounts> providers = ReadProviders();
-        Scanner reader = new Scanner(System.in);
         
         System.out.println("Enter provider's number: ");
         int number = reader.nextInt();
@@ -272,13 +259,10 @@ public class OperatorTerminal extends Terminal {
         
         printProviders(providers);
         System.out.println("\nThe provider was sucessfully deleted");
-        reader.close();
-     
 	}
 	
 	public static void updateProvider() throws FileNotFoundException, IOException{
         ArrayList <ProviderAccounts> providers = ReadProviders();
-        Scanner reader = new Scanner(System.in);
         
         System.out.print("Enter provider's name: ");
         String name = reader.nextLine();
@@ -315,7 +299,6 @@ public class OperatorTerminal extends Terminal {
         printProviders(providers);
         
         System.out.println("\nThe provider was sucessfully updated");
-        reader.close();
     }
 	
 	/*
