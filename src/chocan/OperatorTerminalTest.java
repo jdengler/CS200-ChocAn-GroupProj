@@ -21,27 +21,12 @@ class OperatorTerminalTest extends OperatorTerminal{
 
     @Test
     void testAddMember() throws FileNotFoundException, IOException,IllegalArgumentException{
-       addMember("Ashley Phan",101010101,"104 Happy Street","San Diego","California",55455);
+       ManageAccounts.addMember("Ashley Phan",101010101,"104 Happy Street","San Diego","California",55455);
     }
     
-    @Test
     void testAddMemberFail() throws FileNotFoundException, IOException, IllegalArgumentException{
-        
-      thrown.expectMessage("The member number must be 9 digits long!");
-      addMember("Ashley Phan",101010101,"104 Happy Street","San Diego","California",55455); 
-        
-    }
-    
-    
-    @Test
-    void testDeleteMember() throws FileNotFoundException, IOException,IllegalArgumentException{
-        deleteMember(101010101);
-    }
-    
-    @Test
-    void testDeleteMemberFail() throws FileNotFoundException, IOException, IllegalArgumentException{
         try {
-            deleteMember(1111111112);
+            ManageAccounts.addMember("Ashley Phan",101010101,"104 Happy Street","San Diego","California",55455); 
             fail("Should of thrown an IllegalArgumentException");
         }catch (IllegalArgumentException e) {
             
