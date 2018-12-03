@@ -218,7 +218,9 @@ public class Gui extends JFrame{
 	  JButton button1 = new JButton(new AbstractAction("Manage Member") {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			 try{labelG.setText(" ");}
+			 try{
+				 OpenManageMember();
+				 }
 			 catch(Exception ex){}
 		 }
 	  });
@@ -234,6 +236,48 @@ public class Gui extends JFrame{
 	  });
 
 	  JButton button3 = new JButton(new AbstractAction("Exit") {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  try {createFrame();}
+			  catch(Exception ex) {}
+		  }
+	  });
+	   
+	  button1.setAlignmentX(Component.CENTER_ALIGNMENT);
+	  button2.setAlignmentX(Component.CENTER_ALIGNMENT);
+	  button3.setAlignmentX(Component.CENTER_ALIGNMENT);
+	  
+	  JPanel newPanel = new JPanel();
+	  newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+	  newPanel.add(button1);
+	  newPanel.add(button2);
+	  newPanel.add(button3);
+
+	  setFrame(newPanel);
+  }
+  
+  public static void OpenManageMember () throws FileNotFoundException, IOException {
+	  JButton button1 = new JButton(new AbstractAction("Add Member") {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			 try{
+				 setFrame(makeAddMemberInputPanel(saveAddMemberButton));
+			 }
+			 catch(Exception ex){}
+		 }
+	  });
+
+	  
+	  JButton button2 = new JButton(new AbstractAction("Update Member") {
+		 int number;
+		 @Override
+		 public void actionPerformed(ActionEvent e) {
+			 try{labelG.setText(" ");}
+			 catch(Exception ex){}
+		 }
+	  });
+
+	  JButton button3 = new JButton(new AbstractAction("Delete Member") {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
 			  try {createFrame();}
@@ -325,6 +369,30 @@ public class Gui extends JFrame{
 				
 				
 				ProviderTerminal.billChocan(list.get(0).getText(), Integer.parseInt(list.get(1).getText()),Integer.parseInt(list.get(2).getText()), Integer.parseInt(list.get(3).getText()));
+			}
+	 		catch(Exception ex){}
+		 }
+	 });
+	 
+	 static JButton saveAddMemberButton = new JButton(new AbstractAction("Save") {
+		 @Override
+		 public void actionPerformed(ActionEvent e) {
+			try {
+				
+				JPanel contentPane = panel;
+				Component[] components = contentPane.getComponents();
+				
+				ArrayList<JTextField> list = new ArrayList<JTextField>();
+				
+
+				for (Component component : components) {
+				    if (component.getClass().equals(JTextField.class)) {
+				        list.add((JTextField)component);
+				    }
+				}
+				
+				OperatorTerminal.addMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				
 			}
 	 		catch(Exception ex){}
 		 }
@@ -471,5 +539,76 @@ public class Gui extends JFrame{
 	    panel = inputpanel;
 	    
 	    return BillChocAnpanel;
+}
+  
+  public static JPanel makeAddMemberInputPanel(JButton button) {
+	  
+	  	JPanel addMemberPanel = new JPanel();	  
+	  
+		ButtonListener buttonListener = new ButtonListener(); 
+		
+		JButton backButton = backToPTTerminalButton;
+
+		addMemberPanel.setLayout(new BoxLayout(addMemberPanel, BoxLayout.Y_AXIS));
+		addMemberPanel.setOpaque(true);
+		
+		JPanel inputpanel = new JPanel();
+	    inputpanel.setLayout(new FlowLayout());
+	    JLabel lblMemberName = new JLabel("Enter the member's name: ");	
+	    lblMemberName.setAlignmentY(LEFT_ALIGNMENT);
+	    JTextField txtMemberName = new JTextField(20);
+	    txtMemberName.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    inputpanel.add(backButton);
+	    
+	    JLabel lblMemberNumber = new JLabel("Enter the member number: ");
+	    JTextField txtMemberNumber = new JTextField(20);
+	    txtMemberNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JLabel lblMemberAddress = new JLabel("Enter the member's address: ");
+	    JTextField txtMemberAddress = new JTextField(20);
+	    txtMemberAddress.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JLabel lblMemberCity = new JLabel("Enter the member's city: ");
+	    JTextField txtMemberCity = new JTextField(20);
+	    txtMemberCity.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JLabel lblMemberState = new JLabel("Enter the member's state: ");
+	    JTextField txtMemberState = new JTextField(20);
+	    txtMemberState.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JLabel lblMemberZipCode = new JLabel("Enter the member's zip code: ");
+	    JTextField txtMemberZipCode = new JTextField(20);
+	    txtMemberZipCode.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JButton submitButton = new JButton("Submit");
+	    submitButton.setActionCommand(ENTER);
+	    submitButton.addActionListener(buttonListener);
+	    submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    submitButton = button;
+
+
+	    input.setActionCommand(ENTER);
+	    input.addActionListener(buttonListener);
+	    
+	    inputpanel.add(lblMemberName);
+	    inputpanel.add(txtMemberName);
+	    inputpanel.add(lblMemberNumber);
+	    inputpanel.add(txtMemberNumber);
+	    inputpanel.add(lblMemberAddress);
+	    inputpanel.add(txtMemberAddress);
+	    inputpanel.add(lblMemberCity);
+	    inputpanel.add(txtMemberCity);
+	    inputpanel.add(lblMemberState);
+	    inputpanel.add(txtMemberState);
+	    inputpanel.add(lblMemberZipCode);
+	    inputpanel.add(txtMemberZipCode);
+	  
+	    inputpanel.add(submitButton);
+	    inputpanel.setLayout(new BoxLayout(inputpanel, BoxLayout.Y_AXIS));
+	    addMemberPanel.add(inputpanel);
+	    panel = inputpanel;
+	    
+	    return addMemberPanel;
 }
 }
