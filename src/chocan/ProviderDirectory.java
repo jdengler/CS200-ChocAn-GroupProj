@@ -23,11 +23,6 @@ public class ProviderDirectory {
 		return null;
 	}
 	
-	public void AddEntry(String serviceName, int serviceCode, double serviceFee) {
-		ProviderDirectoryEntry pde = new ProviderDirectoryEntry(serviceName, serviceCode, serviceFee);
-		providerDirectoryEntries.add(pde);
-	}
-	
 	public ArrayList<ProviderDirectoryEntry> getProviderDirectory() {
 	    return providerDirectoryEntries;
 	}
