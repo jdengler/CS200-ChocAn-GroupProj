@@ -89,7 +89,7 @@ public class ProviderTerminal extends Terminal {
       return entry;
   }
   
-  public static void billChocan()throws FileNotFoundException, IOException{
+  public static void billChocan(String actDate, int providerNum, int serviceCode )throws FileNotFoundException, IOException{
       ArrayList<MemberAccounts> me = ReadMember();
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
       ServiceRecord sr = new ServiceRecord();
@@ -110,11 +110,11 @@ public class ProviderTerminal extends Terminal {
       sr.setCurrentDateTime(strDate);
       
       System.out.println("Enter date of service (MM-DD-YYYY): ");
-      String actDate = reader.nextLine();
+      //String actDate = reader.nextLine();
       sr.setDateOfService(actDate);
       
       System.out.println("Enter provider number: ");
-      int providerNum = reader.nextInt();
+      //int providerNum = reader.nextInt();
       sr.setProviderNumber(providerNum);
       
       for (ProviderDirectoryEntry pd: pde){
@@ -122,7 +122,7 @@ public class ProviderTerminal extends Terminal {
       }
       
       System.out.println("Enter the six-digit service code: ");
-      int serviceCode = reader.nextInt();
+      //int serviceCode = reader.nextInt();
       ProviderDirectoryEntry valid = validEntry(serviceCode);
       if (valid == null) {
           reader.close();

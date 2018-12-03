@@ -13,6 +13,7 @@ import javax.swing.text.DefaultCaret;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 public class Gui extends JFrame{
 	
 	private static String ENTER = "Enter";
@@ -163,7 +164,8 @@ public class Gui extends JFrame{
 			 try{
 				 labelG.setText("Enter member number : ");
 				 setFrame(makeInputPanel(validateButton));
-				 if()
+				 //if()
+				 setFrame(makeBillChocAnInputPanel(submitBillButton));
 				 
 			 	}
 			 catch(Exception ex){}
@@ -292,6 +294,30 @@ public class Gui extends JFrame{
 	 		catch(Exception ex){}
 		 }
 	 });
+	 
+	 static JButton submitBillButton = new JButton(new AbstractAction("Submit") {
+		 @Override
+		 public void actionPerformed(ActionEvent e) {
+			try {
+				
+				JPanel contentPane = (JPanel) frame.getContentPane();
+				Component[] components = contentPane.getComponents();
+				
+				ArrayList<JTextField> list = new ArrayList<JTextField>();
+				
+
+				for (Component component : components) {
+				    if (component.getClass().equals(JTextField.class)) {
+				        list.add((JTextField)component);
+				    }
+				}
+				
+				
+				ProviderTerminal.billChocan(list.get(0).getText(), Integer.parseInt(list.get(1).getText()),Integer.parseInt(list.get(2).getText()));
+			}
+	 		catch(Exception ex){}
+		 }
+	 });
   
   public static JPanel makeInputPanel(JButton button) {
 	  
@@ -325,6 +351,54 @@ public class Gui extends JFrame{
 	    inputpanel.add(input);
 	    //inputpanel.add(enterButton);
 	    inputpanel.add(button);
+	    panel.add(inputpanel);
+	    
+	    return panel;
+}
+  
+  
+  public static JPanel makeBillChocAnInputPanel(JButton button) {
+	  
+	  	JPanel panel = new JPanel();	  
+	  
+		ButtonListener buttonListener = new ButtonListener(); 
+
+	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+	    panel.setOpaque(true);
+		
+		JPanel inputpanel = new JPanel();
+	    inputpanel.setLayout(new FlowLayout());
+	    JLabel lblDateOfService = new JLabel("Enter date of service: ");	
+	    lblDateOfService.setAlignmentY(LEFT_ALIGNMENT);
+	    JTextField txtDateOfService = new JTextField(20);
+	    txtDateOfService.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JLabel lblProviderNumber = new JLabel("Enter provider number: ");
+	    JTextField txtProviderNumber = new JTextField(20);
+	    txtProviderNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JLabel lblServiceCode = new JLabel("Enter service code: ");
+	    JTextField txtServiceCode = new JTextField(20);
+	    txtServiceCode.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    
+	    JButton submitButton = new JButton("Submit");
+	    submitButton.setActionCommand(ENTER);
+	    submitButton.addActionListener(buttonListener);
+	    submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+	    input.setActionCommand(ENTER);
+	    input.addActionListener(buttonListener);
+	    
+	    inputpanel.add(lblDateOfService);
+	    inputpanel.add(txtDateOfService);
+	    inputpanel.add(lblProviderNumber);
+	    inputpanel.add(txtProviderNumber);
+	    inputpanel.add(lblServiceCode);
+	    inputpanel.add(txtServiceCode);
+	  
+	    inputpanel.add(submitButton);
+	    inputpanel.setLayout(new BoxLayout(inputpanel, BoxLayout.Y_AXIS));
 	    panel.add(inputpanel);
 	    
 	    return panel;
