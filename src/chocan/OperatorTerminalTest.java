@@ -30,6 +30,7 @@ class OperatorTerminalTest extends OperatorTerminal{
         
     }
     
+    
     @Test
     void testDeleteMember() throws FileNotFoundException, IOException,IllegalArgumentException{
         deleteMember(101010101);
