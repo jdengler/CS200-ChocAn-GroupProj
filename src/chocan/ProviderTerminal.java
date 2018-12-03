@@ -37,6 +37,7 @@ public class ProviderTerminal extends Terminal {
 	System.out.print(" Option: ");
 	
     int userChoice = sc.nextInt();
+    sc.nextLine();
     switch(userChoice) {
         case 1:
           //validateMember();

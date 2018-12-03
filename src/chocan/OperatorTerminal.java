@@ -31,6 +31,7 @@ public class OperatorTerminal extends Terminal {
 		System.out.print(" Option: ");
 			
 		option = reader.nextInt();
+		reader.nextLine();
 			
 		if (option == 1) {
 			System.out.println("\nManage Member");
@@ -41,6 +42,7 @@ public class OperatorTerminal extends Terminal {
 			System.out.print(" Option: ");
 				
 			option = reader.nextInt();
+			reader.nextLine();
 				
 			if (option == 1) { // add member
 			    System.out.println("\nAdd Member");
@@ -71,6 +73,7 @@ public class OperatorTerminal extends Terminal {
 			System.out.print(" Option: ");
 				
 			option = reader.nextInt();
+			reader.nextLine();
 				
 			if (option == 1) { // add provider
 				System.out.println("\nAdd Provider");
@@ -100,11 +103,10 @@ public class OperatorTerminal extends Terminal {
         String name = reader.nextLine();
         ma.setName(name);
         System.out.print("Enter member's number: ");
-       // reader.nextLine();
         int number = reader.nextInt();
+        reader.nextLine();
         ma.setNumber(number);
         System.out.print("Enter member's address: ");
-        reader.nextLine();
         String address = reader.nextLine();
         ma.setAddress(address);
         System.out.print("Enter member's city: ");
@@ -114,8 +116,8 @@ public class OperatorTerminal extends Terminal {
         String state = reader.nextLine();
         ma.setState(state);
         System.out.print("Enter member's zip code: ");
-       // reader.nextLine();
         int zip = reader.nextInt();
+        reader.nextLine();
         ma.setZipCode(zip);
         ma.setStatus(true);
 	    
@@ -129,6 +131,7 @@ public class OperatorTerminal extends Terminal {
         System.out.println("\nDelete Member");
         System.out.print("Enter member's number: ");
         int number = reader.nextInt();
+        reader.nextLine();
         int found = -1;
         for (MemberAccounts m : members) {
             if (m.getNumber() == number) {
@@ -149,12 +152,12 @@ public class OperatorTerminal extends Terminal {
 	    ArrayList <MemberAccounts> members = ReadMember();
         
         System.out.print("Enter member's name: ");
+        reader.nextLine();
         String name = reader.nextLine();
         
         for (MemberAccounts m : members) {
             if (m.getName().equals(name)) {
-                System.out.println("A member with this name already exists, do you wish to continue? [Y/N] ");
-                reader.nextLine();
+                System.out.print("A member with this name already exists, do you wish to continue? [Y/N]: ");
                 String check = reader.nextLine();
                 if (check.toUpperCase().equals("N")) {
                     reader.close();
@@ -164,7 +167,6 @@ public class OperatorTerminal extends Terminal {
                     m.setName(name);
                     m.setNumber(m.getNumber());
                     System.out.print("Enter member's address: ");
-                    //reader.nextLine();
                     String address = reader.nextLine();
                     m.setAddress(address);
                     System.out.print("Enter member's city: ");
@@ -174,8 +176,8 @@ public class OperatorTerminal extends Terminal {
                     String state = reader.nextLine();
                     m.setState(state);
                     System.out.print("Enter member's zip code: ");
-                   // reader.nextLine();
                     int zip = reader.nextInt();
+                    reader.nextLine();
                     m.setZipCode(zip);
                     //m.setStatus(m.getStatus());
                 }
@@ -213,11 +215,10 @@ public class OperatorTerminal extends Terminal {
         String name = reader.nextLine();
         pacc.setName(name);
         System.out.print("Enter provider's number: ");
-        //reader.nextLine();
         int number = reader.nextInt();
+        reader.nextLine();
         pacc.setNumber(number);
         System.out.print("Enter provider's address: ");
-        reader.nextLine();
         String address = reader.nextLine();
         pacc.setAddress(address);
         System.out.print("Enter provider's city: ");
@@ -227,8 +228,8 @@ public class OperatorTerminal extends Terminal {
         String state = reader.nextLine();
         pacc.setState(state);
         System.out.print("Enter provider's zip code: ");
-       // reader.nextLine();
         int zip = reader.nextInt();
+        reader.nextLine();
         pacc.setZipCode(zip);
    
         
@@ -243,6 +244,7 @@ public class OperatorTerminal extends Terminal {
         
         System.out.println("Enter provider's number: ");
         int number = reader.nextInt();
+        reader.nextLine();
         int found = -1;
         for (ProviderAccounts p : providers) {
             if (p.getNumber() == number) {
@@ -280,7 +282,6 @@ public class OperatorTerminal extends Terminal {
                     p.setName(name);
                     p.setNumber(p.getNumber());
                     System.out.print("Enter provider's address: ");
-                    //reader.nextLine();
                     String address = reader.nextLine();
                     p.setAddress(address);
                     System.out.print("Enter provider's city: ");
@@ -290,8 +291,8 @@ public class OperatorTerminal extends Terminal {
                     String state = reader.nextLine();
                     p.setState(state);
                     System.out.print("Enter provider's zip code: ");
-                   // reader.nextLine();
                     int zip = reader.nextInt();
+                    reader.nextLine();
                     p.setZipCode(zip);
                 }
             }

@@ -22,6 +22,7 @@ public class ManagerTerminal extends Terminal{
 		System.out.print(" Option: ");
 		
 		option = reader.nextInt();
+		reader.nextLine();
 		
 		if (option == 1) { // generate summary report
 			System.out.println("\nGenerate Summary Report");
@@ -46,6 +47,7 @@ public class ManagerTerminal extends Terminal{
 	    ArrayList<MemberAccounts> members = ReadMember();
 	    System.out.print("Enter member's number: ");
 	    int number = reader.nextInt();
+	    reader.nextLine();
 	    
 	    for (MemberAccounts ma : members) {
 	        if (ma.getNumber() == number) {
@@ -60,6 +62,7 @@ public class ManagerTerminal extends Terminal{
         ArrayList<ProviderAccounts> providers = ReadProviders();
         System.out.print("Enter provider's number: ");
         int number = reader.nextInt();
+        reader.nextLine();
         
         for (ProviderAccounts pa : providers) {
             if (pa.getNumber() == number) {
@@ -139,9 +142,9 @@ public class ManagerTerminal extends Terminal{
 	      //ArrayList<ProviderAccounts> pa = ReadProviders();
 	      System.out.println("Please name the file: ");
 	      String name = reader.next();
+	      
 	      double totalFee = 0;
 	      String filename = "writtenFiles/ProviderReports/"+name+".txt";
-	      
 	      
 	      File file = new File(filename);
 	      /*Path oPath = Paths.get(filename);
