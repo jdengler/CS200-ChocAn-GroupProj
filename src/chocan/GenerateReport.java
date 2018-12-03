@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 public class GenerateReport {
 
+    /*
+     * Generate desired member report and calls print member report
+     */
 	public static void generateMember(String name, int number) throws FileNotFoundException, IOException{
 	    ArrayList<MemberAccounts> members = Terminal.ReadMember();
 	    
@@ -23,6 +26,9 @@ public class GenerateReport {
 	    return;
 	}
 	
+	/*
+     * Generate desired provider report and calls print provider report
+     */
 	public static void generateProvider(String name, int number) throws FileNotFoundException, IOException{
         ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
         
