@@ -46,20 +46,67 @@ public class OperatorTerminal extends Terminal {
 				
 			if (option == 1) { // add member
 			    System.out.println("\nAdd Member");
-			    addMember();
+			    System.out.print("Enter member's name: ");
+		        String name = reader.nextLine();
+		        System.out.print("Enter member's number: ");
+		        int number = reader.nextInt();
+		        reader.nextLine();
+		        System.out.print("Enter member's address: ");
+		        String address = reader.nextLine();
+		        System.out.print("Enter member's city: ");
+		        String city = reader.nextLine();
+		        System.out.print("Enter member's state: ");
+		        String state = reader.nextLine();
+		        System.out.print("Enter member's zip code: ");
+		        int zip = reader.nextInt();
+		        reader.nextLine();
+		        
+			    addMember(name,number,address,city,state,zip);
 			    System.out.println("\nThe member has been added");
 			    return;
 			}
 				
 			else if (option == 2) { // delete member
-				deleteMember();
+			    System.out.println("\nDelete Member");
+		        System.out.print("Enter member's number: ");
+		        int number = reader.nextInt();
+		        reader.nextLine();
+				deleteMember(number);
 				System.out.println("\nThe member has been removed");
 				return;
 			}
 				
 			else if (option == 3) { // update member
 				System.out.println("\nUpdate Member");
-				updateMember();
+				
+				ArrayList <MemberAccounts> members = ReadMember();
+		        
+		        System.out.print("Enter member's name: ");
+		        String name = reader.nextLine();
+		        
+		        for (MemberAccounts m : members) {
+		            if (m.getName().equals(name)) {
+		                System.out.print("A member with this name already exists, do you wish to continue? [Y/N]: ");
+		                String check = reader.nextLine();
+		                if (check.toUpperCase().equals("N")) {
+		                    reader.close();
+		                    return;
+		                }
+		                else {
+		                    System.out.print("Enter member's address: ");
+		                    String address = reader.nextLine();
+		                    System.out.print("Enter member's city: ");
+		                    String city = reader.nextLine();
+		                    System.out.print("Enter member's state: ");
+		                    String state = reader.nextLine();
+		                    System.out.print("Enter member's zip code: ");
+		                    int zip = reader.nextInt();
+		                    reader.nextLine();
+		                    updateMember(name,address,city,state,zip);
+		                }
+		            }
+		        }
+				
 				System.out.println("\nThe member has been updated");
 			}
 		}
@@ -77,47 +124,82 @@ public class OperatorTerminal extends Terminal {
 				
 			if (option == 1) { // add provider
 				System.out.println("\nAdd Provider");
-				addProvider();
+				System.out.print("Enter provider's name: ");
+		        String name = reader.nextLine();
+		        System.out.print("Enter provider's number: ");
+		        int number = reader.nextInt();
+		        reader.nextLine();
+		        System.out.print("Enter provider's address: ");
+		        String address = reader.nextLine();
+		        System.out.print("Enter provider's city: ");
+		        String city = reader.nextLine();
+		        System.out.print("Enter provider's state: ");
+		        String state = reader.nextLine();
+		        System.out.print("Enter provider's zip code: ");
+		        int zip = reader.nextInt();
+		        reader.nextLine();
+				addProvider(name,number,address,city,state,zip);
 				
 				return;
 			}
 				
 			else if (option == 2) { // delete provider
 				System.out.println("\nDelete Provider");
-				deleteProvider();
+				System.out.println("Enter provider's number: ");
+		        int number = reader.nextInt();
+		        reader.nextLine();
+				deleteProvider(number);
 				return;
 			}
 				
 			else if (option == 3) { // update provider
 				System.out.println("\nUpdate Provider");
-				updateProvider();
+				
+				ArrayList <ProviderAccounts> providers = ReadProviders();
+		        
+		        System.out.print("Enter provider's name: ");
+		        String name = reader.nextLine();
+		        
+		        for (ProviderAccounts p : providers) {
+		            if (p.getName().equals(name)) {
+		                System.out.println("A provider with this name already exists, do you wish to continue? [Y/N] ");
+		                String check = reader.nextLine();
+		                if (check.toUpperCase().equals("N")) {
+		                    reader.close();
+		                    return;
+		                }
+		                else {
+		                    System.out.print("Enter provider's address: ");
+		                    String address = reader.nextLine();
+		                    System.out.print("Enter provider's city: ");
+		                    String city = reader.nextLine();
+		                    System.out.print("Enter provider's state: ");
+		                    String state = reader.nextLine();
+		                    System.out.print("Enter provider's zip code: ");
+		                    int zip = reader.nextInt();
+		                    reader.nextLine();
+		                    updateProvider(name,address,city,state,zip);
+		                }
+		            }
+		        }
+				
 				return;
 			}
 		}
 	}
 	
-	public static void addMember() throws FileNotFoundException, IOException{
+	/*
+	 * Add new member
+	 */
+	public static void addMember(String name,int number,String address,String city,String state,int zip) throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
 	    
-        System.out.print("Enter member's name: ");
-        String name = reader.nextLine();
+       
         ma.setName(name);
-        System.out.print("Enter member's number: ");
-        int number = reader.nextInt();
-        reader.nextLine();
-        ma.setNumber(number);
-        System.out.print("Enter member's address: ");
-        String address = reader.nextLine();
-        ma.setAddress(address);
-        System.out.print("Enter member's city: ");
-        String city = reader.nextLine();
+        ma.setNumber(number); 
+        ma.setAddress(address);     
         ma.setCity(city);
-        System.out.print("Enter member's state: ");
-        String state = reader.nextLine();
         ma.setState(state);
-        System.out.print("Enter member's zip code: ");
-        int zip = reader.nextInt();
-        reader.nextLine();
         ma.setZipCode(zip);
         ma.setStatus(true);
 	    
@@ -125,13 +207,13 @@ public class OperatorTerminal extends Terminal {
         printMember(members);
 	}
 	
-	public static void deleteMember() throws FileNotFoundException, IOException{
+	/*
+	 * Delete existing member
+	 */
+	public static void deleteMember(int number) throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
         
-        System.out.println("\nDelete Member");
-        System.out.print("Enter member's number: ");
-        int number = reader.nextInt();
-        reader.nextLine();
+        
         int found = -1;
         for (MemberAccounts m : members) {
             if (m.getNumber() == number) {
@@ -149,39 +231,21 @@ public class OperatorTerminal extends Terminal {
         printMember(members);
 	}
 	
-	public static void updateMember() throws FileNotFoundException, IOException{
+	/*
+	 * Update an existing member
+	 */
+	
+	public static void updateMember(String name,String address,String city,String state,int zip) throws FileNotFoundException, IOException{
 	    ArrayList <MemberAccounts> members = ReadMember();
-        
-        System.out.print("Enter member's name: ");
-        //reader.nextLine();
-        String name = reader.nextLine();
-        
+
         for (MemberAccounts m : members) {
             if (m.getName().equals(name)) {
-                System.out.print("A member with this name already exists, do you wish to continue? [Y/N]: ");
-                String check = reader.nextLine();
-                if (check.toUpperCase().equals("N")) {
-                    reader.close();
-                    return;
-                }
-                else {
-                    m.setName(name);
-                    m.setNumber(m.getNumber());
-                    System.out.print("Enter member's address: ");
-                    String address = reader.nextLine();
-                    m.setAddress(address);
-                    System.out.print("Enter member's city: ");
-                    String city = reader.nextLine();
-                    m.setCity(city);
-                    System.out.print("Enter member's state: ");
-                    String state = reader.nextLine();
-                    m.setState(state);
-                    System.out.print("Enter member's zip code: ");
-                    int zip = reader.nextInt();
-                    reader.nextLine();
-                    m.setZipCode(zip);
-                    //m.setStatus(m.getStatus());
-                }
+                m.setName(name);
+                m.setNumber(m.getNumber());
+                m.setAddress(address);
+                m.setCity(city);
+                m.setState(state);
+                m.setZipCode(zip);    
             }
         }
         printMember(members);
@@ -208,28 +272,20 @@ public class OperatorTerminal extends Terminal {
 	      }
 	  }
 	
-	public static void addProvider() throws FileNotFoundException, IOException{
+	
+	/*
+	 * Add new provider
+	 */
+	
+	public static void addProvider(String name,int number,String address,String city,String state,int zip) throws FileNotFoundException, IOException{
 	    ArrayList<ProviderAccounts> providers = ReadProviders();
 	    
-	    System.out.print("Enter provider's name: ");
-        String name = reader.nextLine();
+	    
         pacc.setName(name);
-        System.out.print("Enter provider's number: ");
-        int number = reader.nextInt();
-        reader.nextLine();
         pacc.setNumber(number);
-        System.out.print("Enter provider's address: ");
-        String address = reader.nextLine();
         pacc.setAddress(address);
-        System.out.print("Enter provider's city: ");
-        String city = reader.nextLine();
         pacc.setCity(city);
-        System.out.print("Enter provider's state: ");
-        String state = reader.nextLine();
         pacc.setState(state);
-        System.out.print("Enter provider's zip code: ");
-        int zip = reader.nextInt();
-        reader.nextLine();
         pacc.setZipCode(zip);
    
         
@@ -239,12 +295,13 @@ public class OperatorTerminal extends Terminal {
         System.out.println("\nThe provider was sucessfully added");
 	}
 	
-	public static void deleteProvider() throws FileNotFoundException, IOException{
+	/*
+	 * Delete existing provider
+	 */
+	public static void deleteProvider(int number) throws FileNotFoundException, IOException{
 	    ArrayList<ProviderAccounts> providers = ReadProviders();
         
-        System.out.println("Enter provider's number: ");
-        int number = reader.nextInt();
-        reader.nextLine();
+        
         int found = -1;
         for (ProviderAccounts p : providers) {
             if (p.getNumber() == number) {
@@ -264,49 +321,32 @@ public class OperatorTerminal extends Terminal {
         System.out.println("\nThe provider was sucessfully deleted");
 	}
 	
-	public static void updateProvider() throws FileNotFoundException, IOException{
+	/*
+	 * Update existing provider
+	 */
+	public static void updateProvider(String name,String address,String city,String state,int zip) throws FileNotFoundException, IOException{
         ArrayList <ProviderAccounts> providers = ReadProviders();
         
-        System.out.print("Enter provider's name: ");
-        String name = reader.nextLine();
         
         for (ProviderAccounts p : providers) {
             if (p.getName().equals(name)) {
-                System.out.println("A provider with this name already exists, do you wish to continue? [Y/N] ");
-                reader.nextLine();
-                String check = reader.nextLine();
-                if (check.toUpperCase().equals("N")) {
-                    reader.close();
-                    return;
-                }
-                else {
-                    p.setName(name);
-                    p.setNumber(p.getNumber());
-                    System.out.print("Enter provider's address: ");
-                    String address = reader.nextLine();
-                    p.setAddress(address);
-                    System.out.print("Enter provider's city: ");
-                    String city = reader.nextLine();
-                    p.setCity(city);
-                    System.out.print("Enter provider's state: ");
-                    String state = reader.nextLine();
-                    p.setState(state);
-                    System.out.print("Enter provider's zip code: ");
-                    int zip = reader.nextInt();
-                    reader.nextLine();
-                    p.setZipCode(zip);
-                }
+                p.setName(name);
+                p.setNumber(p.getNumber());
+                p.setAddress(address);
+                p.setCity(city);
+                p.setState(state);
+                p.setZipCode(zip);
+                
+                printProviders(providers);
             }
         }
-        printProviders(providers);
-        
+
         System.out.println("\nThe provider was sucessfully updated");
     }
 	
 	/*
-     * Prints the providers (Used for operator purposes such as add/delete/update provider)
+     * Prints the list of providers and the corresponding Service Records
      */
-
      public static void printProviders(ArrayList<ProviderAccounts> pa) throws FileNotFoundException, IOException{
         String filename = "Database/provider.txt";
         Path oPath = Paths.get(filename);
@@ -326,56 +366,6 @@ public class OperatorTerminal extends Terminal {
             input.close();
         }
     }
-    
-	/*public ManageAccounts ReadMemberTextFile() throws FileNotFoundException, IOException{
-		Path mPath = Paths.get("C:/Eclipse/member.txt");
-		//java.net.URL url = getClass().getResource("member.txt");		
-		File mFile = mPath.toFile();
-		String str;
-		
-		ArrayList<MemberAccounts> listMemA = new ArrayList<MemberAccounts>();
-		
-		if(Files.exists(mPath)){
-			try(BufferedReader input = new BufferedReader(new FileReader(mFile))){
-				 String line; //= input.readLine();
-				while((line = input.readLine()) != null && !line.equals("")){
-					String[] fields = line.split(",");
-					MemberAccounts memA = new MemberAccounts();
-					memA.setName(fields[0]); 
-					memA.setNumber(Integer.parseInt(fields[1]));
-			        memA.setAddress(fields[2]);
-			        memA.setCity(fields[3]);
-			        memA.setState(fields[4]);
-			        memA.setZipCode(Integer.parseInt(fields[5]));
-			        memA.setStatus(Boolean.parseBoolean(fields[6]));			        
-			        
-			        //line = input.readLine();
-			        ArrayList<ServiceRecord> servicesProvided = new ArrayList<ServiceRecord>();
-			        while((line = input.readLine()) != null && !line.equals("")){
-			        	String[] serviceFields = line.split(",");
-				        ServiceRecord sr = new ServiceRecord();
-				        if(serviceFields != null){
-				        	sr.setCurrentDateTime(serviceFields[0]);
-					        sr.setDateOfService(serviceFields[1]);
-					        sr.setProviderNumber(Integer.parseInt(serviceFields[2]));
-					        sr.setMemberNumber(Integer.parseInt(serviceFields[3]));
-					        sr.setServiceCode(Integer.parseInt(serviceFields[4]));
-					        sr.setComments(serviceFields[5]);
-				        }  
-				        servicesProvided.add(sr);
-				        //line = input.readLine();
-			        }
-			        memA.setServicesProvided(servicesProvided);
-			        
-			        listMemA.add(memA);
-			        ma.setMemberAccountsList(listMemA);
-					}
-				}
-			}
-	
-		
-		return ma;
-		}*/
 }
 
 
