@@ -18,7 +18,7 @@ public class OperatorTerminal extends Terminal {
 	
 	private static Scanner reader = new Scanner(System.in);
 
-	public static void operaterMenu() throws FileNotFoundException, IOException {
+	public static void operatorMenu() throws FileNotFoundException, IOException {
 
 		int option = 0;
 		

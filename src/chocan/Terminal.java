@@ -70,7 +70,7 @@ public class Terminal {
 
   public static void OpenOperatorTerminal () throws FileNotFoundException, IOException {
 	  //OperatorTerminal ot = new OperatorTerminal();
-	  OperatorTerminal.operaterMenu();
+	  OperatorTerminal.operatorMenu();
   }
   
   
