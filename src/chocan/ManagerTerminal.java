@@ -91,9 +91,16 @@ public class ManagerTerminal extends Terminal{
 	      try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
 	          for (ProviderAccounts pa : providers) {
 	              ArrayList<ServiceRecord> sr = pa.getServicesProvided();
-	              input.write(pa.getName()+","+pa.getNumberServices()+","+pa.getTotalFees(sr)+"\n");
-	              totalConsults = totalConsults + pa.getNumberServices();
-	              totalFee = totalFee + pa.getTotalFees(sr);
+	              input.write(pa.getName()+",");
+	              if(sr == null) {
+	                  input.write("0"+","+"0\n");
+	              }
+	              else {
+	                  input.write(pa.getNumberServices()+",");
+	                  input.write(pa.getTotalFees(sr)+"\n");
+	                  totalConsults = totalConsults + pa.getNumberServices();
+	                  totalFee = totalFee + pa.getTotalFees(sr);
+	              }
 	          }
 	          input.write("Total number of providers: "+providers.size()+"\n");
 	          input.write("Total number of consultations: "+totalConsults+"\n");
@@ -158,9 +165,13 @@ public class ManagerTerminal extends Terminal{
 	                  input.write(service.getDateOfService()+"\n"+service.getCurrentDateTime()+"\n"+service.getMemberName(service.getMemberNumber())+"\n"+service.getMemberNumber()+"\n"+service.getServiceCode()+"\n"+service.getServiceFee(service.getServiceCode())+"\n");
 	                  totalFee = totalFee + service.getServiceFee(service.getServiceCode());
 	              }  
+	              input.write("Total number of consultations with members: "+sr.size()+"\n");
+                  input.write("Total fees for the week: $"+totalFee+"\n");
 	          }
-	          input.write("Total number of consultations with members: "+sr.size()+"\n");
-	          input.write("Total fee for the week: $"+totalFee+"\n");
+	          else {
+	              input.write("Total number of consultations with members: 0\n");
+	              input.write("Total fees for the week: $0\n");
+	          }
 	          input.close();
 	      }
 	      

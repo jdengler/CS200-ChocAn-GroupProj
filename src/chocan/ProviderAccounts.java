@@ -75,7 +75,11 @@ public class ProviderAccounts {
 	}
 	
 	public int getNumberServices() {
-	    return servicesProvided.size();
+	    if (servicesProvided.size() == 0) return 0;
+	    else {
+	        return servicesProvided.size();
+	    }
+	    
 	}
 	
 	public double getTotalFees(ArrayList<ServiceRecord> services) throws FileNotFoundException,IOException{

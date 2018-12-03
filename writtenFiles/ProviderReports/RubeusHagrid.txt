@@ -1,20 +1,8 @@
-Rubeus Hagrid
-12345678
-1234 Small Cottage
-Atlanta
-Georgia
-50019
-12-02-2018
-12-02-2018 02:44:12
-Hermoine Granger
-999999991
-111111
-300.0
-12-02-2018
-12-02-2018 02:44:12
-Ronald Weasley
-676767676
-333333
-500.0
-Total number of consultations with members: 2
-Total fee for the week: $800.0
+provider name
+123123123
+address
+city
+state
+12345
+Total number of consultations with members: 0
+Total fees for the week: $0
