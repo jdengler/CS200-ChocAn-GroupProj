@@ -137,6 +137,7 @@ public class OperatorTerminal extends Terminal {
             if (m.getNumber() == number) {
                 members.remove(m);
                 found = 1;
+                break;
             }
         }
         
