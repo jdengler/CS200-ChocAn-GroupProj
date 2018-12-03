@@ -191,12 +191,23 @@ public class OperatorTerminal extends Terminal {
 	/*
 	 * Add new member
 	 */
-	public static void addMember(String name,int number,String address,String city,String state,int zip) throws FileNotFoundException, IOException{
+	public static void addMember(String name,int number,String address,String city,String state,int zip) throws FileNotFoundException, IOException,IllegalArgumentException {
 	    ArrayList <MemberAccounts> members = ReadMember();
+	    
 	    
        
         ma.setName(name);
-        ma.setNumber(number); 
+        
+        try {
+            String temp = Integer.toString(number);
+            if (temp.length() != 9) {
+                throw new IllegalArgumentException("The member number must be 9 digits long!");
+            }      
+        }
+        finally {
+            ma.setNumber(number); 
+        }
+        
         ma.setAddress(address);     
         ma.setCity(city);
         ma.setState(state);
@@ -210,25 +221,32 @@ public class OperatorTerminal extends Terminal {
 	/*
 	 * Delete existing member
 	 */
-	public static void deleteMember(int number) throws FileNotFoundException, IOException{
+	public static void deleteMember(int number) throws FileNotFoundException, IOException,IllegalArgumentException{
 	    ArrayList <MemberAccounts> members = ReadMember();
-        
-        
         int found = -1;
-        for (MemberAccounts m : members) {
-            if (m.getNumber() == number) {
-                members.remove(m);
-                found = 1;
-                break;
+        
+        try {
+            String temp = Integer.toString(number);
+            if (temp.length() != 9) {
+                throw new IllegalArgumentException("The member number must be 9 digits long!");
+            }      
+        }
+        finally {
+            for (MemberAccounts m : members) {
+                if (m.getNumber() == number) {
+                    members.remove(m);
+                    found = 1;
+                    break;
+                }
             }
+            if (found == -1) {
+                reader.close();
+                throw new IllegalArgumentException("The member does not exist!");
+            }
+            printMember(members);
         }
         
-        if (found == -1) {
-            System.out.println("The member does not exist");
-            reader.close();
-            return;
-        }
-        printMember(members);
+      
 	}
 	
 	/*
