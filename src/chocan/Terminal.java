@@ -65,7 +65,7 @@ public class Terminal {
   
   public static void OpenProviderTerminal () throws FileNotFoundException, IOException {
 	  //ProviderTerminal pt = new ProviderTerminal();
-	  ProviderTerminal.providerMenu();
+	  //ProviderTerminal.providerMenu();
   }
   
 

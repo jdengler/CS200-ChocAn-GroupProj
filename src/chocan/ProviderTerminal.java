@@ -28,55 +28,55 @@ public class ProviderTerminal extends Terminal {
   
   private static Scanner sc = new Scanner(System.in);
   
-  public static void providerMenu() throws FileNotFoundException, IOException {
-	System.out.println("\nProvider Terminal");
-	System.out.println("1.) Validate a ChocAn member"); 
-	System.out.println("2.) Bill ChocAn"); 
-	System.out.println("3.) Request a Provider Directory"); 
-	System.out.println("4.) Go back to main terminal");
-	System.out.print(" Option: ");
-	
-    int userChoice = sc.nextInt();
-    switch(userChoice) {
-        case 1:
-          validateMember();
-          break;
-        case 2:
-          billChocan();
-          break;
-        case 3:
-          requestDirectory();
-          break;
-        default:
-          System.out.println("Please enter a valid choice...");
-          break;
-    }
-    //sc.close();
-  }
+//  public static void providerMenu() throws FileNotFoundException, IOException {
+//	System.out.println("\nProvider Terminal");
+//	System.out.println("1.) Validate a ChocAn member"); 
+//	System.out.println("2.) Bill ChocAn"); 
+//	System.out.println("3.) Request a Provider Directory"); 
+//	System.out.println("4.) Go back to main terminal");
+//	System.out.print(" Option: ");
+//	
+//    int userChoice = sc.nextInt();
+//    switch(userChoice) {
+//        case 1:
+//          validateMember();
+//          break;
+//        case 2:
+//          billChocan();
+//          break;
+//        case 3:
+//          requestDirectory();
+//          break;
+//        default:
+//          System.out.println("Please enter a valid choice...");
+//          break;
+//    }
+//    //sc.close();
+//  }
   
-  public static MemberAccounts validateMember() throws FileNotFoundException, IOException{
-    ArrayList<MemberAccounts> me = ReadMember();
-    System.out.println("Enter member number: ");
-    int found = -1;
-    MemberAccounts ma = new MemberAccounts();
-    int memNum = sc.nextInt();
-    for(MemberAccounts account : me) {
-        if(account.getNumber() == memNum) {
-            found = 0;
-            if (account.getStatus() == false) {
-                System.out.println("\nSuspended");
-            }
-            else {
-                System.out.println("\nValidated");
-            }
-            ma = account;
-        }
-    }
-    if (found == -1) {
-        System.out.println("\nInvalid");
-    }
-    return ma;
-  }
+  public static MemberAccounts validateMember(int memNum) throws FileNotFoundException, IOException{
+	    ArrayList<MemberAccounts> me = ReadMember();
+	    //System.out.println("Enter member number: ");
+	    int found = -1;
+	    MemberAccounts ma = new MemberAccounts();
+	    //int memNum = sc.nextInt();
+	    for(MemberAccounts account : me) {
+	        if(account.getNumber() == memNum) {
+	            found = 0;
+	            if (account.getStatus() == false) {
+	                System.out.println("\nSuspended");
+	            }
+	            else {
+	                System.out.println("\nValidated");
+	            }
+	            ma = account;
+	        }
+	    }
+	    if (found == -1) {
+	        System.out.println("\nInvalid");
+	    }
+	    return ma;
+	  }
   
   public static ProviderDirectoryEntry validEntry(int code) throws FileNotFoundException,IOException{
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
@@ -95,7 +95,9 @@ public class ProviderTerminal extends Terminal {
       ServiceRecord sr = new ServiceRecord();
       
       Scanner reader = new Scanner(System.in);
-      MemberAccounts found = validateMember();
+      
+      int memNum = 123456789;
+      MemberAccounts found = validateMember(memNum);
       
       if (found.getStatus() == false) {
           reader.close();
