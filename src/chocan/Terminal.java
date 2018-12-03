@@ -37,14 +37,17 @@ public class Terminal {
 		
 		if (option == 1) { // manager terminal
 			OpenManagerTerminal();
+			option = 0;
 		}
 		
 		else if (option == 2) { // provider terminal
 			OpenProviderTerminal();
+			option = 0;
 		}
 		
 		else if (option == 3) { // operator terminal
 			OpenOperatorTerminal();
+			option = 0;
 		}
 	}
 	
@@ -60,14 +63,14 @@ public class Terminal {
   }
   
   public static void OpenProviderTerminal () throws FileNotFoundException, IOException {
-	  ProviderTerminal pt = new ProviderTerminal();
-	  pt.providerMenu();
+	  //ProviderTerminal pt = new ProviderTerminal();
+	  ProviderTerminal.providerMenu();
   }
   
 
   public static void OpenOperatorTerminal () throws FileNotFoundException, IOException {
-	  OperatorTerminal ot = new OperatorTerminal();
-	  ot.operaterMenu();
+	  //OperatorTerminal ot = new OperatorTerminal();
+	  OperatorTerminal.operaterMenu();
   }
   
   

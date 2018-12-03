@@ -38,6 +38,8 @@ public class ManagerTerminal extends Terminal{
 			generateProvider();
 			
 		}
+		
+		return;
 	}
 
 	
@@ -100,6 +102,8 @@ public class ManagerTerminal extends Terminal{
 	      
 	      System.out.print("\n"+"The summary report was successfully generated and stored in "+name+".txt"+"\n");
 	      reader.close();
+	      
+	      return;
 	}
 	
 	/*

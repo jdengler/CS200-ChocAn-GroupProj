@@ -173,7 +173,7 @@ public class OperatorTerminal extends Terminal {
                     m.setName(name);
                     m.setNumber(m.getNumber());
                     System.out.print("Enter member's address: ");
-                    reader.nextLine();
+                    //reader.nextLine();
                     String address = reader.nextLine();
                     m.setAddress(address);
                     System.out.print("Enter member's city: ");
