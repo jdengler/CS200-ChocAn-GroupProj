@@ -153,7 +153,7 @@ public class OperatorTerminal extends Terminal {
 	    ArrayList <MemberAccounts> members = ReadMember();
         
         System.out.print("Enter member's name: ");
-        reader.nextLine();
+        //reader.nextLine();
         String name = reader.nextLine();
         
         for (MemberAccounts m : members) {
@@ -250,6 +250,7 @@ public class OperatorTerminal extends Terminal {
             if (p.getNumber() == number) {
                 providers.remove(p);
                 found = 1;
+                break;
             }
         }
         

@@ -34,6 +34,7 @@ public class Terminal {
 	
 		if(reader.hasNext()) {
             option = reader.nextInt();
+            //reader.next();
         }
 		
 		
@@ -136,7 +137,10 @@ public class Terminal {
                   
                   
                   line = input.readLine();
-                  if (line == null) break;
+                  if (line == null) {
+                      listMemA.add(memA);
+                      break;
+                  }
                   String[] serviceFields = line.split(",");
                   
                   while (serviceFields[0].equals("s") == true && serviceFields != null) {
@@ -155,8 +159,8 @@ public class Terminal {
 
                   memA.setServicesProvided(servicesProvided);
                   listMemA.add(memA);
-                  
               }
+              
               input.close();
           }
       }
