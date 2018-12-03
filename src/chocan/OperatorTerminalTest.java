@@ -1,5 +1,7 @@
 package chocan;
 
+import static org.junit.Assert.fail;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import org.junit.Rule;
@@ -36,6 +38,15 @@ class OperatorTerminalTest extends OperatorTerminal{
         deleteMember(101010101);
     }
     
-    
+    @Test
+    void testDeleteMemberFail() throws FileNotFoundException, IOException, IllegalArgumentException{
+        try {
+            deleteMember(1111111112);
+            fail("Should of thrown an IllegalArgumentException");
+        }catch (IllegalArgumentException e) {
+            
+        }
+        
+    }
     
 }

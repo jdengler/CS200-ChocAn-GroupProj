@@ -70,7 +70,7 @@ public class OperatorTerminal extends Terminal {
 			    System.out.println("\nDelete Member");
 		        System.out.print("Enter member's number: ");
 		        int number = reader.nextInt();
-		        reader.nextLine();
+		        //reader.nextLine();
 				deleteMember(number);
 				System.out.println("\nThe member has been removed");
 				return;
@@ -224,28 +224,27 @@ public class OperatorTerminal extends Terminal {
 	public static void deleteMember(int number) throws FileNotFoundException, IOException,IllegalArgumentException{
 	    ArrayList <MemberAccounts> members = ReadMember();
         int found = -1;
+
+        String temp = Integer.toString(number);
         
-        try {
-            String temp = Integer.toString(number);
-            if (temp.length() != 9) {
-                throw new IllegalArgumentException("The member number must be 9 digits long!");
-            }      
-        }
-        finally {
-            for (MemberAccounts m : members) {
-                if (m.getNumber() == number) {
-                    members.remove(m);
-                    found = 1;
-                    break;
-                }
+        if (temp.length() != 9) {
+            throw new IllegalArgumentException("The member number must be 9 digits long!");
+        }  
+        
+        for (MemberAccounts m : members) {
+            if (m.getNumber() == number) {
+                members.remove(m);
+                found = 1;
+                break;
             }
-            if (found == -1) {
-                reader.close();
-                throw new IllegalArgumentException("The member does not exist!");
-            }
-            printMember(members);
         }
         
+        if (found == -1) {
+            reader.close();
+            throw new IllegalArgumentException("The member does not exist!");
+        }
+  
+        printMember(members);
       
 	}
 	
