@@ -103,10 +103,10 @@ public void setComments(String comments) {
 	this.comments = comments;
 }
 
-public ProviderDirectoryEntry getProviderDirectoryInfo(int serviceCode) {
+/*public ProviderDirectoryEntry getProviderDirectoryInfo(int serviceCode) {
 	  ProviderDirectory pd = new ProviderDirectory();
 	  return pd.findProviderDirectoryEntry(serviceCode);
-  }
+  }*/
   
 public String getServiceName(int serviceCode) throws FileNotFoundException, IOException{
    ArrayList<ProviderDirectoryEntry>pde = ReadProviderDirectoryEntry();
