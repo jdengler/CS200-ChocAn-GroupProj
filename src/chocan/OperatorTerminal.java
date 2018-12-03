@@ -189,7 +189,6 @@ public class OperatorTerminal extends Terminal {
 	public static void printMember(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
 	      String filename = "Database/member.txt";
 	      
-	      
 	      File file = new File(filename);
 	      /*Path oPath = Paths.get(filename);
 	      File oFile = oPath.toFile();*/

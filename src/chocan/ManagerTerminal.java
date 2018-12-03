@@ -52,9 +52,11 @@ public class ManagerTerminal extends Terminal{
 	    for (MemberAccounts ma : members) {
 	        if (ma.getNumber() == number) {
 	            printMemberReport(ma);
+	            return;
 	        }
 	    }
 	    
+	    System.out.println("The member does not exist");
 	    return;
 	}
 	
@@ -67,9 +69,11 @@ public class ManagerTerminal extends Terminal{
         for (ProviderAccounts pa : providers) {
             if (pa.getNumber() == number) {
                 printProviderReport(pa);
+                return;
             }
         }
         
+        System.out.println("The provider does not exist");
         return;
     }
 	
