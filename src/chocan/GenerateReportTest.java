@@ -23,5 +23,8 @@ public class GenerateReportTest {
     GenerateReport.generateMember("Doesnt Exist", 123456789);
   }
 
-
+  @Test
+  public void testGenerateMemberFailure() throws FileNotFoundException, IOException {
+    GenerateReport.generateMember("Harry Potter", 123);
+  }
 }
