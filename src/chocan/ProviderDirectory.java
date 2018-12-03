@@ -1,29 +1,25 @@
 package chocan;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProviderDirectory {
 	
-	private ArrayList<ProviderDirectoryEntry> providerDirectoryEntries;
 
 	public ProviderDirectory() {
 		
 	}
+
 	
-	public ProviderDirectory(ArrayList<ProviderDirectoryEntry> providerDirectoryEntries) {
-		super();
-		this.providerDirectoryEntries = providerDirectoryEntries;
-	}
-	
-	public ProviderDirectoryEntry findProviderDirectoryEntry(int serviceCode){
-		for(ProviderDirectoryEntry pde : providerDirectoryEntries){
-			if(pde.getServiceCode() == serviceCode){
-				return pde;
-			}
-		}
-		return null;
-	}
-	
-	public ArrayList<ProviderDirectoryEntry> getProviderDirectory() {
-	    return providerDirectoryEntries;
-	}
+	public static ProviderDirectoryEntry validEntry(int code) throws FileNotFoundException,IOException{
+        ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
+        ProviderDirectoryEntry entry = new ProviderDirectoryEntry();
+        for (ProviderDirectoryEntry pd : pde) {
+            if (pd.getServiceCode() == code) {
+                entry = pd;
+            }
+        }
+        return entry;
+    }
+
 }
