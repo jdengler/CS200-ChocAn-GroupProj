@@ -18,43 +18,42 @@ public class Terminal {
 	private static Scanner reader = new Scanner(System.in);
   
   
-  public static void main(String[] args) throws FileNotFoundException, IOException {
-	int option=0;
-	
-	
-	while(option != 4) {
-		System.out.println("\nChocAn System Menu");
-		System.out.println("1.) Open Manager Terminal"); 
-		System.out.println("2.) Open Provider Terminal"); 
-		System.out.println("3.) Open Operator Terminal");
-		System.out.println("4.) Quit");
-		System.out.print(" Option: ");
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		int option=0;
 		
-		while(!reader.hasNext());
-	
-		if(reader.hasNext()) {
-            option = reader.nextInt();
-            //reader.next();
-        }
+		while(option != 4) {
+			System.out.println("\nChocAn System Menu");
+			System.out.println("1.) Open Manager Terminal"); 
+			System.out.println("2.) Open Provider Terminal"); 
+			System.out.println("3.) Open Operator Terminal");
+			System.out.println("4.) Quit");
+			System.out.print(" Option: ");
+			
+			while(!reader.hasNext());
 		
-		
-		if (option == 1) { // manager terminal
-			OpenManagerTerminal();
-			option = 0;
+			if(reader.hasNext()) {
+	            option = reader.nextInt();
+	            //reader.next();
+	        }
+			
+			
+			if (option == 1) { // manager terminal
+				OpenManagerTerminal();
+				option = 0;
+			}
+			
+			else if (option == 2) { // provider terminal
+				OpenProviderTerminal();
+				option = 0;
+			}
+			
+			else if (option == 3) { // operator terminal
+				OpenOperatorTerminal();
+				option = 0;
+			}
 		}
 		
-		else if (option == 2) { // provider terminal
-			OpenProviderTerminal();
-			option = 0;
-		}
-		
-		else if (option == 3) { // operator terminal
-			OpenOperatorTerminal();
-			option = 0;
-		}
-	}
-	
-	System.out.println("\nEnd");
+		System.out.println("\nEnd");
   }
   
   public static void OpenManagerTerminal () throws FileNotFoundException, IOException {
@@ -108,7 +107,7 @@ public class Terminal {
       return listPde;
   }
   
-  /*
+  /*A
    * Reads in members and the services they've had
    */
   public static ArrayList<MemberAccounts> ReadMember() throws FileNotFoundException, IOException{
