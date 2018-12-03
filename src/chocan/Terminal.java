@@ -30,10 +30,11 @@ public class Terminal {
 		System.out.print(" Option: ");
 		
 		while(!reader.hasNext());
-		
+	
 		if(reader.hasNext()) {
-		    option = reader.nextInt();
-		}
+            option = reader.nextInt();
+        }
+		
 		
 		if (option == 1) { // manager terminal
 			OpenManagerTerminal();
