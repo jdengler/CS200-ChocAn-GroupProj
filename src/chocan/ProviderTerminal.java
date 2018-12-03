@@ -27,7 +27,7 @@ import java.io.BufferedWriter;
 
 public class ProviderTerminal extends Terminal {
   
-  private static Scanner sc = new Scanner(System.in);
+  private static Scanner reader = new Scanner(System.in);
   
   public static void providerMenu() throws FileNotFoundException, IOException {
 	System.out.println("\nProvider Terminal");
@@ -37,30 +37,41 @@ public class ProviderTerminal extends Terminal {
 	System.out.println("4.) Go back to main terminal");
 	System.out.print(" Option: ");
 	
-    int userChoice = sc.nextInt();
-    sc.nextLine();
-    switch(userChoice) {
-        case 1:
-          //validateMember();
-          break;
-        case 2:
-          //billChocan();
-          break;
-        case 3:
-          requestDirectory();
-          break;
-        default:
-          System.out.println("Please enter a valid choice...");
-          break;
+    int option = reader.nextInt();
+    reader.nextLine();
+    
+    if (option == 1) { // validate member
+    	System.out.println("Enter member number: ");
+    	int memNum = reader.nextInt();
+    	reader.nextLine();
+    	validateMember(memNum);
+    }
+    
+    else if (option == 2) { // bill chocan
+    	System.out.println("Enter date of service (MM-DD-YYYY): ");
+        String actDate = reader.nextLine();
+        System.out.println("Enter provider number: ");
+        int providerNum = reader.nextInt();
+        reader.nextLine();
+        System.out.println("Enter the six-digit service code: ");
+        int serviceCode = reader.nextInt();
+        System.out.println("Enter member number: ");
+        int memberNum = reader.nextInt();
+        reader.nextLine();
+        
+    	billChocan(actDate, providerNum, serviceCode, memberNum);
+    }
+    
+    else if (option == 3) { // request provider directory
+    	requestDirectory();
     }
   }
   
   public static MemberAccounts validateMember(int memNum) throws FileNotFoundException, IOException{
 	    ArrayList<MemberAccounts> me = ReadMember();
-	    //System.out.println("Enter member number: ");
 	    int found = -1;
 	    MemberAccounts ma = new MemberAccounts();
-	    //int memNum = sc.nextInt();
+	    
 	    for(MemberAccounts account : me) {
 	        if(account.getNumber() == memNum) {
 	            found = 0;
@@ -93,15 +104,12 @@ public class ProviderTerminal extends Terminal {
       return entry;
   }
   
-  public static void billChocan(String actDate, int providerNum, int serviceCode, int memNum)throws FileNotFoundException, IOException{
+  public static void billChocan(String actDate, int providerNum, int serviceCode, int memberNum)throws FileNotFoundException, IOException{
       ArrayList<MemberAccounts> me = ReadMember();
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
       ServiceRecord sr = new ServiceRecord();
       
-      Scanner reader = new Scanner(System.in);
-      
-      
-      MemberAccounts found = validateMember(memNum);
+      MemberAccounts found = validateMember(memberNum);
       
       if (found.getStatus() == false) {
           reader.close();
@@ -113,20 +121,14 @@ public class ProviderTerminal extends Terminal {
       String strDate = dateFormat.format(date);
       sr.setCurrentDateTime(strDate);
       
-      //System.out.println("Enter date of service (MM-DD-YYYY): ");
-      //String actDate = reader.nextLine();
       sr.setDateOfService(actDate);
-      
-      //System.out.println("Enter provider number: ");
-      //int providerNum = reader.nextInt();
       sr.setProviderNumber(providerNum);
+      sr.setMemberNumber(memberNum);
       
       for (ProviderDirectoryEntry pd: pde){
-          //System.out.println(pd.getServiceName()+","+pd.getServiceCode()+","+pd.getServiceFee());
+          System.out.println(pd.getServiceName()+","+pd.getServiceCode()+","+pd.getServiceFee());
       }
       
-      //System.out.println("Enter the six-digit service code: ");
-      //int serviceCode = reader.nextInt();
       ProviderDirectoryEntry valid = validEntry(serviceCode);
       if (valid == null) {
           reader.close();
@@ -168,7 +170,7 @@ public class ProviderTerminal extends Terminal {
       
       printBill(me);
       
-      reader.close();
+      return;
   }
   
   public static void requestDirectory() throws FileNotFoundException, IOException {
@@ -177,7 +179,6 @@ public class ProviderTerminal extends Terminal {
   
   public static void printBill(ArrayList<MemberAccounts> ma) throws FileNotFoundException, IOException{
       String filename = "Database/member.txt";
-      
       
       File file = new File(filename);
       /*Path oPath = Paths.get(filename);
