@@ -5,27 +5,32 @@ import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
-
 
 public class ManageAccountsTest {
 
+    @Before
+    public void setUp() throws Exception {
+    }
 
-    @BeforeEach
-    void setUp() throws Exception {
+    @Test
+    public void testAddMember() throws FileNotFoundException, IOException,IllegalArgumentException{
+        ManageAccounts.addMember("Ashley Phan",101010101,"1902 West Street","Tuscaloosa","Alabama",31902);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void testFailDeleteMember() throws FileNotFoundException, IOException,IllegalArgumentException{
+        ManageAccounts.deleteMember(111111111);
+    }
+
+    @Test
+    public void testSanityAddProvider()throws FileNotFoundException, IOException,IllegalArgumentException{
+        ManageAccounts.addProvider("Ashley Phan",122222221,"1902 West Street","Tuscaloosa","Alabama",31902);
+        ManageAccounts.deleteProvider(122222221);
+        
+        assertEquals(0,ManageAccounts.validProvider(122222221));
         
     }
 
-
-    @Test
-    void testAddMember() throws FileNotFoundException, IOException,IllegalArgumentException{
-       ManageAccounts.addMember("Ashley Phan",101010101,"104 Happy Street","San Diego","California",55455);
-    }
-    
-    @Test (expected = IllegalArgumentException.class)
-    void testAddMemberFail() throws FileNotFoundException, IOException, IllegalArgumentException{
-            ManageAccounts.addMember("Ashley Phan",1010101011,"104 Happy Street","San Diego","California",55455); 
-    }
-    
 }

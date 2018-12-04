@@ -6,6 +6,3 @@ s,12-03-2018 17:00:27,10-20-2019,987654321,123456789,888888,none
 Ronald Weasley,676767676,1111 Harrys Staircase,Miami,Florida,11293,false
 s,12-02-2018 02:44:12,12-02-2018,12345678,676767676,333333,Not too great
 s,12-05-2018 01:10:12,12-05-2018,987654321,676767676,888888,Check up
-Ashley Phan,101010101,104 Happy Street,San Diego,California,55455,true
-Ashley Phan,101010101,104 Happy Street,San Diego,California,55455,true
-Ashley Phan,101010101,104 Happy Street,San Diego,California,55455,true

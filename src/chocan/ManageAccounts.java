@@ -47,19 +47,13 @@ public class ManageAccounts {
         printMember(members);
 	}
 	
+	
 	/*
 	 * Delete existing member
 	 */
 	public static void deleteMember(int number) throws FileNotFoundException, IOException,IllegalArgumentException{
 	    ArrayList <MemberAccounts> members = Terminal.ReadMember();
-        int found = -1;
-
-        String temp = Integer.toString(number);
-        
-        if (temp.length() != 9) {
-            throw new IllegalArgumentException("The member number must be 9 digits long!");
-        }  
-        
+	    int found = -1;
         for (MemberAccounts m : members) {
             if (m.getNumber() == number) {
                 members.remove(m);
@@ -67,14 +61,14 @@ public class ManageAccounts {
                 break;
             }
         }
-        
+	    
+
         if (found == -1) {
             reader.close();
             throw new IllegalArgumentException("The member does not exist!");
         }
   
         printMember(members);
-      
 	}
 	
 	/*
@@ -118,6 +112,23 @@ public class ManageAccounts {
 	      }
 	  }
 	
+	public static int validProvider(int number)throws FileNotFoundException, IOException,IllegalArgumentException{
+        ArrayList <ProviderAccounts> providers = Terminal.ReadProviders();
+        int found = 0;
+        String temp = Integer.toString(number);
+        
+        if (temp.length() != 9) {
+            throw new IllegalArgumentException("The provider's number must be 9 digits long!");
+        }  
+        
+        for (ProviderAccounts m : providers) {    
+            if (m.getNumber() == number) {
+                found = 1;
+                break;
+            }
+        }
+        return found;
+    }
 	
 	/*
 	 * Add new provider
