@@ -1,6 +1,7 @@
 package chocan;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -140,6 +141,8 @@ public class Gui extends JFrame{
 		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button3.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button4.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnGenAllProReports.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnGenAllMemReports.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JPanel newPanel = new JPanel();
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
@@ -227,7 +230,9 @@ public class Gui extends JFrame{
 			int number;
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try{labelG.setText(" ");}
+				try{
+					OpenManageProvider();
+				}
 				catch(Exception ex){}
 			}
 		});
@@ -240,7 +245,7 @@ public class Gui extends JFrame{
 			}
 		});
 
-		button1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		button1.setAlignmentX(Component.CENTER_ALIGNMENT);		
 		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -286,16 +291,26 @@ public class Gui extends JFrame{
 				catch(Exception ex) {}
 			}
 		});
+		
+		JButton btnExit = new JButton(new AbstractAction("Exit") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {OpenOTerminal();}
+				catch(Exception ex) {}
+			}
+		});
 
 		button1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button3.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnExit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JPanel newPanel = new JPanel();
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.add(button1);
 		newPanel.add(button2);
 		newPanel.add(button3);
+		newPanel.add(btnExit);
 
 		setFrame(newPanel);
 	}
@@ -331,16 +346,26 @@ public class Gui extends JFrame{
 				catch(Exception ex) {}
 			}
 		});
+		
+		JButton btnExit = new JButton(new AbstractAction("Exit") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {initFrame();}
+				catch(Exception ex) {}
+			}
+		});
 
 		button1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button3.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnExit.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JPanel newPanel = new JPanel();
 		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
 		newPanel.add(button1);
 		newPanel.add(button2);
 		newPanel.add(button3);
+		newPanel.add(btnExit);
 
 		setFrame(newPanel);
 	}
@@ -408,18 +433,23 @@ public class Gui extends JFrame{
 			}
 		});
 
-		manTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		manTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);		
+		Dimension size = manTerminal.getPreferredSize();
+		size.setSize(100, 100); 		
+		manTerminal.setPreferredSize(size);
+		
 		provTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
 		opTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		contentPane.removeAll();
-		contentPane.add(BorderLayout.LINE_START, manTerminal);
-		contentPane.add(BorderLayout.CENTER, provTerminal);
-		contentPane.add(BorderLayout.LINE_END, opTerminal);
+		contentPane.removeAll();		
 
-
-		contentPane.revalidate();
-		contentPane.repaint();
+		JPanel newPanel = new JPanel();
+		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.Y_AXIS));
+		newPanel.add(manTerminal);
+		newPanel.add(provTerminal);
+		newPanel.add(opTerminal);
+				
+		setFrame(newPanel);;
 	}
 
 	static JButton validateButton = new JButton(new AbstractAction("Validate") {
