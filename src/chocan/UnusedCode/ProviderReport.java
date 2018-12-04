@@ -1,6 +1,9 @@
 package chocan.UnusedCode;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import chocan.ProviderDirectory;
 import chocan.ProviderDirectoryEntry;
 import chocan.ServiceRecord;
 
@@ -29,11 +32,11 @@ public class ProviderReport {
 		return servicesProvided.size();
 	}
 	
-	public double getTotalWeeklyFees(){
+	public double getTotalWeeklyFees() throws FileNotFoundException, IOException{
 		double total =0;
 		ProviderDirectoryEntry pde = new ProviderDirectoryEntry();
 		for(ServiceRecord sr : servicesProvided){			
-			pde = sr.getProviderDirectoryInfo(sr.getServiceCode());
+			pde = ProviderDirectory.validEntry(sr.getServiceCode());
 			if(pde != null){
 				total += pde.getServiceFee();
 			}
