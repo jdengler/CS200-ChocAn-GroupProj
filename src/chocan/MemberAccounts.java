@@ -1,6 +1,7 @@
 package chocan;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class MemberAccounts {
 	
@@ -105,5 +106,16 @@ public class MemberAccounts {
 	
 	public void addService(ServiceRecord service) {
 		servicesProvided.add(service);
-	}
+	}	
+	
+    /*Comparator for sorting the list by Member Name*/
+    public static Comparator<MemberAccounts> MemberNameComparator = new Comparator<MemberAccounts>() {
+
+	public int compare(MemberAccounts m1, MemberAccounts m2) {
+	   String MemberName1 = m1.getName().toUpperCase();
+	   String MemberName2 = m2.getName().toUpperCase();
+
+	   //ascending order
+	   return MemberName1.compareTo(MemberName2);
+    }};
 }
