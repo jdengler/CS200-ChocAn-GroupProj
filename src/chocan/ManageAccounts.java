@@ -20,33 +20,32 @@ public class ManageAccounts {
   /*
    * Add new member
    */
-  public static void addMember(String name, int number, String address, String city, String state,
+  public static boolean addMember(String name, int number, String address, String city, String state,
       int zip) throws FileNotFoundException, IOException, IllegalArgumentException {
     ArrayList<MemberAccounts> members = Terminal.ReadMember();
-
+    boolean flag =false;
     ma.setName(name);
 
+    try {
       String temp = Integer.toString(number);
       if (temp.length() != 9) {
         throw new IllegalArgumentException("The member number must be 9 digits long!");
+      } else {
+        ma.setNumber(number);
+        ma.setAddress(address);
+        ma.setCity(city);
+        ma.setState(state);
+        ma.setZipCode(zip);
+        ma.setStatus(true);
+
+        members.add(ma);
+        printMember(members);
+        flag = true;
       }
-      
-      ma.setNumber(number);
-      ma.setAddress(address);
-      ma.setCity(city);
-      ma.setState(state);
-      ma.setZipCode(zip);
-      ma.setStatus(true);
-
-      members.add(ma);
-      printMember(members);
-      JOptionPane.showMessageDialog(null, "Member saved successfully.");  
-      
-    /*} catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       JOptionPane.showMessageDialog(null, e);
-    }*/
-
-
+    }
+    return flag;
   }
 
   /*

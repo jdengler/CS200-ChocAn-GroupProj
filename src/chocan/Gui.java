@@ -509,13 +509,13 @@ public class Gui extends JFrame{
 					}
 				}
 
-				 ManageAccounts.addMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
-				//if(flag == true){
-					//JOptionPane.showMessageDialog(null, "Member saved successfully.");
-				//}
-				//else{
-				//	JOptionPane.showMessageDialog(null, "Error. The member was not added.");
-				//}
+				 boolean flag = ManageAccounts.addMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				if(flag == true){
+					JOptionPane.showMessageDialog(null, "Member saved successfully.");
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Error. The member was not added.");
+				}
 			}
 			catch(Exception ex){}
 		}
