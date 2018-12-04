@@ -104,6 +104,7 @@ public class Terminal {
               input.close();
           }
       }
+      Collections.sort(listPde, ProviderDirectoryEntry.ServiceNameComparator);
       return listPde;
   }
   
@@ -163,6 +164,7 @@ public class Terminal {
               input.close();
           }
       }
+      Collections.sort(listMemA, MemberAccounts.MemberNameComparator);
       return listMemA;
   }
   

@@ -145,7 +145,6 @@ public class ManageAccounts {
       int found = 0;
       for (MemberAccounts m : members) {
         if (m.getNumber() == number) {
-          members.remove(m);
           found = 1;
           break;
         }
@@ -160,6 +159,11 @@ public class ManageAccounts {
   public static void addProvider(String name, int number, String address, String city, String state,
       int zip) throws FileNotFoundException, IOException {
     ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
+    
+    String pn = Integer.toString(number);
+    if (pn.length() != 9) {
+      throw new IllegalArgumentException("The provider number must be 9 digits long!");
+    }
 
     pacc.setName(name);
     pacc.setNumber(number);
@@ -219,6 +223,19 @@ public class ManageAccounts {
     }
 
     System.out.println("\nThe provider was sucessfully updated");
+  }
+  
+  public static int validProvider(int number) throws FileNotFoundException, IOException {
+      ArrayList<ProviderAccounts> provider = Terminal.ReadProviders();
+
+      int found = 0;
+      for (ProviderAccounts p : provider) {
+        if (p.getNumber() == number) {
+          found = 1;
+          break;
+        }
+      }
+      return found;
   }
 
   /*
