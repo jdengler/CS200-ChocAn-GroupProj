@@ -566,8 +566,16 @@ public class Gui extends JFrame{
 					}
 				}
 
-				ManageAccounts.updateMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
-				JOptionPane.showMessageDialog(null, "Member was updated successfully.");
+				int code = ManageAccounts.updateMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				if(code == 0){
+					JOptionPane.showMessageDialog(null, "Member was updated successfully.");
+				}
+				else if(code == -1){
+					JOptionPane.showMessageDialog(null,"Input fields cannot be empty!");
+				}
+				else if(code == -2){
+					JOptionPane.showMessageDialog(null,"Zip Code must be 5 digits long!");
+				}
 			}
 			catch(Exception ex){}
 		}

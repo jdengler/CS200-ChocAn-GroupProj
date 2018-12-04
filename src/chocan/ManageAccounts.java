@@ -26,11 +26,11 @@ public class ManageAccounts {
     boolean flag =false;
     ma.setName(name);
 
-    try {
       String temp = Integer.toString(number);
       if (temp.length() != 9) {
-        throw new IllegalArgumentException("The member number must be 9 digits long!");
-      } else {
+          throw new IllegalArgumentException("The member number must be 9 digits long!");
+      } 
+      
         ma.setNumber(number);
         ma.setAddress(address);
         ma.setCity(city);
@@ -41,10 +41,7 @@ public class ManageAccounts {
         members.add(ma);
         printMember(members);
         flag = true;
-      }
-    } catch (IllegalArgumentException e) {
-      JOptionPane.showMessageDialog(null, e);
-    }
+     
     return flag;
   }
 
@@ -83,10 +80,22 @@ public class ManageAccounts {
    * Update an existing member
    */
 
-  public static void updateMember(String name, int number, String address, String city, String state, int zip)
-      throws FileNotFoundException, IOException {
+  public static int updateMember(String name, int number, String address, String city, String state, int zip)
+      throws FileNotFoundException, IOException, IllegalArgumentException {
     ArrayList<MemberAccounts> members = Terminal.ReadMember();
+    String zipcode = Integer.toString(zip);
+    int output = 0;
 
+    if (name.equals("") || address.equals("") || city.equals("") || state.equals("")){
+        output = -1;
+        throw new IllegalArgumentException("Input fields cannot be empty!");
+        
+    }
+    else if (zipcode.length() != 5) {
+        output = -2;
+        throw new IllegalArgumentException("Zip Code must be 5 digits long!");
+    }
+    
     for (MemberAccounts m : members) {
       if (m.getNumber() == number) {
         m.setName(name);
@@ -98,6 +107,9 @@ public class ManageAccounts {
       }
     }
     printMember(members);
+    
+    
+    return output;
   }
 
   public static void printMember(ArrayList<MemberAccounts> ma)
