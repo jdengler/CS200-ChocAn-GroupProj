@@ -83,12 +83,12 @@ public class ManageAccounts {
    * Update an existing member
    */
 
-  public static void updateMember(String name, String address, String city, String state, int zip)
+  public static void updateMember(String name, int number, String address, String city, String state, int zip)
       throws FileNotFoundException, IOException {
     ArrayList<MemberAccounts> members = Terminal.ReadMember();
 
     for (MemberAccounts m : members) {
-      if (m.getName().equals(name)) {
+      if (m.getNumber() == number) {
         m.setName(name);
         m.setNumber(m.getNumber());
         m.setAddress(address);

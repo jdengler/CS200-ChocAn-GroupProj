@@ -91,6 +91,8 @@ public class OperatorTerminal extends Terminal {
 		                    return;
 		                }
 		                else {
+		                	System.out.print("Enter member's number: ");
+		                    String number = reader.nextLine();
 		                    System.out.print("Enter member's address: ");
 		                    String address = reader.nextLine();
 		                    System.out.print("Enter member's city: ");
@@ -100,7 +102,7 @@ public class OperatorTerminal extends Terminal {
 		                    System.out.print("Enter member's zip code: ");
 		                    int zip = reader.nextInt();
 		                    reader.nextLine();
-		                    ManageAccounts.updateMember(name,address,city,state,zip);
+		                    ManageAccounts.updateMember(name,Integer.parseInt(number),address,city,state,zip);
 		                }
 		            }
 		        }

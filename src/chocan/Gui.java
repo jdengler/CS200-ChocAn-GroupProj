@@ -566,8 +566,8 @@ public class Gui extends JFrame{
 					}
 				}
 
-				ManageAccounts.updateMember(list.get(0).getText(),list.get(1).getText(),list.get(2).getText(),list.get(3).getText(),Integer.parseInt(list.get(4).getText()));
-
+				ManageAccounts.updateMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				JOptionPane.showMessageDialog(null, "Member was updated successfully.");
 			}
 			catch(Exception ex){}
 		}
@@ -967,6 +967,9 @@ public class Gui extends JFrame{
 		txtMemberName.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		inputpanel.add(backButton);
+		
+		JTextField txtMemberNumber = new JTextField(20);
+		txtMemberNumber.setVisible(false);
 
 		JLabel lblMemberAddress = new JLabel("Enter the member's address: ");
 		JTextField txtMemberAddress = new JTextField(20);
@@ -997,6 +1000,7 @@ public class Gui extends JFrame{
 				 for (MemberAccounts m : members) {
 				        if (m.getName() == name) {
 				        	txtMemberName.setText(m.getName());
+				        	txtMemberNumber.setText(String.valueOf(m.getNumber()));
 				        	txtMemberAddress.setText(m.getAddress());
 				        	txtMemberCity.setText(m.getCity());
 				        	txtMemberState.setText(m.getState());
@@ -1012,6 +1016,7 @@ public class Gui extends JFrame{
 		for (MemberAccounts m : members) {
 	        if (m.getName() == names.get(0)) {
 	        	txtMemberName.setText(m.getName());
+	        	txtMemberNumber.setText(String.valueOf(m.getNumber()));
 	        	txtMemberAddress.setText(m.getAddress());
 	        	txtMemberCity.setText(m.getCity());
 	        	txtMemberState.setText(m.getState());
@@ -1028,6 +1033,7 @@ public class Gui extends JFrame{
 		inputpanel.add(cbMembers);
 		inputpanel.add(lblMemberName);
 		inputpanel.add(txtMemberName);
+		inputpanel.add(txtMemberNumber);
 		inputpanel.add(lblMemberAddress);
 		inputpanel.add(txtMemberAddress);
 		inputpanel.add(lblMemberCity);
@@ -1046,9 +1052,17 @@ public class Gui extends JFrame{
 	}
 	
 	
-	public static JPanel makeUpdateProviderInputPanel(JButton button) {
+	public static JPanel makeUpdateProviderInputPanel(JButton button) throws FileNotFoundException, IOException {
 
 		JPanel addProviderPanel = new JPanel();
+		ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();	
+		 
+		ArrayList<String> names = new ArrayList<String>();
+		for(ProviderAccounts p : providers){
+			names.add(p.getName());
+		}
+		
+		JComboBox cbProviders = new JComboBox (names.toArray());
 
 		ButtonListener buttonListener = new ButtonListener();
 
@@ -1087,11 +1101,41 @@ public class Gui extends JFrame{
 		submitButton.addActionListener(buttonListener);
 		submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		submitButton = button;
+		
+		ItemListener itemListener = new ItemListener(){
+			 public void itemStateChanged(ItemEvent itemEvent) {
+				 String name = cbProviders.getSelectedItem().toString();
+				 
+				 for (ProviderAccounts m : providers) {
+				        if (m.getName() == name) {
+				        	txtProviderName.setText(m.getName());
+				        	txtProviderAddress.setText(m.getAddress());
+				        	txtProviderCity.setText(m.getCity());
+				        	txtProviderState.setText(m.getState());
+				        	txtProviderZipCode.setText(String.valueOf(m.getZipCode()));				          				          
+				        }
+				      } 
+			       
+			      }
+		};
+		
+		cbProviders.addItemListener(itemListener);
+		
+		for (ProviderAccounts m : providers) {
+	        if (m.getName() == names.get(0)) {
+	        	txtProviderName.setText(m.getName());
+	        	txtProviderAddress.setText(m.getAddress());
+	        	txtProviderCity.setText(m.getCity());
+	        	txtProviderState.setText(m.getState());
+	        	txtProviderZipCode.setText(String.valueOf(m.getZipCode()));				          				          
+	        }
+	      }
 
 
 		input.setActionCommand(ENTER);
 		input.addActionListener(buttonListener);
 
+		inputpanel.add(cbProviders);
 		inputpanel.add(lblProviderName);
 		inputpanel.add(txtProviderName);
 		inputpanel.add(lblProviderAddress);
