@@ -84,9 +84,17 @@ public class ManageAccounts {
    */
 
   public static void updateMember(String name, int number, String address, String city, String state, int zip)
-      throws FileNotFoundException, IOException {
+      throws FileNotFoundException, IOException, IllegalArgumentException {
     ArrayList<MemberAccounts> members = Terminal.ReadMember();
+    String zipcode = Integer.toString(zip);
 
+    if (name.equals("") || address.equals("") || city.equals("") || state.equals("")){
+        throw new IllegalArgumentException("Input fields cannot be empty!");
+    }
+    else if (zipcode.length() != 5) {
+        throw new IllegalArgumentException("Zip Code must be 5 digits long!");
+    }
+    
     for (MemberAccounts m : members) {
       if (m.getNumber() == number) {
         m.setName(name);
