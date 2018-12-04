@@ -83,15 +83,19 @@ public class ManageAccounts {
    * Update an existing member
    */
 
-  public static void updateMember(String name, int number, String address, String city, String state, int zip)
+  public static int updateMember(String name, int number, String address, String city, String state, int zip)
       throws FileNotFoundException, IOException, IllegalArgumentException {
     ArrayList<MemberAccounts> members = Terminal.ReadMember();
     String zipcode = Integer.toString(zip);
+    int output = 0;
 
     if (name.equals("") || address.equals("") || city.equals("") || state.equals("")){
+        output = -1;
         throw new IllegalArgumentException("Input fields cannot be empty!");
+        
     }
     else if (zipcode.length() != 5) {
+        output = -2;
         throw new IllegalArgumentException("Zip Code must be 5 digits long!");
     }
     
@@ -106,6 +110,9 @@ public class ManageAccounts {
       }
     }
     printMember(members);
+    
+    
+    return output;
   }
 
   public static void printMember(ArrayList<MemberAccounts> ma)
