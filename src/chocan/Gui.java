@@ -3,14 +3,18 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.ItemSelectable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -934,11 +938,21 @@ public class Gui extends JFrame{
 		return addProviderPanel;
 	}
 
-	public static JPanel makeUpdateMemberInputPanel(JButton button) {
+	public static JPanel makeUpdateMemberInputPanel(JButton button) throws FileNotFoundException, IOException {
 
 		JPanel updateMemberPanel = new JPanel();
-
+		ArrayList<MemberAccounts> members = Terminal.ReadMember();		
+		 
+		ArrayList<String> names = new ArrayList<String>();
+		for(MemberAccounts m : members){
+			names.add(m.getName());
+		}
+		
+		JComboBox cbMembers = new JComboBox (names.toArray());
+		
+		
 		ButtonListener buttonListener = new ButtonListener();
+		
 
 		JButton backButton = backToPTTerminalButton;
 
@@ -976,10 +990,42 @@ public class Gui extends JFrame{
 		submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		submitButton = button;
 
+		ItemListener itemListener = new ItemListener(){
+			 public void itemStateChanged(ItemEvent itemEvent) {
+				 String name = cbMembers.getSelectedItem().toString();
+				 
+				 for (MemberAccounts m : members) {
+				        if (m.getName() == name) {
+				        	txtMemberName.setText(m.getName());
+				        	txtMemberAddress.setText(m.getAddress());
+				        	txtMemberCity.setText(m.getCity());
+				        	txtMemberState.setText(m.getState());
+				        	txtMemberZipCode.setText(String.valueOf(m.getZipCode()));				          				          
+				        }
+				      } 
+			       
+			      }
+		};
+		
+		cbMembers.addItemListener(itemListener);
+		
+		for (MemberAccounts m : members) {
+	        if (m.getName() == names.get(0)) {
+	        	txtMemberName.setText(m.getName());
+	        	txtMemberAddress.setText(m.getAddress());
+	        	txtMemberCity.setText(m.getCity());
+	        	txtMemberState.setText(m.getState());
+	        	txtMemberZipCode.setText(String.valueOf(m.getZipCode()));				          				          
+	        }
+	      } 
+       
+      
+		
 
 		input.setActionCommand(ENTER);
 		input.addActionListener(buttonListener);
 
+		inputpanel.add(cbMembers);
 		inputpanel.add(lblMemberName);
 		inputpanel.add(txtMemberName);
 		inputpanel.add(lblMemberAddress);
@@ -998,6 +1044,8 @@ public class Gui extends JFrame{
 
 		return updateMemberPanel;
 	}
+	
+	
 	public static JPanel makeUpdateProviderInputPanel(JButton button) {
 
 		JPanel addProviderPanel = new JPanel();
