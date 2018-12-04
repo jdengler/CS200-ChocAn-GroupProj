@@ -128,6 +128,19 @@ public class ManageAccounts {
     }
   }
 
+  public static int validProvider(int number) throws FileNotFoundException, IOException {
+      ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
+
+      int found = 0;
+      for (ProviderAccounts p : providers) {
+        if (p.getNumber() == number) {
+          providers.remove(p);
+          found = 1;
+          break;
+        }
+      }
+      return found;
+  }
 
   /*
    * Add new provider
