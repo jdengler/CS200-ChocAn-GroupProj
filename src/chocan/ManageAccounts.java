@@ -26,11 +26,11 @@ public class ManageAccounts {
     boolean flag =false;
     ma.setName(name);
 
-    try {
       String temp = Integer.toString(number);
       if (temp.length() != 9) {
-        throw new IllegalArgumentException("The member number must be 9 digits long!");
-      } else {
+          throw new IllegalArgumentException("The member number must be 9 digits long!");
+      } 
+      
         ma.setNumber(number);
         ma.setAddress(address);
         ma.setCity(city);
@@ -41,10 +41,7 @@ public class ManageAccounts {
         members.add(ma);
         printMember(members);
         flag = true;
-      }
-    } catch (IllegalArgumentException e) {
-      JOptionPane.showMessageDialog(null, e);
-    }
+     
     return flag;
   }
 
