@@ -29,7 +29,7 @@ public class ManageAccountsTest {
         ManageAccounts.addProvider("Ashley Phan",122222221,"1902 West Street","Tuscaloosa","Alabama",31902);
         ManageAccounts.deleteProvider(122222221);
         
-        assertEquals(1,ManageAccounts.validProvider(122222221));
+        assertEquals(0,ManageAccounts.validProvider(122222221));
         
     }
 
