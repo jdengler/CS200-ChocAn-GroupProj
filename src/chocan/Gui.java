@@ -590,8 +590,8 @@ public class Gui extends JFrame{
 					}
 				}
 
-				ManageAccounts.updateProvider(list.get(0).getText(),list.get(1).getText(),list.get(2).getText(),list.get(3).getText(),Integer.parseInt(list.get(4).getText()));
-
+				ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
 			}
 			catch(Exception ex){}
 		}
@@ -802,7 +802,14 @@ public class Gui extends JFrame{
 
 		ButtonListener buttonListener = new ButtonListener();
 
-		JButton backButton = backToPTTerminalButton;
+		
+		JButton backButton = new JButton(new AbstractAction("Back") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {OpenManageMember();}
+				catch(Exception ex) {}
+			}
+		});
 
 		addMemberPanel.setLayout(new BoxLayout(addMemberPanel, BoxLayout.Y_AXIS));
 		addMemberPanel.setOpaque(true);
@@ -873,7 +880,13 @@ public class Gui extends JFrame{
 
 		ButtonListener buttonListener = new ButtonListener();
 
-		JButton backButton = backToPTTerminalButton;
+		JButton backButton = new JButton(new AbstractAction("Back") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {OpenManageProvider();}
+				catch(Exception ex) {}
+			}
+		});
 
 		addProviderPanel.setLayout(new BoxLayout(addProviderPanel, BoxLayout.Y_AXIS));
 		addProviderPanel.setOpaque(true);
@@ -954,7 +967,13 @@ public class Gui extends JFrame{
 		ButtonListener buttonListener = new ButtonListener();
 		
 
-		JButton backButton = backToPTTerminalButton;
+		JButton backButton = new JButton(new AbstractAction("Back") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {OpenManageMember();}
+				catch(Exception ex) {}
+			}
+		});
 
 		updateMemberPanel.setLayout(new BoxLayout(updateMemberPanel, BoxLayout.Y_AXIS));
 		updateMemberPanel.setOpaque(true);
@@ -1066,7 +1085,13 @@ public class Gui extends JFrame{
 
 		ButtonListener buttonListener = new ButtonListener();
 
-		JButton backButton = backToPTTerminalButton;
+		JButton backButton = new JButton(new AbstractAction("Back") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {OpenManageProvider();}
+				catch(Exception ex) {}
+			}
+		});
 
 		addProviderPanel.setLayout(new BoxLayout(addProviderPanel, BoxLayout.Y_AXIS));
 		addProviderPanel.setOpaque(true);
@@ -1079,6 +1104,9 @@ public class Gui extends JFrame{
 		txtProviderName.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		inputpanel.add(backButton);
+		
+		JTextField txtProviderNumber = new JTextField(20);
+		txtProviderNumber.setVisible(false);
 
 		JLabel lblProviderAddress = new JLabel("Enter the Provider's address: ");
 		JTextField txtProviderAddress = new JTextField(20);
@@ -1138,6 +1166,7 @@ public class Gui extends JFrame{
 		inputpanel.add(cbProviders);
 		inputpanel.add(lblProviderName);
 		inputpanel.add(txtProviderName);
+		inputpanel.add(txtProviderNumber);
 		inputpanel.add(lblProviderAddress);
 		inputpanel.add(txtProviderAddress);
 		inputpanel.add(lblProviderCity);
@@ -1160,7 +1189,13 @@ public class Gui extends JFrame{
 
 		ButtonListener buttonListener = new ButtonListener();
 
-		JButton backButton = backToPTTerminalButton;
+		JButton backButton = new JButton(new AbstractAction("Back") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {OpenManageMember();}
+				catch(Exception ex) {}
+			}
+		});
 
 		deleteMemberPanel.setLayout(new BoxLayout(deleteMemberPanel, BoxLayout.Y_AXIS));
 		deleteMemberPanel.setOpaque(true);
@@ -1203,7 +1238,13 @@ public class Gui extends JFrame{
 
 		ButtonListener buttonListener = new ButtonListener();
 
-		JButton backButton = backToPTTerminalButton;
+		JButton backButton = new JButton(new AbstractAction("Back") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {OpenManageProvider();}
+				catch(Exception ex) {}
+			}
+		});
 
 		deleteProviderPanel.setLayout(new BoxLayout(deleteProviderPanel, BoxLayout.Y_AXIS));
 		deleteProviderPanel.setOpaque(true);

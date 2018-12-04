@@ -169,6 +169,8 @@ public class OperatorTerminal extends Terminal {
 		                    return;
 		                }
 		                else {
+		                	System.out.print("Enter provider's number: ");
+		                    String number = reader.nextLine();
 		                    System.out.print("Enter provider's address: ");
 		                    String address = reader.nextLine();
 		                    System.out.print("Enter provider's city: ");
@@ -178,7 +180,7 @@ public class OperatorTerminal extends Terminal {
 		                    System.out.print("Enter provider's zip code: ");
 		                    int zip = reader.nextInt();
 		                    reader.nextLine();
-		                    ManageAccounts.updateProvider(name,address,city,state,zip);
+		                    ManageAccounts.updateProvider(name,Integer.parseInt(number),address,city,state,zip);
 		                }
 		            }
 		        }

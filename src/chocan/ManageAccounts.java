@@ -189,12 +189,12 @@ public class ManageAccounts {
   /*
    * Update existing provider
    */
-  public static void updateProvider(String name, String address, String city, String state, int zip)
+  public static void updateProvider(String name, int number, String address, String city, String state, int zip)
       throws FileNotFoundException, IOException {
     ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
 
     for (ProviderAccounts p : providers) {
-      if (p.getName().equals(name)) {
+      if (p.getNumber() == number) {
         p.setName(name);
         p.setNumber(p.getNumber());
         p.setAddress(address);
