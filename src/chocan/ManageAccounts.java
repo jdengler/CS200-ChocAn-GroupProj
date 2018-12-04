@@ -26,25 +26,25 @@ public class ManageAccounts {
 
     ma.setName(name);
 
-    try {
       String temp = Integer.toString(number);
       if (temp.length() != 9) {
         throw new IllegalArgumentException("The member number must be 9 digits long!");
-      } else {
-        ma.setNumber(number);
-        ma.setAddress(address);
-        ma.setCity(city);
-        ma.setState(state);
-        ma.setZipCode(zip);
-        ma.setStatus(true);
-
-        members.add(ma);
-        printMember(members);
-        JOptionPane.showMessageDialog(null, "Member saved successfully.");
       }
-    } catch (IllegalArgumentException e) {
+      
+      ma.setNumber(number);
+      ma.setAddress(address);
+      ma.setCity(city);
+      ma.setState(state);
+      ma.setZipCode(zip);
+      ma.setStatus(true);
+
+      members.add(ma);
+      printMember(members);
+      JOptionPane.showMessageDialog(null, "Member saved successfully.");  
+      
+    /*} catch (IllegalArgumentException e) {
       JOptionPane.showMessageDialog(null, e);
-    }
+    }*/
 
 
   }
@@ -128,13 +128,13 @@ public class ManageAccounts {
     }
   }
 
-  public static int validProvider(int number) throws FileNotFoundException, IOException {
-      ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
+  public static int validMember(int number) throws FileNotFoundException, IOException {
+      ArrayList<MemberAccounts> members = Terminal.ReadMember();
 
       int found = 0;
-      for (ProviderAccounts p : providers) {
-        if (p.getNumber() == number) {
-          providers.remove(p);
+      for (MemberAccounts m : members) {
+        if (m.getNumber() == number) {
+          members.remove(m);
           found = 1;
           break;
         }

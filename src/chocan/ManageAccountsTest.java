@@ -1,3 +1,8 @@
+/*
+ * Author: Ashley Phan
+ * Tests the functionality of addMember
+ */
+
 package chocan;
 
 import static org.junit.Assert.*;
@@ -16,20 +21,21 @@ public class ManageAccountsTest {
 
     @Test
     public void testAddMember() throws FileNotFoundException, IOException,IllegalArgumentException{
-        ManageAccounts.addMember("Ashley Phan",101010101,"1902 West Street","Tuscaloosa","Alabama",31902);
+        ManageAccounts.addMember("Ginny Weasley",101010101,"1902 West Street","Tuscaloosa","Alabama",31902);
+        assertEquals(1,ManageAccounts.validMember(101010101));
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void testFailDeleteMember() throws FileNotFoundException, IOException,IllegalArgumentException{
-        ManageAccounts.deleteMember(111111111);
+    public void testFailAddMember() throws FileNotFoundException, IOException,IllegalArgumentException{
+        ManageAccounts.addMember("Neville Longbottom",55155155,"123 Accident Prone","Orange County","California",99213);
+        //assertEquals(0,ManageAccounts.validProvider(55155155));
     }
 
     @Test
-    public void testSanityAddProvider()throws FileNotFoundException, IOException,IllegalArgumentException{
-        ManageAccounts.addProvider("Ashley Phan",122222221,"1902 West Street","Tuscaloosa","Alabama",31902);
-        ManageAccounts.deleteProvider(122222221);
+    public void testAddMember2()throws FileNotFoundException, IOException,IllegalArgumentException{
+        ManageAccounts.addMember("Draco Malfoy",122222221,"10 Slytherin Lane","Seattle","Washington",55432);
         
-        assertEquals(0,ManageAccounts.validProvider(122222221));
+        assertEquals(1,ManageAccounts.validMember(122222221));
         
     }
 
