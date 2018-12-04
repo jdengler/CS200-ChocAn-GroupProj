@@ -1,10 +1,7 @@
 package chocan;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.util.Scanner;
 
 public class ManagerTerminal extends Terminal{
 	
@@ -42,7 +39,7 @@ public class ManagerTerminal extends Terminal{
 		    int number = reader.nextInt();
 		    reader.nextLine();
 			
-			GenerateReport.generateMember(name, number);
+			GenerateReport.generateMember();
 		}
 			
 		else if (option == 3) { // generate provider report
@@ -54,7 +51,7 @@ public class ManagerTerminal extends Terminal{
 	        int number = reader.nextInt();
 	        reader.nextLine();
 			
-			GenerateReport.generateProvider(name, number);
+			GenerateReport.generateProvider();
 		}
 		
 		return;

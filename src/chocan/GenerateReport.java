@@ -1,5 +1,8 @@
 package chocan;
 
+import static chocan.Terminal.ReadMember;
+import static chocan.Terminal.ReadProviders;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,42 +15,67 @@ public class GenerateReport {
     /*
      * Generate desired member report and calls print member report
      */
-	public static void generateMember(String name, int number) throws FileNotFoundException, IOException{
-	    ArrayList<MemberAccounts> members = Terminal.ReadMember();
-	    
-	    for (MemberAccounts ma : members) {
-	        if (ma.getNumber() == number) {
-	            printMemberReport(ma, name);
-	            return;
-	        }
-	    }
-	    
-	    System.out.println("The member does not exist");
-	    return;
+		public static void generateMember() throws FileNotFoundException, IOException{
+			ArrayList<MemberAccounts> members = ReadMember();
+
+			for (MemberAccounts ma : members) {
+				printMemberReport(ma, ma.getName());
+
+			}
+
+			System.out.println("The member does not exist");
+			return;
+		}
+
+	public static void generateIndividualMember(int number) throws FileNotFoundException, IOException{
+		ArrayList<MemberAccounts> members = ReadMember();
+
+		for (MemberAccounts ma : members) {
+			if (ma.getNumber() == number) {
+				printMemberReport(ma, ma.getName());
+				return;
+			}
+
+		}
+
+		System.out.println("The member does not exist");
+		return;
 	}
-	
 	/*
      * Generate desired provider report and calls print provider report
      */
-	public static void generateProvider(String name, int number) throws FileNotFoundException, IOException{
-        ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
-        
-        for (ProviderAccounts pa : providers) {
-            if (pa.getNumber() == number) {
-                printProviderReport(pa, name);
-                return;
-            }
-        }
-        
-        System.out.println("The provider does not exist");
-        return;
-    }
+	public static void generateProvider() throws FileNotFoundException, IOException{
+		ArrayList<ProviderAccounts> providers = ReadProviders();
+
+		for (ProviderAccounts pa : providers) {
+
+			printProviderReport(pa, pa.getName());
+
+		}
+
+		System.out.println("The provider does not exist");
+		return;
+	}
+
+	public static void generateIndividualProvider(int number) throws FileNotFoundException, IOException{
+		ArrayList<ProviderAccounts> providers = ReadProviders();
+
+		for (ProviderAccounts pa : providers) {
+			if (pa.getNumber() == number) {
+				printProviderReport(pa, pa.getName());
+				return;
+			}
+		}
+
+		System.out.println("The provider does not exist");
+		return;
+	}
 	
 	/*
      * Prints the summary report (used by Manager)
      */
 	public static void printSummaryReport(String name) throws FileNotFoundException,IOException{
-	      ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
+	      ArrayList<ProviderAccounts> providers = ReadProviders();
 	      
 	      String filename = "writtenFiles/ServiceRecords/"+name+".txt";
 	      double totalFee = 0;

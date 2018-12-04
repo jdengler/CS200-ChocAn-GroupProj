@@ -7,24 +7,35 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * JUnit test for the generateMember function in the GenerateReport class.
+ *
+ * @author Hunter Esposito
+ * @version 1.0
+ */
+
 public class GenerateReportTest {
 
-  @Before
-  public void setUp() throws Exception {
-  }
-
-  @Test
+  /**
+   * Tests generateMember with a valid member name and member #, should run correctly
+   */
+  /*@Test
   public void testGenerateMemberSuccess() throws FileNotFoundException, IOException {
     GenerateReport.generateMember("Harry Potter", 123456789);
   }
 
+  *//**
+   *
+   * @throws FileNotFoundException
+   * @throws IOException
+   *//*
   @Test(expected = FileNotFoundException.class)
-  public void testGenerateMemberException() throws FileNotFoundException, IOException{
-    GenerateReport.generateMember("Doesnt Exist", 123456789);
+  public void testGenerateProviderException() throws FileNotFoundException, IOException {
+    GenerateReport.generateProvider("Doesnt Exist", 987654321);
   }
 
-  @Test
-  public void testGenerateMemberFailure() throws FileNotFoundException, IOException {
-    GenerateReport.generateMember("Harry Potter", 123);
-  }
+  @Test(expected = FileNotFoundException.class)
+  public void testPrintSummaryReportFailure() throws FileNotFoundException, IOException {
+    GenerateReport.printSummaryReport("HarryPotter");*/
+
 }
