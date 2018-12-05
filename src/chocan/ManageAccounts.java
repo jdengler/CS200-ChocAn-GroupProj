@@ -266,5 +266,20 @@ public class ManageAccounts {
       input.close();
     }
   }
-
+  
+	public static MemberAccounts findMember(int memNum) throws FileNotFoundException, IOException{
+	    ArrayList<MemberAccounts> me = Terminal.ReadMember();	    
+	    MemberAccounts ma = new MemberAccounts();
+	    
+	    
+	    for(MemberAccounts account : me) {
+	        if(account.getNumber() == memNum) {	            
+	            ma = account;
+	        }
+	    }
+	    
+	    return ma;
+	  }
 }
+
+
