@@ -415,6 +415,19 @@ public class ManageAccounts {
 
     return ma;
   }
+  
+  public static ProviderAccounts findProvider(int proNum) throws FileNotFoundException, IOException {
+	    ArrayList<ProviderAccounts> lpa = Terminal.ReadProviders();
+	    ProviderAccounts pa = new ProviderAccounts();
+
+	    for (ProviderAccounts account : lpa) {
+	      if (account.getNumber() == proNum) {
+	        pa = account;
+	      }
+	    }
+
+	    return pa;
+	  }
 }
 
 
