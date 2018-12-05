@@ -554,9 +554,11 @@ public class Gui extends JFrame{
 				 boolean flag = ManageAccounts.addMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
 				if(flag == true){
 					JOptionPane.showMessageDialog(null, "Member saved successfully.");
+					OpenOTerminal();
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Error. The member was not added.");
+					OpenOTerminal();
 				}
 			}
 			catch(Exception ex){}
@@ -580,8 +582,16 @@ public class Gui extends JFrame{
 					}
 				}
 
-				ManageAccounts.addProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
-
+				boolean flag = ManageAccounts.addProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				
+				if(flag == true){
+					JOptionPane.showMessageDialog(null, "Provider saved successfully.");
+					OpenOTerminal();
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Error. The Provider was not added.");
+					OpenOTerminal();
+				}
 			}
 			catch(Exception ex){}
 		}
@@ -614,6 +624,9 @@ public class Gui extends JFrame{
 				else if(code == -2){
 					JOptionPane.showMessageDialog(null,"Zip Code must be 5 digits long!");
 				}
+				else if(code == -3) {
+					JOptionPane.showMessageDialog(null,"Member number must be 9 digits long!");
+				}
 			}
 			catch(Exception ex){}
 		}
@@ -636,8 +649,19 @@ public class Gui extends JFrame{
 					}
 				}
 
-				ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
-				JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
+				int code = ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				if(code == 0){
+					JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
+				}
+				else if(code == -1){
+					JOptionPane.showMessageDialog(null,"Input fields cannot be empty!");
+				}
+				else if(code == -2){
+					JOptionPane.showMessageDialog(null,"Zip Code must be 5 digits long!");
+				}
+				else if(code == -3) {
+					JOptionPane.showMessageDialog(null,"Provider number must be 9 digits long!");
+				}
 			}
 			catch(Exception ex){}
 		}
