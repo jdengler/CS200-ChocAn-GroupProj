@@ -23,7 +23,7 @@ public class BillChocAn {
 
   /**
    * billChocan() allows the provider to bill chocan after a service has been provided and updates both member and provider database
-   * @param none
+   * @param String currentDate, String actDate, int providerNum, int serviceCode, int memberNum
    * @throws FileNotFoundException
    * @throws IOException
    * @return void
@@ -43,9 +43,6 @@ public class BillChocAn {
       return;
     }
 
-    //DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-    //Date date = new Date();
-    //String strDate = dateFormat.format(date);
     sr.setCurrentDateTime(currentDate);
 
     sr.setDateOfService(actDate);
@@ -53,26 +50,20 @@ public class BillChocAn {
     sr.setMemberNumber(memberNum);
     String ProviderDir = "";
     for (ProviderDirectoryEntry pd : pde) {
-      //System.out.println(pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee());
     	ProviderDir += pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee()+"\n";
     }
-    //JOptionPane.showMessageDialog(null,ProviderDir);
     
     ProviderDirectoryEntry valid = ProviderDirectory.validEntry(serviceCode);
     if (valid == null) {
       reader.close();
       return;
     }
-    //System.out.println("The total fee for the service " + valid.getServiceName()+"is $"+valid.getServiceFee());
-    //JOptionPane.showMessageDialog(null,"The total fee for the service " + valid.getServiceName() + "is $" + valid.getServiceFee());
+   
     int dialogResult = JOptionPane.showConfirmDialog(null, "The total fee for the service " + valid.getServiceName() + " is $" + valid.getServiceFee()+" Would you like to continue? ", "Attention",JOptionPane.YES_NO_OPTION);
     if (dialogResult == JOptionPane.YES_OPTION) {
       // Saving code here
     }
 
-    //System.out.println("Would you like to continue? [Y/N]");
-    //reader.nextLine();
-    //String check = reader.nextLine();
     if (dialogResult == JOptionPane.NO_OPTION) {
       reader.close();
       return;
@@ -80,17 +71,13 @@ public class BillChocAn {
     else if(dialogResult == JOptionPane.YES_OPTION){
     	 sr.setServiceCode(serviceCode);
 
-    	    //System.out.println("Enter comments [Press Enter If No Comments]: ");
-    	    //reader.nextLine();
     	    String comment = JOptionPane.showInputDialog("Enter comments : ");
-    	    //String comment = reader.nextLine();
     	    sr.setComments(comment);
 
     	    sr.setMemberNumber(found.getNumber());
     	    found.addService(sr);
     	    providerFound.addService(sr);
 
-    	    //Is this redundant?
     	    for (MemberAccounts member : me) {
     	      if (member.getNumber() == found.getNumber()) {
     	        member.addService(sr);
@@ -131,7 +118,7 @@ public class BillChocAn {
 
   /**
    * printBill() updates the member database by adding the new service provided
-   * @param none
+   * @param ArrayList of memberAccounts
    * @throws FileNotFoundException
    * @throws IOException
    * @return none
@@ -141,8 +128,7 @@ public class BillChocAn {
     String filename = "Database/member.txt";
 
     File file = new File(filename);
-	      /*Path oPath = Paths.get(filename);
-	      File oFile = oPath.toFile();*/
+
     try (BufferedWriter input = new BufferedWriter(new FileWriter(file))) {
       for (MemberAccounts member : ma) {
         input.write(
