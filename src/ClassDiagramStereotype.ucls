@@ -3,25 +3,25 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="chocan.ManagerTerminal" project="cs200fall2018team2" 
     file="/cs200fall2018team2/src/chocan/ManagerTerminal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="268" x="-346" y="738"/>    
+    <position height="117" width="125" x="1080" y="1226"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="chocan.MemberAccounts" project="cs200fall2018team2" 
-    file="/cs200fall2018team2/src/chocan/MemberAccounts.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="549" width="441" x="-147" y="1039"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="chocan.Gui" project="cs200fall2018team2" 
+  <class id="2" language="java" name="chocan.Gui" project="cs200fall2018team2" 
     file="/cs200fall2018team2/src/chocan/Gui.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="549" width="250" x="83" y="-152"/>    
+    <position height="837" width="252" x="987" y="-258"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="chocan.GenerateReport" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/GenerateReport.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="268" x="162" y="-258"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,146 +30,181 @@
   </class>  
   <class id="4" language="java" name="chocan.ServiceRecord" project="cs200fall2018team2" 
     file="/cs200fall2018team2/src/chocan/ServiceRecord.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="513" width="274" x="368" y="1628"/>    
+    <position height="495" width="238" x="1622" y="1226"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="chocan.Terminal" project="cs200fall2018team2" 
-    file="/cs200fall2018team2/src/chocan/Terminal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="168" x="-21" y="437"/>    
+  <class id="5" language="java" name="chocan.BillChocAn" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/BillChocAn.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="233" x="470" y="-258"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="chocan.ProviderTerminal" project="cs200fall2018team2" 
-    file="/cs200fall2018team2/src/chocan/ProviderTerminal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="233" x="-38" y="738"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="chocan.ProviderDirectory" project="cs200fall2018team2" 
+  <class id="6" language="java" name="chocan.ProviderDirectory" project="cs200fall2018team2" 
     file="/cs200fall2018team2/src/chocan/ProviderDirectory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="302" x="339" y="-152"/>    
+    <position height="117" width="204" x="743" y="-258"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="chocan.ProviderDirectoryEntry" project="cs200fall2018team2" 
-    file="/cs200fall2018team2/src/chocan/ProviderDirectoryEntry.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="220" x="421" y="437"/>    
+  <class id="7" language="java" name="chocan.ValidateMember" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/ValidateMember.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="208" x="1279" y="-258"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="chocan.ProviderAccounts" project="cs200fall2018team2" 
+  <class id="8" language="java" name="chocan.ProviderAccounts" project="cs200fall2018team2" 
     file="/cs200fall2018team2/src/chocan/ProviderAccounts.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="513" width="286" x="334" y="1039"/>    
+    <position height="513" width="286" x="1622" y="619"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="chocan.OperatorTerminal" project="cs200fall2018team2" 
+  <class id="9" language="java" name="chocan.OperatorTerminal" project="cs200fall2018team2" 
     file="/cs200fall2018team2/src/chocan/OperatorTerminal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="268" x="235" y="738"/>    
+    <position height="117" width="124" x="1245" y="1226"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="chocan.Gui.ButtonListener" project="cs200fall2018team2" 
+  <class id="10" language="java" name="chocan.Gui.ButtonListener" project="cs200fall2018team2" 
     file="/cs200fall2018team2/src/chocan/Gui.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="194" x="187" y="437"/>    
+    <position height="99" width="194" x="987" y="619"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="12">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="13" name="providerDirectoryEntries"/>      
-      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+  <class id="11" language="java" name="chocan.RequestProviderDirectory" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/RequestProviderDirectory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="171" x="1527" y="-258"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="chocan.MemberAccounts" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/MemberAccounts.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="567" width="441" x="1948" y="619"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="chocan.Terminal" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/Terminal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="337" x="1245" y="619"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="chocan.ProviderTerminal" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/ProviderTerminal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="123" x="1409" y="1226"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="chocan.ProviderDirectoryEntry" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/ProviderDirectoryEntry.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="329" x="1738" y="-258"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="chocan.ManageAccounts" project="cs200fall2018team2" 
+    file="/cs200fall2018team2/src/chocan/ManageAccounts.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="282" x="2107" y="-258"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="17">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="18" name="servicesProvided"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="21" name="term"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <association id="25">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="26" name="ma"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="29" name="servicesProvided"/>      
+      <multiplicity id="30" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="32" name="pacc"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="15">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="16" name="pacc"/>      
-      <multiplicity id="17" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="18">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="19" name="term"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="5"/>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="13"/>  
   </generalization>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <association id="23">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="24" name="ma"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="26">    
-    <bendpoint x="650" y="1039"/>    
-    <bendpoint x="650" y="738"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <nesting id="27">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="11"/>  
+  <nesting id="35">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="10"/>  
   </nesting>  
-  <generalization id="28">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="5"/>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="13"/>  
   </generalization>  
-  <association id="29">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="30" name="servicesProvided"/>      
-      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="33" name="servicesProvided"/>      
-      <multiplicity id="34" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
