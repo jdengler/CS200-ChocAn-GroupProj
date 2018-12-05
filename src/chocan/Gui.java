@@ -34,6 +34,9 @@ public class Gui extends JFrame{
 	static Terminal term = new Terminal();
 	static JLabel nullLabel = null;
 	private static JLabel labelG = new JLabel();
+	public static String memberNumber;
+	public static String serviceDate;
+	public static String providerNumber;
 
 
 	public static void createFrame()
@@ -178,10 +181,12 @@ public class Gui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try{
-					labelG.setText("Enter member number : ");
-					setFrame(makeValidatePanel(validateButton));
-					//if()
-					setFrame(makeBillChocAnInputPanel(submitBillButton));
+					memberNumber = JOptionPane.showInputDialog("Enter member number : ");
+					MemberAccounts ma = ValidateMember.validateMember(Integer.parseInt(memberNumber));
+					if(ma.getStatus() == true){
+						setFrame(makeBillChocAnInputPanel(continueBillButton));
+					}
+					
 				}
 				catch(Exception ex){}
 			}
@@ -475,8 +480,7 @@ public class Gui extends JFrame{
 	static JButton submitBillButton = new JButton(new AbstractAction("Submit") {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			try {
-
+			try {				
 				JPanel contentPane = panel;
 				Component[] components = contentPane.getComponents();
 
@@ -489,8 +493,34 @@ public class Gui extends JFrame{
 					}
 				}
 
+				BillChocAn.billChocan(serviceDate, Integer.parseInt(providerNumber),Integer.parseInt(list.get(0).getText()), Integer.parseInt(memberNumber));
+			}
+			catch(Exception ex){}
+		}
+	});
+	
+	static JButton continueBillButton = new JButton(new AbstractAction("Continue") {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			try {
+				
+				JPanel contentPane = panel;
+				Component[] components = contentPane.getComponents();
 
-				BillChocAn.billChocan(list.get(0).getText(), Integer.parseInt(list.get(1).getText()),Integer.parseInt(list.get(2).getText()), Integer.parseInt(list.get(3).getText()));
+				ArrayList<JTextField> list = new ArrayList<JTextField>();
+
+
+				for (Component component : components) {
+					if (component.getClass().equals(JTextField.class)) {
+						list.add((JTextField)component);
+					}
+				}
+				
+				serviceDate = list.get(0).getText();
+				providerNumber = list.get(1).getText();
+				
+				setFrame(makeProDirInfoInputPanel(submitBillButton));
+			
 			}
 			catch(Exception ex){}
 		}
@@ -769,13 +799,11 @@ public class Gui extends JFrame{
 		JTextField txtProviderNumber = new JTextField(20);
 		txtProviderNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		JLabel lblServiceCode = new JLabel("Enter the six-digit service code: ");
-		JTextField txtServiceCode = new JTextField(20);
-		txtServiceCode.setAlignmentX(Component.CENTER_ALIGNMENT);
+		//JLabel lblServiceCode = new JLabel("Enter the six-digit service code: ");
+		//JTextField txtServiceCode = new JTextField(20);
+		//txtServiceCode.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		JLabel lblMemberNumber = new JLabel("Enter the member number: ");
-		JTextField txtMemberNumber = new JTextField(20);
-		txtMemberNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
 
 		JButton submitButton = new JButton("Submit");
 		submitButton.setActionCommand(ENTER);
@@ -791,10 +819,60 @@ public class Gui extends JFrame{
 		inputpanel.add(txtDateOfService);
 		inputpanel.add(lblProviderNumber);
 		inputpanel.add(txtProviderNumber);
+		//inputpanel.add(lblServiceCode);
+		//inputpanel.add(txtServiceCode);
+		
+
+		inputpanel.add(submitButton);
+		inputpanel.setLayout(new BoxLayout(inputpanel, BoxLayout.Y_AXIS));
+		BillChocAnpanel.add(inputpanel);
+		panel = inputpanel;
+
+		return BillChocAnpanel;
+	}
+	
+	public static JPanel makeProDirInfoInputPanel(JButton button) throws FileNotFoundException, IOException {
+
+		JPanel BillChocAnpanel = new JPanel();
+
+		ButtonListener buttonListener = new ButtonListener();
+
+		JButton backButton = backToPTTerminalButton;
+
+		BillChocAnpanel.setLayout(new BoxLayout(BillChocAnpanel, BoxLayout.Y_AXIS));
+		BillChocAnpanel.setOpaque(true);
+
+		JPanel inputpanel = new JPanel();
+		inputpanel.setLayout(new FlowLayout());
+		inputpanel.add(backButton);
+		JLabel lblProDirInfo = new JLabel("Provider Directory Information: ");
+		JTextArea txtaProDir = new JTextArea();
+		
+		txtaProDir.setText(BillChocAn.getProviderDirectoryInfo());
+		txtaProDir.setEditable(false);
+		
+		JLabel lblServiceCode = new JLabel("Enter the six-digit service code: ");
+		JTextField txtServiceCode = new JTextField(20);
+		txtServiceCode.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+		
+
+		JButton submitButton = new JButton("Submit");
+		submitButton.setActionCommand(ENTER);
+		submitButton.addActionListener(buttonListener);
+		submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		submitButton = button;
+
+
+		input.setActionCommand(ENTER);
+		input.addActionListener(buttonListener);
+
+		inputpanel.add(lblProDirInfo);
+		inputpanel.add(txtaProDir);
 		inputpanel.add(lblServiceCode);
 		inputpanel.add(txtServiceCode);
-		inputpanel.add(lblMemberNumber);
-		inputpanel.add(txtMemberNumber);
+		
+		
 
 		inputpanel.add(submitButton);
 		inputpanel.setLayout(new BoxLayout(inputpanel, BoxLayout.Y_AXIS));
