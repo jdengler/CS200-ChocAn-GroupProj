@@ -12,6 +12,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 public class Terminal {
   //static ManageAccounts ma = new ManageAccounts(); 
 	
@@ -249,7 +251,8 @@ public class Terminal {
           input.close();
       }
       
-      System.out.println("The provider directory has been saved in test2");
+      JOptionPane.showMessageDialog(null, "The provider directory has been saved to ProviderDirectory.txt within writtenFiles/ProviderDirectory");
+
       
   }
 }

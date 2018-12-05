@@ -175,7 +175,7 @@ public class ManageAccounts {
     providers.add(pacc);
     printProviders(providers);
 
-    System.out.println("\nThe provider was sucessfully added");
+    JOptionPane.showMessageDialog(null, "The provider was sucessfully added");
   }
 
   /*
@@ -194,12 +194,12 @@ public class ManageAccounts {
     }
 
     if (found == -1) {
-      System.out.println("The provider does not exist");
+      JOptionPane.showMessageDialog(null, "The provider does not exist");
       return;
     }
 
     printProviders(providers);
-    System.out.println("\nThe provider was sucessfully deleted");
+    JOptionPane.showMessageDialog(null, "The provider was sucessfully deleted");
   }
 
   /*
@@ -238,8 +238,8 @@ public class ManageAccounts {
         printProviders(providers);
       }
     }
-
-    System.out.println("\nThe provider was sucessfully updated");
+    JOptionPane.showMessageDialog(null, "The provider was sucessfully updated");
+    
     return output;
   }
   
