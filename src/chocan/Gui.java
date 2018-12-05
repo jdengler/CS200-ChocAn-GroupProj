@@ -340,7 +340,7 @@ public class Gui extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try{
-					setFrame(makeUpdateMemberInputPanel(updateMemberButton));
+					setFrame(makeUpdateProviderInputPanel(updateProviderButton));
 				}
 				catch(Exception ex){}
 			}
@@ -359,7 +359,7 @@ public class Gui extends JFrame{
 		JButton btnExit = new JButton(new AbstractAction("Exit") {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {initFrame();}
+				try {OpenOTerminal();}
 				catch(Exception ex) {}
 			}
 		});
@@ -774,7 +774,6 @@ public class Gui extends JFrame{
 		return panel;
 	}
 
-
 	public static JPanel makeBillChocAnInputPanel(JButton button) {
 
 		JPanel BillChocAnpanel = new JPanel();
@@ -1067,7 +1066,9 @@ public class Gui extends JFrame{
 		JPanel inputpanel = new JPanel();
 		inputpanel.setLayout(new FlowLayout());
 		JLabel lblMemberName = new JLabel("Enter the member's name: ");
-		lblMemberName.setAlignmentY(LEFT_ALIGNMENT);
+		lblMemberName.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+		
 		JTextField txtMemberName = new JTextField(20);
 		txtMemberName.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -1077,18 +1078,22 @@ public class Gui extends JFrame{
 		txtMemberNumber.setVisible(false);
 
 		JLabel lblMemberAddress = new JLabel("Enter the member's address: ");
+		lblMemberAddress.setAlignmentX(Component.CENTER_ALIGNMENT);
 		JTextField txtMemberAddress = new JTextField(20);
 		txtMemberAddress.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JLabel lblMemberCity = new JLabel("Enter the member's city: ");
+		lblMemberCity.setAlignmentX(CENTER_ALIGNMENT);
 		JTextField txtMemberCity = new JTextField(20);
 		txtMemberCity.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JLabel lblMemberState = new JLabel("Enter the member's state: ");
+		lblMemberState.setAlignmentX(CENTER_ALIGNMENT);
 		JTextField txtMemberState = new JTextField(20);
 		txtMemberState.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JLabel lblMemberZipCode = new JLabel("Enter the member's zip code: ");
+		lblMemberZipCode.setAlignmentX(CENTER_ALIGNMENT);
 		JTextField txtMemberZipCode = new JTextField(20);
 		txtMemberZipCode.setAlignmentX(Component.CENTER_ALIGNMENT);
 

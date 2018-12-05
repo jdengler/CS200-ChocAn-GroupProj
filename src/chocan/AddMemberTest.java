@@ -13,7 +13,7 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ManageAccountsTest {
+public class AddMemberTest {
 
     @Before
     public void setUp() throws Exception {
