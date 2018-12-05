@@ -28,7 +28,7 @@ public class ProviderDirectoryTest {
 
   @Test
   public void validEntryFailure() throws FileNotFoundException, IOException {
-    assertNull(ProviderDirectory.validEntry(12).getServiceName());
+    assertNull(ProviderDirectory.validEntry(122222).getServiceName());
   }
 
   @Test (expected = IllegalArgumentException.class)
