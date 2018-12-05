@@ -107,8 +107,7 @@ public class GenerateReport {
 		int totalConsults = 0;
 
 		File file = new File(filename);
-	      /*Path oPath = Paths.get(filename);
-	      File oFile = oPath.toFile();*/
+	      
 		try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
 			for (ProviderAccounts pa : providers) {
 				ArrayList<ServiceRecord> sr = pa.getServicesProvided();
@@ -144,8 +143,7 @@ public class GenerateReport {
 		String filename = "writtenFiles/MemberReports/"+name+".txt";
 
 		File file = new File(filename);
-	      /*Path oPath = Paths.get(filename);
-	      File oFile = oPath.toFile();*/
+	      
 		try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
 			input.write(member.getName()+"\n"+member.getNumber()+"\n"+member.getAddress()+"\n"+member.getCity()+"\n"+member.getState()+"\n"+member.getZipCode()+"\n");
 
@@ -169,14 +167,12 @@ public class GenerateReport {
 	 * @return void
 	 */
 	public static void printProviderReport(ProviderAccounts provider, String name) throws FileNotFoundException, IOException{
-		//ArrayList<ProviderAccounts> pa = ReadProviders();
 		name = name.replaceAll("\\s+", "");
 		double totalFee = 0;
 		String filename = "writtenFiles/ProviderReports/"+name+".txt";
 
 		File file = new File(filename);
-	      /*Path oPath = Paths.get(filename);
-	      File oFile = oPath.toFile();*/
+	      
 		try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
 			input.write(provider.getName()+"\n"+provider.getNumber()+"\n"+provider.getAddress()+"\n"+provider.getCity()+"\n"+provider.getState()+"\n"+provider.getZipCode()+"\n");
 
