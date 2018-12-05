@@ -1,4 +1,9 @@
-// Author: Namito Yokota
+/**
+ * The Provider Terminal class. This provides an interface for the provider to interact with.
+ * Three actions can be performed: validate a chocan member, bill chocan, or request a provider directory
+ * @author Namito Yokota
+ * 
+ */
 
 package chocan;
 import java.nio.file.*;
@@ -31,6 +36,13 @@ public class ProviderTerminal extends Terminal {
   
   private static Scanner reader = new Scanner(System.in);
   
+  /**
+   * providerMenu() prompts the provider to pick an action to be performed
+   * @param none
+   * @return void
+   * @throws FileNotFoundException
+   * @throws IOException
+   */
   public static void providerMenu() throws FileNotFoundException, IOException {
 	System.out.println("\nProvider Terminal");
 	System.out.println("1.) Validate a ChocAn member"); 
