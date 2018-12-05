@@ -63,5 +63,11 @@ public class updateMemberTest {
     	ManageAccounts.updateMember("Harry Potter",123456789,"1234 Hogwarts Express","San Diego","California",301);
     }
     
+    //Test Fail for invalid member number of 3 digits
+    @Test (expected = IllegalArgumentException.class)
+    public void testFailInvalidMemberNumberUpdateMember()throws FileNotFoundException, IOException,IllegalArgumentException{
+    	ManageAccounts.updateMember("Harry Potter",123,"1234 Hogwarts Express","San Diego","California",30128);
+    }
+    
 
 }
