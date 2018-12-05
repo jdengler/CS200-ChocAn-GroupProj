@@ -28,10 +28,16 @@ public class UpdateProviderTest {
 		ManageAccounts.updateProvider("", 123456789, "", "", "", 77777);
 	}
 	
-	//Test for failure (Zip code length > max)
+	//Test for failure (Zip code length != 5)
 	@Test (expected = IllegalArgumentException.class)
-	public void testIntFailureUpdateProvider() throws FileNotFoundException, IOException, IllegalArgumentException {
+	public void testZipFailureUpdateProvider() throws FileNotFoundException, IOException, IllegalArgumentException {
 		ManageAccounts.updateProvider("Rubeus Hagrid", 123456789, "1 Forbidden Forest Drive", "Hogwarts", "Scotland", 777777);
+	}
+	
+	//Test for failure (Provider number length != 9)
+	@Test (expected = IllegalArgumentException.class)
+	public void testNumFailureUpdateProvider() throws FileNotFoundException, IOException, IllegalArgumentException {
+		ManageAccounts.updateProvider("Rubeus Hagrid", 1234567890, "1 Forbidden Forest Drive", "Hogwarts", "Scotland", 77777);
 	}
 
 }

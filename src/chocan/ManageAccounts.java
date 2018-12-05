@@ -205,10 +205,27 @@ public class ManageAccounts {
   /*
    * Update existing provider
    */
-  public static void updateProvider(String name, int number, String address, String city, String state, int zip)
+  public static int updateProvider(String name, int number, String address, String city, String state, int zip)
       throws FileNotFoundException, IOException {
     ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
+    String zipcode = Integer.toString(zip);
+    String numberStr = Integer.toString(number);
+    int output = 0;
 
+    if (name.equals("") || address.equals("") || city.equals("") || state.equals("")){
+        output = -1;
+        throw new IllegalArgumentException("Input fields cannot be empty!");
+        
+    }
+    else if (zipcode.length() != 5) {
+        output = -2;
+        throw new IllegalArgumentException("Zip Code must be 5 digits long!");
+    }
+    else if (numberStr.length() != 9) {
+    	output = -3;
+    	throw new IllegalArgumentException("Provider number must be 9 digits long!");
+    }
+    
     for (ProviderAccounts p : providers) {
       if (p.getNumber() == number) {
         p.setName(name);
@@ -223,6 +240,7 @@ public class ManageAccounts {
     }
 
     System.out.println("\nThe provider was sucessfully updated");
+    return output;
   }
   
   public static int validProvider(int number) throws FileNotFoundException, IOException {
