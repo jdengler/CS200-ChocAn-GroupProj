@@ -18,7 +18,7 @@ public class BillChocAn {
   private static Scanner reader = new Scanner(System.in);
 
 
-  public static void billChocan(String actDate, int providerNum, int serviceCode, int memberNum)
+  public static void billChocan(String currentDate, String actDate, int providerNum, int serviceCode, int memberNum)
       throws FileNotFoundException, IOException {
     ArrayList<MemberAccounts> me = Terminal.ReadMember();
     ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
@@ -31,10 +31,10 @@ public class BillChocAn {
       return;
     }
 
-    DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-    Date date = new Date();
-    String strDate = dateFormat.format(date);
-    sr.setCurrentDateTime(strDate);
+    //DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+    //Date date = new Date();
+    //String strDate = dateFormat.format(date);
+    sr.setCurrentDateTime(currentDate);
 
     sr.setDateOfService(actDate);
     sr.setProviderNumber(providerNum);

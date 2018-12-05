@@ -23,5 +23,19 @@ public class ProviderDirectory {
         
         return entry;
     }
+	
+	public static boolean findEntry(int code) throws FileNotFoundException,IOException{
+        ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
+        ProviderDirectoryEntry entry = new ProviderDirectoryEntry();
+        boolean flag = false;
+        for (ProviderDirectoryEntry pd : pde) {
+            if (pd.getServiceCode() == code) {
+                entry = pd;
+                flag = true;
+            }
+        }
+        
+        return flag;
+    }
 
 }

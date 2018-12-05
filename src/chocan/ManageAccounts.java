@@ -27,9 +27,14 @@ public class ManageAccounts {
     ma.setName(name);
 
       String temp = Integer.toString(number);
-      if (temp.length() != 9) {
-          throw new IllegalArgumentException("The member number must be 9 digits long!");
-      } 
+      try {
+	      if (temp.length() != 9) {
+	          throw new IllegalArgumentException("The member number must be 9 digits long!");
+	      }
+      }
+      catch(IllegalArgumentException e) {
+      	return flag;
+      }
       
         ma.setNumber(number);
         ma.setAddress(address);
@@ -79,22 +84,31 @@ public class ManageAccounts {
   /*
    * Update an existing member
    */
-
   public static int updateMember(String name, int number, String address, String city, String state, int zip)
       throws FileNotFoundException, IOException, IllegalArgumentException {
     ArrayList<MemberAccounts> members = Terminal.ReadMember();
     String zipcode = Integer.toString(zip);
+    String numberStr = Integer.toString(number);
     int output = 0;
 
-    if (name.equals("") || address.equals("") || city.equals("") || state.equals("")){
-        output = -1;
-        throw new IllegalArgumentException("Input fields cannot be empty!");
-        
+    try {
+	    if (name.equals("") || address.equals("") || city.equals("") || state.equals("")){
+	        output = -1;
+	        throw new IllegalArgumentException("Input fields cannot be empty!");
+	    }
+	    else if (zipcode.length() != 5) {
+	        output = -2;
+	        throw new IllegalArgumentException("Zip Code must be 5 digits long!");
+	    }
+	    else if (numberStr.length() != 9) {
+	    	output = -3;
+	    	throw new IllegalArgumentException("Member number must be 9 digits long!");
+	    }
     }
-    else if (zipcode.length() != 5) {
-        output = -2;
-        throw new IllegalArgumentException("Zip Code must be 5 digits long!");
+    catch(IllegalArgumentException e) {
+    	return output;
     }
+    
     
     for (MemberAccounts m : members) {
       if (m.getNumber() == number) {
@@ -155,14 +169,19 @@ public class ManageAccounts {
   /*
    * Add new provider
    */
-
-  public static void addProvider(String name, int number, String address, String city, String state,
+  public static boolean addProvider(String name, int number, String address, String city, String state,
       int zip) throws FileNotFoundException, IOException {
     ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
+    boolean flag =false;
     
     String pn = Integer.toString(number);
-    if (pn.length() != 9) {
-      throw new IllegalArgumentException("The provider number must be 9 digits long!");
+    try {
+	    if (pn.length() != 9) {
+	      throw new IllegalArgumentException("The provider number must be 9 digits long!");
+	    }
+    }
+    catch(IllegalArgumentException e) {
+    	return flag;
     }
 
     pacc.setName(name);
@@ -174,8 +193,10 @@ public class ManageAccounts {
 
     providers.add(pacc);
     printProviders(providers);
+    flag = true;
+    
+    return flag;
 
-    JOptionPane.showMessageDialog(null, "The provider was sucessfully added");
   }
 
   /*
@@ -212,18 +233,22 @@ public class ManageAccounts {
     String numberStr = Integer.toString(number);
     int output = 0;
 
-    if (name.equals("") || address.equals("") || city.equals("") || state.equals("")){
-        output = -1;
-        throw new IllegalArgumentException("Input fields cannot be empty!");
-        
+    try {
+	    if (name.equals("") || address.equals("") || city.equals("") || state.equals("")){
+	        output = -1;
+	        throw new IllegalArgumentException("Input fields cannot be empty!");
+	    }
+	    else if (zipcode.length() != 5) {
+	        output = -2;
+	        throw new IllegalArgumentException("Zip Code must be 5 digits long!");
+	    }
+	    else if (numberStr.length() != 9) {
+	    	output = -3;
+	    	throw new IllegalArgumentException("Provider number must be 9 digits long!");
+	    }
     }
-    else if (zipcode.length() != 5) {
-        output = -2;
-        throw new IllegalArgumentException("Zip Code must be 5 digits long!");
-    }
-    else if (numberStr.length() != 9) {
-    	output = -3;
-    	throw new IllegalArgumentException("Provider number must be 9 digits long!");
+    catch(IllegalArgumentException e) {
+    	return output;
     }
     
     for (ProviderAccounts p : providers) {
@@ -237,9 +262,7 @@ public class ManageAccounts {
 
         printProviders(providers);
       }
-    }
-    JOptionPane.showMessageDialog(null, "The provider was sucessfully updated");
-    
+    }    
     return output;
   }
   
