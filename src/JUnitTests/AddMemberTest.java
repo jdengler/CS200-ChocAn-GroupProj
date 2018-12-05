@@ -25,6 +25,7 @@ public class AddMemberTest {
     public void testAddMember() throws FileNotFoundException, IOException,IllegalArgumentException{
         ManageAccounts.addMember("Ginny Weasley",101010101,"1902 West Street","Tuscaloosa","Alabama",31902);
         assertEquals(1,ManageAccounts.validMember(101010101));
+        ManageAccounts.deleteMember(101010101);
     }
 
     @Test (expected = IllegalArgumentException.class)
@@ -35,10 +36,9 @@ public class AddMemberTest {
 
     @Test
     public void testAddMember2()throws FileNotFoundException, IOException,IllegalArgumentException{
-        ManageAccounts.addMember("Draco Malfoy",122222221,"10 Slytherin Lane","Seattle","Washington",55432);
-        
+        ManageAccounts.addMember("Draco Malfoy",122222221,"10 Slytherin Lane","Seattle","Washington",55432);        
         assertEquals(1,ManageAccounts.validMember(122222221));
-        
+        ManageAccounts.deleteMember(122222221);
     }
     
 
