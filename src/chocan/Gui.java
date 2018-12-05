@@ -1,6 +1,7 @@
 package chocan;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.ItemSelectable;
@@ -8,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -446,14 +448,29 @@ public class Gui extends JFrame{
 				catch(Exception ex) {}
 			}
 		});
+		JButton userManual = new JButton(new AbstractAction("Open User Manual") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (Desktop.isDesktopSupported()) {
+			            try {
+			                File myFile = new File( "writtenFiles\\ChocoholicsAnonymous.pdf");
+			                Desktop.getDesktop().open(myFile);
+			            } catch (IOException ex) {
+			                // no application registered for PDFs
+			            }
+			        }
+				}
+				catch(Exception ex) {}
+			}
+		});
 
 		manTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);		
-		Dimension size = manTerminal.getPreferredSize();
-		size.setSize(100, 100); 		
-		manTerminal.setPreferredSize(size);
-		
 		provTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
 		opTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		userManual.setAlignmentX(Component.CENTER_ALIGNMENT);
+		userManual.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 
 		contentPane.removeAll();		
 
@@ -462,6 +479,7 @@ public class Gui extends JFrame{
 		newPanel.add(manTerminal);
 		newPanel.add(provTerminal);
 		newPanel.add(opTerminal);
+		newPanel.add(userManual);
 				
 		setFrame(newPanel);;
 	}
