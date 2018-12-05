@@ -24,6 +24,7 @@ public class ManageAccounts {
   public static MemberAccounts ma = new MemberAccounts();
   public static ProviderAccounts pacc = new ProviderAccounts();
 
+
   /**
    * Function to add a new member to the database
    *
@@ -34,7 +35,10 @@ public class ManageAccounts {
    * @param state New member's home state
    * @param zip New members home zip code
    * @return Returns a boolean, true if member was added successfully, false if member number is
-   * longer than 9 digits.
+   *         longer than 9 digits.
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @throws IllegalArgumentException
    */
   public static boolean addMember(String name, int number, String address, String city,
       String state,
@@ -68,10 +72,14 @@ public class ManageAccounts {
     return flag;
   }
 
+
   /**
    * Function to delete a member from the database
    *
    * @param number Member number to be found
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @throws IllegalArgumentException if number is greater than or less than 9 digits
    */
   public static void deleteMember(int number)
       throws FileNotFoundException, IOException, IllegalArgumentException {
@@ -101,13 +109,20 @@ public class ManageAccounts {
 
   }
 
+
   /**
    * Function to update an existing members information
    *
    * @param name member's updated name
    * @param number member's updated member #
-   * @param address member's updated address, city, state, and zip code
+   * @param address member's updated address
+   * @param city member's updated city
+   * @param state member's updated state
+   * @param zip member's updated zip code
    * @return An int as a return code
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @throws IllegalArgumentException if member number is not 9 digits long
    */
   public static int updateMember(String name, int number, String address, String city, String state,
       int zip)
@@ -143,10 +158,13 @@ public class ManageAccounts {
     return output;
   }
 
+
   /**
    * Function to print the provided list of members
    *
    * @param ma Member account to print
+   * @throws FileNotFoundException
+   * @throws IOException
    */
   public static void printMember(ArrayList<MemberAccounts> ma)
       throws FileNotFoundException, IOException {
@@ -175,11 +193,14 @@ public class ManageAccounts {
     }
   }
 
+
   /**
    * Function to verify if a specific member exists in the database
    *
    * @param number Member number to find
    * @return returns a 1 if member is found, 0 otherwise
+   * @throws FileNotFoundException
+   * @throws IOException
    */
   public static int validMember(int number) throws FileNotFoundException, IOException {
     ArrayList<MemberAccounts> members = Terminal.ReadMember();
@@ -194,13 +215,18 @@ public class ManageAccounts {
     return found;
   }
 
+
   /**
    * Function to add a new provider to the database
    *
    * @param name Provider name
    * @param number Provider number
-   * @param address Provider address, cit, state, and zip code
+   * @param address Provider address
+   * @param city Provider city
+   * @param state Provider state
    * @return returns a boolean, true if provider was added successfully, false otherwise
+   * @throws FileNotFoundException
+   * @throws IOException
    */
   public static boolean addProvider(String name, int number, String address, String city,
       String state,
@@ -234,10 +260,13 @@ public class ManageAccounts {
 
   }
 
+
   /**
    * Function to delete a provider from the database
    *
    * @param number Provider number to find
+   * @throws FileNotFoundException
+   * @throws IOException
    */
   public static void deleteProvider(int number) throws FileNotFoundException, IOException {
     ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();
@@ -265,8 +294,13 @@ public class ManageAccounts {
    *
    * @param name Updated provider name
    * @param number Updated provider number
-   * @param address Updated provider address, city, state, and zip code
+   * @param address Updated provider address
+   * @param city Updated provider city
+   * @param state Updated provider state
+   * @param zip Updated provider zip code
    * @return Returns a return code int
+   * @throws FileNotFoundException
+   * @throws IOException
    */
   public static int updateProvider(String name, int number, String address, String city,
       String state, int zip)
@@ -306,11 +340,14 @@ public class ManageAccounts {
     return output;
   }
 
+
   /**
    * Helper function that verifies if a provider exists in the directory or not
    *
    * @param number the provider number to be found
    * @return 1 if found, 0 otherwise
+   * @throws FileNotFoundException
+   * @throws IOException
    */
   public static int validProvider(int number) throws FileNotFoundException, IOException {
     ArrayList<ProviderAccounts> provider = Terminal.ReadProviders();
@@ -325,10 +362,13 @@ public class ManageAccounts {
     return found;
   }
 
+
   /**
    * Prints the list of providers and the corresponding Service Records
    *
    * @param pa the list of providers to be printed
+   * @throws FileNotFoundException
+   * @throws IOException
    */
   public static void printProviders(ArrayList<ProviderAccounts> pa)
       throws FileNotFoundException, IOException {
@@ -356,11 +396,14 @@ public class ManageAccounts {
     }
   }
 
+
   /**
    * Function to find a member by member number in the database
    *
    * @param memNum the member to find
-   * @ returns the specified member object, empty if member was not found.
+   * @return returns the specified member object, empty if member was not found.
+   * @throws FileNotFoundException
+   * @throws IOException
    */
   public static MemberAccounts findMember(int memNum) throws FileNotFoundException, IOException {
     ArrayList<MemberAccounts> me = Terminal.ReadMember();
