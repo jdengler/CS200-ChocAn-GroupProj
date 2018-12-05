@@ -32,6 +32,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+
+
+/**	Gui: 	Generates and runs gui using Swing. 
+ * 			Boxlayout and Flowlayout used.
+ * 
+ * Authors: Josh Engler, Conrad Spear
+ */
 public class Gui extends JFrame{
 
 	private static String ENTER = "Enter";
@@ -1127,7 +1134,7 @@ public class Gui extends JFrame{
 		JPanel inputpanel = new JPanel();
 		inputpanel.setLayout(new FlowLayout());
 		JLabel lblMemberName = new JLabel("Enter the member's name: ");
-		lblMemberName.setAlignmentX(Component.LEFT_ALIGNMENT);
+		lblMemberName.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		
 		JTextField txtMemberName = new JTextField(20);
