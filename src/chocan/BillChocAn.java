@@ -21,7 +21,13 @@ public class BillChocAn {
 
   private static Scanner reader = new Scanner(System.in);
 
-
+  /**
+   * billChocan() allows the provider to bill chocan after a service has been provided and updates both member and provider database
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return void
+   */   
   public static void billChocan(String currentDate, String actDate, int providerNum, int serviceCode, int memberNum)
       throws FileNotFoundException, IOException {
     ArrayList<MemberAccounts> me = Terminal.ReadMember();
@@ -95,6 +101,13 @@ public class BillChocAn {
     return;
   }
   
+  /**
+   * getProviderDirectoryInfo() returns a string of each Provider Directory entry
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return string
+   */  
   public static String getProviderDirectoryInfo() throws FileNotFoundException, IOException{
 	  ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
 	  String providerDir = "";
@@ -105,6 +118,13 @@ public class BillChocAn {
 	    return providerDir;
   }
 
+  /**
+   * printBill() updates the member database by adding the new service provided
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return none
+   */  
   public static void printBill(ArrayList<MemberAccounts> ma)
       throws FileNotFoundException, IOException {
     String filename = "Database/member.txt";
