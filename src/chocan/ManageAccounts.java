@@ -281,8 +281,8 @@ public class ManageAccounts {
     }
 
     if (found == -1) {
-      JOptionPane.showMessageDialog(null, "The provider does not exist");
-      return;
+    	throw new IllegalArgumentException("The provider does not exist!");  
+      
     }
 
     printProviders(providers);

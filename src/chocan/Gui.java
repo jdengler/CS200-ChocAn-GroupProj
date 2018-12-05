@@ -713,7 +713,12 @@ public class Gui extends JFrame{
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to delete this member?","Attention",JOptionPane.YES_NO_OPTION);
 				if(dialogResult == JOptionPane.YES_OPTION){
 					// Delete code here
-					ManageAccounts.deleteMember(Integer.parseInt(list.get(0).getText()));
+					try{
+						ManageAccounts.deleteMember(Integer.parseInt(list.get(0).getText()));
+					}
+					catch(IllegalArgumentException et) {
+						JOptionPane.showMessageDialog(null, et);
+				    }
 					JOptionPane.showMessageDialog(null, "The member was deleted");
 					OpenOTerminal();
 				}
@@ -742,7 +747,12 @@ public class Gui extends JFrame{
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to delete this povider?","Attention",JOptionPane.YES_NO_OPTION);
 				if(dialogResult == JOptionPane.YES_OPTION){
 					// Delete code here
-					ManageAccounts.deleteProvider(Integer.parseInt(list.get(0).getText()));
+					try{
+						ManageAccounts.deleteProvider(Integer.parseInt(list.get(0).getText()));					
+					}
+					catch(IllegalArgumentException et) {
+						JOptionPane.showMessageDialog(null, et);
+				    }
 					JOptionPane.showMessageDialog(null, "The provider was deleted");
 					OpenOTerminal();
 				}
