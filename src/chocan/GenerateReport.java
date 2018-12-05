@@ -22,6 +22,8 @@ public class GenerateReport {
 	/**
 	 * generateMember() generates a member report for all members and calls print member report
 	 * @param none
+	 * @throws FileNotFoundException
+	 * @throws IOException
 	 * @return void
 	 */	  
 	public static void generateMember() throws FileNotFoundException, IOException{
@@ -37,6 +39,8 @@ public class GenerateReport {
 	/**
 	 * generateIndividualMember() generates a member report base on a member number and calls print member report
 	 * @param number, which is the member number of the individual that you want to generate a report for
+	 * @throws FileNotFoundException
+	 * @throws IOException
 	 * @return void
 	 */
 	public static void generateIndividualMember(int number) throws FileNotFoundException, IOException{
@@ -59,6 +63,8 @@ public class GenerateReport {
 	/**
 	 * generateProvider() generates a member report base on a member number and calls print member report
 	 * @param number, which is the member number of the individual that you want to generate a report for
+	 * @throws FileNotFoundException
+	 * @throws IOException
 	 * @return void
 	 */
 	public static void generateProvider() throws FileNotFoundException, IOException{
@@ -76,6 +82,8 @@ public class GenerateReport {
 	/**
 	 * generateIndividualProvider() generates a provider report base on a provider number and calls print provider report
 	 * @param number, which is the provider number of the individual that you want to generate a report for
+	 * @throws FileNotFoundException
+	 * @throws IOException
 	 * @return void
 	 */
 	public static void generateIndividualProvider(int number) throws FileNotFoundException, IOException{
@@ -97,6 +105,8 @@ public class GenerateReport {
 	/**
 	 * printSummaryReport() generates a summary report for total number of providers, total number of consultations, total number of fees
 	 * @param name, which is used to name the file
+	 * @throws FileNotFoundException
+	 * @throws IOException
 	 * @return void
 	 */
 	public static void printSummaryReport(String name) throws FileNotFoundException,IOException{
@@ -136,6 +146,8 @@ public class GenerateReport {
 	 * printMemberReport() prints the member report (used by Manager)
 	 * @param member, which is the member object to be reported on
 	 * @param name, which is used to name the file
+	 * @throws FileNotFoundException
+	 * @throws IOException
 	 * @return void
 	 */
 	public static void printMemberReport(MemberAccounts member, String name) throws FileNotFoundException, IOException{
@@ -164,6 +176,8 @@ public class GenerateReport {
 	 * printProviderReport() prints the provider report (used by Manager)
 	 * @param provider, which is the provider object to be reported on
 	 * @param name, which is used to name the file
+	 * @throws FileNotFoundException
+	 * @throws IOException
 	 * @return void
 	 */
 	public static void printProviderReport(ProviderAccounts provider, String name) throws FileNotFoundException, IOException{
