@@ -24,7 +24,7 @@ public class BillChocAn {
     ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
     ServiceRecord sr = new ServiceRecord();
 
-    MemberAccounts found = ValidateMember.validateMember(memberNum);
+    MemberAccounts found = ManageAccounts.findMember(memberNum);
 
     if (found.getStatus() == false) {
       reader.close();
@@ -39,23 +39,21 @@ public class BillChocAn {
     sr.setDateOfService(actDate);
     sr.setProviderNumber(providerNum);
     sr.setMemberNumber(memberNum);
-
+    String ProviderDir = "";
     for (ProviderDirectoryEntry pd : pde) {
-      System.out
-          .println(pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee());
+      //System.out.println(pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee());
+    	ProviderDir += pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee()+"\n";
     }
-
+    //JOptionPane.showMessageDialog(null,ProviderDir);
+    
     ProviderDirectoryEntry valid = ProviderDirectory.validEntry(serviceCode);
     if (valid == null) {
       reader.close();
       return;
     }
     //System.out.println("The total fee for the service " + valid.getServiceName()+"is $"+valid.getServiceFee());
-    JOptionPane.showMessageDialog(null,
-        "The total fee for the service " + valid.getServiceName() + "is $" + valid.getServiceFee());
-    int dialogResult = JOptionPane
-        .showConfirmDialog(null, "Would you like to continue? ", "Attention",
-            JOptionPane.YES_NO_OPTION);
+    //JOptionPane.showMessageDialog(null,"The total fee for the service " + valid.getServiceName() + "is $" + valid.getServiceFee());
+    int dialogResult = JOptionPane.showConfirmDialog(null, "The total fee for the service " + valid.getServiceName() + " is $" + valid.getServiceFee()+" Would you like to continue? ", "Attention",JOptionPane.YES_NO_OPTION);
     if (dialogResult == JOptionPane.YES_OPTION) {
       // Saving code here
     }
@@ -67,28 +65,41 @@ public class BillChocAn {
       reader.close();
       return;
     }
-    sr.setServiceCode(serviceCode);
+    else if(dialogResult == JOptionPane.YES_OPTION){
+    	 sr.setServiceCode(serviceCode);
 
-    //System.out.println("Enter comments [Press Enter If No Comments]: ");
-    //reader.nextLine();
-    String comment = JOptionPane.showInputDialog("Enter comments : ");
-    //String comment = reader.nextLine();
-    sr.setComments(comment);
+    	    //System.out.println("Enter comments [Press Enter If No Comments]: ");
+    	    //reader.nextLine();
+    	    String comment = JOptionPane.showInputDialog("Enter comments : ");
+    	    //String comment = reader.nextLine();
+    	    sr.setComments(comment);
 
-    sr.setMemberNumber(found.getNumber());
-    found.addService(sr);
+    	    sr.setMemberNumber(found.getNumber());
+    	    found.addService(sr);
 
-    //Is this redundant?
-    for (MemberAccounts member : me) {
-      if (member.getNumber() == found.getNumber()) {
-        member.addService(sr);
-        break;
-      }
+    	    //Is this redundant?
+    	    for (MemberAccounts member : me) {
+    	      if (member.getNumber() == found.getNumber()) {
+    	        member.addService(sr);
+    	        break;
+    	      }
+    	    }
+
+    	    printBill(me);
     }
-
-    printBill(me);
-
+   
     return;
+  }
+  
+  public static String getProviderDirectoryInfo() throws FileNotFoundException, IOException{
+	  ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
+	  String providerDir = "";
+	    for (ProviderDirectoryEntry pd : pde) {
+	      //System.out.println(pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee());
+	    	providerDir += pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee()+"\n";
+	    }
+	    //JOptionPane.showMessageDialog(null,ProviderDir);
+	    return providerDir;
   }
 
   public static void printBill(ArrayList<MemberAccounts> ma)
@@ -116,10 +127,8 @@ public class BillChocAn {
       }
       input.close();
     }
-    System.out.print(
-        "\n" + "The billed report was successfully generated and stored in member.txt" + "\n");
-    JOptionPane.showMessageDialog(null,
-        "The billed report was successfully generated and stored in member.txt");
+    //System.out.print("\n" + "The billed report was successfully generated and stored in member.txt" + "\n");
+    JOptionPane.showMessageDialog(null,"The billed report was successfully generated and stored in member.txt");
 
   }
 
