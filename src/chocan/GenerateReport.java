@@ -23,7 +23,6 @@ public class GenerateReport {
 
 		}
 
-		System.out.println("The member does not exist");
 		return;
 	}
 
@@ -38,7 +37,7 @@ public class GenerateReport {
 
 		}
 
-		System.out.println("The member does not exist");
+		System.out.println("The member (Number: " + number + ") does not exist");
 		return;
 	}
 	/*
@@ -48,12 +47,9 @@ public class GenerateReport {
 		ArrayList<ProviderAccounts> providers = ReadProviders();
 
 		for (ProviderAccounts pa : providers) {
-
 			printProviderReport(pa, pa.getName());
-
 		}
 
-		System.out.println("The provider does not exist");
 		return;
 	}
 
@@ -67,7 +63,7 @@ public class GenerateReport {
 			}
 		}
 
-		System.out.println("The provider does not exist");
+		System.out.println("The provider (Number: " + number + ") does not exist");
 		return;
 	}
 
@@ -113,7 +109,7 @@ public class GenerateReport {
 	 * Prints the member report (used by Manager)
 	 */
 	public static void printMemberReport(MemberAccounts member, String name) throws FileNotFoundException, IOException{
-		name.replaceAll("\\s+", "");
+		name = name.replaceAll("\\s+", "");
 		String filename = "writtenFiles/MemberReports/"+name+".txt";
 
 		File file = new File(filename);
@@ -141,7 +137,7 @@ public class GenerateReport {
 	 */
 	public static void printProviderReport(ProviderAccounts provider, String name) throws FileNotFoundException, IOException{
 		//ArrayList<ProviderAccounts> pa = ReadProviders();
-		name.replaceAll("\\s+", "");
+		name = name.replaceAll("\\s+", "");
 		double totalFee = 0;
 		String filename = "writtenFiles/ProviderReports/"+name+".txt";
 
