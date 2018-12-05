@@ -286,7 +286,7 @@ public class ManageAccounts {
     }
 
     printProviders(providers);
-    JOptionPane.showMessageDialog(null, "The provider was sucessfully deleted");
+    //JOptionPane.showMessageDialog(null, "The provider was sucessfully deleted");
   }
 
   /**

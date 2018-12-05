@@ -22,6 +22,7 @@ public class AddProviderTest {
     public void testAddProvider() throws FileNotFoundException, IOException,IllegalArgumentException{
     	ManageAccounts.addProvider("Namito Yokota", 256256256, "100 Mayfair Ct.", "Madison", "AL", 35758);
     	assertEquals(1, ManageAccounts.validProvider(256256256));
+    	ManageAccounts.deleteProvider(256256256);
     }
 
     @Test (expected = IllegalArgumentException.class)
@@ -33,6 +34,7 @@ public class AddProviderTest {
     public void testBillChocan2()throws FileNotFoundException, IOException,IllegalArgumentException{
     	ManageAccounts.addProvider("Stephen Curry", 303030303, "Curry St.", "Tuscaloosa", "AL", 30000);
     	assertEquals(1, ManageAccounts.validProvider(303030303));
+    	ManageAccounts.deleteProvider(303030303);
     }
     
 }
