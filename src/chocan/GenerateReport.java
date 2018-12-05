@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class GenerateReport {
 
 	/*
@@ -22,6 +24,8 @@ public class GenerateReport {
 			printMemberReport(ma, ma.getName());
 
 		}
+		
+        JOptionPane.showMessageDialog(null, "All member reports successfully generated and stored in writtenFiles/MemberReports");
 
 		return;
 	}
@@ -32,12 +36,14 @@ public class GenerateReport {
 		for (MemberAccounts ma : members) {
 			if (ma.getNumber() == number) {
 				printMemberReport(ma, ma.getName());
+		        JOptionPane.showMessageDialog(null, "The member report was successfully generated and stored in " + ma.getName().replaceAll("\\s+", "") + ".txt");
 				return;
 			}
 
 		}
 
-		System.out.println("The member (Number: " + number + ") does not exist");
+        JOptionPane.showMessageDialog(null, "The member (Number: " + number + ") does not exist");
+
 		return;
 	}
 	/*
@@ -49,6 +55,8 @@ public class GenerateReport {
 		for (ProviderAccounts pa : providers) {
 			printProviderReport(pa, pa.getName());
 		}
+		
+        JOptionPane.showMessageDialog(null, "All provider reports successfully generated and stored in writtenFiles/ProviderReports");
 
 		return;
 	}
@@ -59,11 +67,13 @@ public class GenerateReport {
 		for (ProviderAccounts pa : providers) {
 			if (pa.getNumber() == number) {
 				printProviderReport(pa, pa.getName());
+		        JOptionPane.showMessageDialog(null, "The provider report was successfully generated and stored in " + pa.getName().replaceAll("\\s+", "") + ".txt");
 				return;
 			}
 		}
 
-		System.out.println("The provider (Number: " + number + ") does not exist");
+        JOptionPane.showMessageDialog(null, "The provider (Number: " + number + ") does not exist");
+
 		return;
 	}
 
@@ -99,9 +109,7 @@ public class GenerateReport {
 			input.write("Total number of fees: $"+totalFee+"\n");
 			input.close();
 		}
-
-		System.out.print("\n"+"The summary report was successfully generated and stored in "+name+".txt"+"\n");
-
+        JOptionPane.showMessageDialog(null, "The summary report was successfully generated and stored in "+name+".txt");
 		return;
 	}
 
@@ -128,7 +136,6 @@ public class GenerateReport {
 			input.close();
 		}
 
-		System.out.print("\n"+"The member report was successfully generated and stored in "+name+".txt"+"\n");
 	}
 
 
@@ -162,7 +169,5 @@ public class GenerateReport {
 			}
 			input.close();
 		}
-
-		System.out.print("\n"+"The provider report was successfully generated and stored in "+name+".txt"+"\n");
 	}
 }
