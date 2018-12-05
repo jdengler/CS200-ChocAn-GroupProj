@@ -99,7 +99,7 @@ public class BillChocAn {
 	  ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
 	  String providerDir = "";
 	    for (ProviderDirectoryEntry pd : pde) {
-	    	providerDir += pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee()+"\n";
+	    	providerDir += "Service Name: "+pd.getServiceName() + ", Code: " + pd.getServiceCode() + ", Fee: $" + pd.getServiceFee()+"\n";
 	    }
 	    //JOptionPane.showMessageDialog(null,ProviderDir);
 	    return providerDir;
