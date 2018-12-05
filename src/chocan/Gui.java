@@ -10,7 +10,11 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -37,6 +41,7 @@ public class Gui extends JFrame{
 	public static String memberNumber;
 	public static String serviceDate;
 	public static String providerNumber;
+	public static String currentDate;
 
 
 	public static void createFrame()
@@ -486,8 +491,17 @@ public class Gui extends JFrame{
 						list.add((JTextField)component);
 					}
 				}
+				
+				boolean flag = ProviderDirectory.findEntry(Integer.parseInt(list.get(0).getText()));
+				
+				if(flag == true){
+					BillChocAn.billChocan(currentDate, serviceDate, Integer.parseInt(providerNumber),Integer.parseInt(list.get(0).getText()), Integer.parseInt(memberNumber));
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Error. The service code is invalid.");
+				}
 
-				BillChocAn.billChocan(serviceDate, Integer.parseInt(providerNumber),Integer.parseInt(list.get(0).getText()), Integer.parseInt(memberNumber));
+				
 			}
 			catch(Exception ex){}
 		}
@@ -509,9 +523,9 @@ public class Gui extends JFrame{
 						list.add((JTextField)component);
 					}
 				}
-				
-				serviceDate = list.get(0).getText();
-				providerNumber = list.get(1).getText();
+				currentDate = list.get(0).getText();
+				serviceDate = list.get(1).getText();
+				providerNumber = list.get(2).getText();
 				
 				setFrame(makeProDirInfoInputPanel(submitBillButton));
 			
@@ -781,6 +795,13 @@ public class Gui extends JFrame{
 
 		JPanel inputpanel = new JPanel();
 		inputpanel.setLayout(new FlowLayout());
+		
+		JLabel lblCurrentDate = new JLabel("Enter current date and time (MM-DD-YYYY HH:MM:SS): ");
+		lblCurrentDate.setAlignmentY(LEFT_ALIGNMENT);
+		JTextField txtCurrentDate = new JTextField(20);
+		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+	    Date date = new Date();	
+		txtCurrentDate.setText(dateFormat.format(date));
 		JLabel lblDateOfService = new JLabel("Enter date of service (MM-DD-YYYY): ");
 		lblDateOfService.setAlignmentY(LEFT_ALIGNMENT);
 		JTextField txtDateOfService = new JTextField(20);
@@ -808,12 +829,13 @@ public class Gui extends JFrame{
 		input.setActionCommand(ENTER);
 		input.addActionListener(buttonListener);
 
+		inputpanel.add(lblCurrentDate);
+		inputpanel.add(txtCurrentDate);
 		inputpanel.add(lblDateOfService);
 		inputpanel.add(txtDateOfService);
 		inputpanel.add(lblProviderNumber);
 		inputpanel.add(txtProviderNumber);
-		//inputpanel.add(lblServiceCode);
-		//inputpanel.add(txtServiceCode);
+		
 		
 
 		inputpanel.add(submitButton);
