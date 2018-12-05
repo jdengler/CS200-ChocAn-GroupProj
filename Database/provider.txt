@@ -6,7 +6,3 @@ s,12-02-2018 02:44:12,12-02-2018,123456789,999999991,111111,This went well
 s,12-02-2018 02:44:12,12-02-2018,123456789,676767676,333333,Not too great
 Albus Dumbledore,111111111,908 Homeless Road,Hogsmeade,California,30012
 Lord Voldemort,666666666,666 Dark Palace Street,London,England,66666
-Stephen Curry,303030303,Curry St.,Tuscaloosa,AL,30000
-Namito Yokota,256256256,100 Mayfair Ct.,Madison,AL,35758
-Stephen Curry,303030303,Curry St.,Tuscaloosa,AL,30000
-Namito Yokota,256256256,100 Mayfair Ct.,Madison,AL,35758
