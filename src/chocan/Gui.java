@@ -665,7 +665,7 @@ public class Gui extends JFrame{
 					}
 				}
 
-				int code = ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				int code = ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));				
 				if(code == 0){
 					JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
 					OpenOTerminal();
@@ -1252,7 +1252,7 @@ public class Gui extends JFrame{
 		lblProviderName.setAlignmentY(LEFT_ALIGNMENT);
 		JTextField txtProviderName = new JTextField(20);
 		txtProviderName.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+				
 		inputpanel.add(backButton);
 		
 		JTextField txtProviderNumber = new JTextField(20);
@@ -1287,6 +1287,7 @@ public class Gui extends JFrame{
 				 for (ProviderAccounts m : providers) {
 				        if (m.getName() == name) {
 				        	txtProviderName.setText(m.getName());
+				        	txtProviderNumber.setText(String.valueOf(m.getNumber()));
 				        	txtProviderAddress.setText(m.getAddress());
 				        	txtProviderCity.setText(m.getCity());
 				        	txtProviderState.setText(m.getState());
@@ -1333,10 +1334,18 @@ public class Gui extends JFrame{
 
 		return addProviderPanel;
 	}
-	public static JPanel makeDeleteMemberInputPanel(JButton button) {
+	public static JPanel makeDeleteMemberInputPanel(JButton button) throws FileNotFoundException, IOException {
 
 		JPanel deleteMemberPanel = new JPanel();
+		ArrayList<MemberAccounts> members = Terminal.ReadMember();		
+		 
+		ArrayList<String> names = new ArrayList<String>();
+		for(MemberAccounts m : members){
+			names.add(m.getName());
+		}
 
+		JComboBox cbMembers = new JComboBox (names.toArray());
+		
 		ButtonListener buttonListener = new ButtonListener();
 
 		JButton backButton = new JButton(new AbstractAction("Back") {
@@ -1352,10 +1361,11 @@ public class Gui extends JFrame{
 
 		JPanel inputpanel = new JPanel();
 		inputpanel.setLayout(new FlowLayout());
-		JLabel lblMemberName = new JLabel("Enter the member's number: ");
-		lblMemberName.setAlignmentY(LEFT_ALIGNMENT);
-		JTextField txtMemberName = new JTextField(20);
-		txtMemberName.setAlignmentX(Component.CENTER_ALIGNMENT);
+		JLabel lblMember = new JLabel("Select Member: ");
+		lblMember.setAlignmentY(LEFT_ALIGNMENT);
+		JTextField txtMemberNumber = new JTextField(20);
+		txtMemberNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
+		txtMemberNumber.setVisible(false);
 
 		inputpanel.add(backButton);
 
@@ -1365,12 +1375,33 @@ public class Gui extends JFrame{
 		submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		submitButton = button;
 
+		ItemListener itemListener = new ItemListener(){
+			 public void itemStateChanged(ItemEvent itemEvent) {
+				 String name = cbMembers.getSelectedItem().toString();
+				 
+				 for (MemberAccounts m : members) {
+				        if (m.getName() == name) {				        	
+				        	txtMemberNumber.setText(String.valueOf(m.getNumber()));				        				          				          
+				        }
+				      } 
+			       
+			      }
+		};
+		
+		cbMembers.addItemListener(itemListener);
+		
+		for (MemberAccounts m : members) {
+	        if (m.getName() == names.get(0)) {	        	
+	        	txtMemberNumber.setText(String.valueOf(m.getNumber()));	        					          				          
+	        }
+	      } 
 
 		input.setActionCommand(ENTER);
 		input.addActionListener(buttonListener);
 
-		inputpanel.add(lblMemberName);
-		inputpanel.add(txtMemberName);
+		inputpanel.add(lblMember);
+		inputpanel.add(cbMembers);
+		inputpanel.add(txtMemberNumber);
 
 
 		inputpanel.add(submitButton);
@@ -1382,9 +1413,17 @@ public class Gui extends JFrame{
 	}
 
 
-	public static JPanel makeDeleteProviderInputPanel(JButton button) {
+	public static JPanel makeDeleteProviderInputPanel(JButton button) throws FileNotFoundException, IOException {
 
 		JPanel deleteProviderPanel = new JPanel();
+		ArrayList<ProviderAccounts> providers = Terminal.ReadProviders();	
+		 
+		ArrayList<String> names = new ArrayList<String>();
+		for(ProviderAccounts p : providers){
+			names.add(p.getName());
+		}
+		
+		JComboBox cbProviders = new JComboBox (names.toArray());
 
 		ButtonListener buttonListener = new ButtonListener();
 
@@ -1401,11 +1440,12 @@ public class Gui extends JFrame{
 
 		JPanel inputpanel = new JPanel();
 		inputpanel.setLayout(new FlowLayout());
-		JLabel lblProviderNumber = new JLabel("Enter the provider's number: ");
-		lblProviderNumber.setAlignmentY(LEFT_ALIGNMENT);
+		JLabel lblProvider = new JLabel("Select provider: ");
+		lblProvider.setAlignmentY(LEFT_ALIGNMENT);
 		JTextField txtProviderNumber = new JTextField(20);
 		txtProviderNumber.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+		txtProviderNumber.setVisible(false);
+		
 		inputpanel.add(backButton);
 
 		JButton submitButton = new JButton("Submit");
@@ -1413,12 +1453,36 @@ public class Gui extends JFrame{
 		submitButton.addActionListener(buttonListener);
 		submitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		submitButton = button;
+		
+		ItemListener itemListener = new ItemListener(){
+			 public void itemStateChanged(ItemEvent itemEvent) {
+				 String name = cbProviders.getSelectedItem().toString();
+				 
+				 for (ProviderAccounts m : providers) {
+				        if (m.getName() == name) {
+				        	txtProviderNumber.setText(String.valueOf(m.getNumber()));      	
+				        				          				          
+				        }
+				      } 
+			       
+			      }
+		};
+		
+		cbProviders.addItemListener(itemListener);
+		
+		for (ProviderAccounts m : providers) {
+	        if (m.getName() == names.get(0)) {
+	        	txtProviderNumber.setText(String.valueOf(m.getNumber()));     	
+	        				          				          
+	        }
+	      }
 
 
 		input.setActionCommand(ENTER);
 		input.addActionListener(buttonListener);
 
-		inputpanel.add(lblProviderNumber);
+		inputpanel.add(lblProvider);
+		inputpanel.add(cbProviders);
 		inputpanel.add(txtProviderNumber);
 
 
