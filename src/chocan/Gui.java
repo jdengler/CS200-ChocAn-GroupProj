@@ -664,21 +664,18 @@ public class Gui extends JFrame{
 						list.add((JTextField)component);
 					}
 				}
-
-				int code = ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));				
-				if(code == 0){
-					JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
-					OpenOTerminal();
+				try{
+					int code = ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));				
+					if(code == 0){
+						JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
+						OpenOTerminal();
+					}
 				}
-				else if(code == -1){
-					JOptionPane.showMessageDialog(null,"Input fields cannot be empty!");
-				}
-				else if(code == -2){
-					JOptionPane.showMessageDialog(null,"Zip Code must be 5 digits long!");
-				}
-				else if(code == -3) {
-					JOptionPane.showMessageDialog(null,"Provider number must be 9 digits long!");
-				}
+				catch(IllegalArgumentException et) {
+					JOptionPane.showMessageDialog(null, et);
+			    }		
+				
+				
 			}
 			catch(Exception ex){}
 		}

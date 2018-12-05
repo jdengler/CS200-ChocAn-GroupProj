@@ -310,7 +310,7 @@ public class ManageAccounts {
     String numberStr = Integer.toString(number);
     int output = 0;
 
-    try {
+    
       if (name.equals("") || address.equals("") || city.equals("") || state.equals("")) {
         output = -1;
         throw new IllegalArgumentException("Input fields cannot be empty!");
@@ -321,9 +321,7 @@ public class ManageAccounts {
         output = -3;
         throw new IllegalArgumentException("Provider number must be 9 digits long!");
       }
-    } catch (IllegalArgumentException e) {
-      return output;
-    }
+    
 
     for (ProviderAccounts p : providers) {
       if (p.getNumber() == number) {
