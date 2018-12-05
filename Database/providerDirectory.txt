@@ -1,5 +1,5 @@
 Potion Diet,123456,100
-Memory Eraser,000000,200
+Memory Eraser,100000,200
 Broom Workout,111111,300
 Tea Detox,222222,400
 Muggles Obesity,333333,500

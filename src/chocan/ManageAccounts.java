@@ -28,6 +28,12 @@ public class ManageAccounts {
 
       String temp = Integer.toString(number);
       
+
+      int exists = validMember(number);
+      if(exists == 1){
+    	  throw new IllegalArgumentException("The member number alreay exists!");
+      }
+      
 	  if (temp.length() != 9) {
 	         throw new IllegalArgumentException("The member number must be 9 digits long!");
 	  }
@@ -56,7 +62,7 @@ public class ManageAccounts {
     int found = -1;
 
     String temp = Integer.toString(number);
-
+    
     if (temp.length() != 9) {
       throw new IllegalArgumentException("The member number must be 9 digits long!");
     }
@@ -169,6 +175,11 @@ public class ManageAccounts {
     boolean flag =false;
     
     String pn = Integer.toString(number);
+    
+    int exists = validProvider(number);
+    if(exists == 1){
+  	  throw new IllegalArgumentException("The provider number alreay exists!");
+    }
     
 	if (pn.length() != 9) {
 		throw new IllegalArgumentException("The provider number must be 9 digits long!");

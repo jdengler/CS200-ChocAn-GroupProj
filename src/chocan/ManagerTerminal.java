@@ -11,6 +11,13 @@ public class ManagerTerminal extends Terminal{
 
 	private static Scanner reader = new Scanner(System.in);
 
+	/**
+	 * managerMenu() Allows manager to select the type of report they want to generate and then generates the report (used by Manager)
+	 * @param none	
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @return void
+	 */
 	public static void managerMenu() throws FileNotFoundException, IOException{
 
 		int option = 0;
