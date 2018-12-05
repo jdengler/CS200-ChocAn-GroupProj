@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
@@ -154,6 +155,8 @@ public class GenerateReport {
 	public static void printMemberReport(MemberAccounts member, String name) throws FileNotFoundException, IOException{
 		name = name.replaceAll("\\s+", "");
 		String filename = "writtenFiles/MemberReports/"+name+".txt";
+		
+	    Collections.sort(member.getServicesProvided(), ServiceRecord.ServiceDateComparator);
 
 		File file = new File(filename);
 	      

@@ -4,7 +4,11 @@ package chocan;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 
 public class ServiceRecord extends Terminal {
 	
@@ -131,5 +135,29 @@ public double getServiceFee(int serviceCode) throws FileNotFoundException, IOExc
     }
     return fee;
  }
+
+/*Comparator for sorting the list by Member Name*/
+public static Comparator<ServiceRecord> ServiceDateComparator = new Comparator<ServiceRecord>() {
+
+public int compare(ServiceRecord s1, ServiceRecord s2) {
+   
+   Date date1 = new Date();
+	try {
+		date1 = new SimpleDateFormat("MM-dd-yyyy").parse(s1.getDateOfService());
+	} catch (ParseException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	Date date2 = new Date();
+	try {
+		date2 = new SimpleDateFormat("MM-dd-yyyy").parse(s2.getDateOfService());
+	} catch (ParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+   //ascending order
+   return date1.compareTo(date2);
+}};
 
 }
