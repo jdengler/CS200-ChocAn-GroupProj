@@ -31,10 +31,12 @@ public class BillChocAn {
   public static void billChocan(String currentDate, String actDate, int providerNum, int serviceCode, int memberNum)
       throws FileNotFoundException, IOException {
     ArrayList<MemberAccounts> me = Terminal.ReadMember();
+    ArrayList<ProviderAccounts> pa = Terminal.ReadProviders();
     ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
     ServiceRecord sr = new ServiceRecord();
 
     MemberAccounts found = ManageAccounts.findMember(memberNum);
+    ProviderAccounts providerFound = ManageAccounts.findProvider(providerNum);
 
     if (found.getStatus() == false) {
       reader.close();
@@ -86,6 +88,7 @@ public class BillChocAn {
 
     	    sr.setMemberNumber(found.getNumber());
     	    found.addService(sr);
+    	    providerFound.addService(sr);
 
     	    //Is this redundant?
     	    for (MemberAccounts member : me) {
@@ -94,7 +97,15 @@ public class BillChocAn {
     	        break;
     	      }
     	    }
-
+    	    
+    	    for (ProviderAccounts provider : pa) {
+      	      if (provider.getNumber() == providerFound.getNumber()) {
+      	        provider.addService(sr);
+      	        break;
+      	      }
+      	    }
+    	    
+    	    ManageAccounts.printProviders(pa);
     	    printBill(me);
     }
    
@@ -151,6 +162,6 @@ public class BillChocAn {
       input.close();
     }
     JOptionPane.showMessageDialog(null,"The billed report was successfully generated and stored in member.txt");
-  }
+  }  
 
 }
