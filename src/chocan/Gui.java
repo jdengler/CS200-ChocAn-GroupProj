@@ -1,6 +1,7 @@
 package chocan;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.ItemSelectable;
@@ -8,9 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -37,6 +43,7 @@ public class Gui extends JFrame{
 	public static String memberNumber;
 	public static String serviceDate;
 	public static String providerNumber;
+	public static String currentDate;
 
 
 	public static void createFrame()
@@ -441,14 +448,29 @@ public class Gui extends JFrame{
 				catch(Exception ex) {}
 			}
 		});
+		JButton userManual = new JButton(new AbstractAction("Open User Manual") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (Desktop.isDesktopSupported()) {
+			            try {
+			                File myFile = new File( "writtenFiles\\ChocoholicsAnonymous.pdf");
+			                Desktop.getDesktop().open(myFile);
+			            } catch (IOException ex) {
+			                // no application registered for PDFs
+			            }
+			        }
+				}
+				catch(Exception ex) {}
+			}
+		});
 
 		manTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);		
-		Dimension size = manTerminal.getPreferredSize();
-		size.setSize(100, 100); 		
-		manTerminal.setPreferredSize(size);
-		
 		provTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
 		opTerminal.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		userManual.setAlignmentX(Component.CENTER_ALIGNMENT);
+		userManual.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 
 		contentPane.removeAll();		
 
@@ -457,6 +479,7 @@ public class Gui extends JFrame{
 		newPanel.add(manTerminal);
 		newPanel.add(provTerminal);
 		newPanel.add(opTerminal);
+		newPanel.add(userManual);
 				
 		setFrame(newPanel);;
 	}
@@ -486,8 +509,17 @@ public class Gui extends JFrame{
 						list.add((JTextField)component);
 					}
 				}
+				
+				boolean flag = ProviderDirectory.findEntry(Integer.parseInt(list.get(0).getText()));
+				
+				if(flag == true){
+					BillChocAn.billChocan(currentDate, serviceDate, Integer.parseInt(providerNumber),Integer.parseInt(list.get(0).getText()), Integer.parseInt(memberNumber));
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Error. The service code is invalid.");
+				}
 
-				BillChocAn.billChocan(serviceDate, Integer.parseInt(providerNumber),Integer.parseInt(list.get(0).getText()), Integer.parseInt(memberNumber));
+				
 			}
 			catch(Exception ex){}
 		}
@@ -509,9 +541,9 @@ public class Gui extends JFrame{
 						list.add((JTextField)component);
 					}
 				}
-				
-				serviceDate = list.get(0).getText();
-				providerNumber = list.get(1).getText();
+				currentDate = list.get(0).getText();
+				serviceDate = list.get(1).getText();
+				providerNumber = list.get(2).getText();
 				
 				setFrame(makeProDirInfoInputPanel(submitBillButton));
 			
@@ -540,9 +572,11 @@ public class Gui extends JFrame{
 				 boolean flag = ManageAccounts.addMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
 				if(flag == true){
 					JOptionPane.showMessageDialog(null, "Member saved successfully.");
+					OpenOTerminal();
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Error. The member was not added.");
+					OpenOTerminal();
 				}
 			}
 			catch(Exception ex){}
@@ -566,8 +600,16 @@ public class Gui extends JFrame{
 					}
 				}
 
-				ManageAccounts.addProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
-
+				boolean flag = ManageAccounts.addProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				
+				if(flag == true){
+					JOptionPane.showMessageDialog(null, "Provider saved successfully.");
+					OpenOTerminal();
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Error. The Provider was not added.");
+					OpenOTerminal();
+				}
 			}
 			catch(Exception ex){}
 		}
@@ -593,12 +635,16 @@ public class Gui extends JFrame{
 				int code = ManageAccounts.updateMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
 				if(code == 0){
 					JOptionPane.showMessageDialog(null, "Member was updated successfully.");
+					OpenOTerminal();
 				}
 				else if(code == -1){
 					JOptionPane.showMessageDialog(null,"Input fields cannot be empty!");
 				}
 				else if(code == -2){
 					JOptionPane.showMessageDialog(null,"Zip Code must be 5 digits long!");
+				}
+				else if(code == -3) {
+					JOptionPane.showMessageDialog(null,"Member number must be 9 digits long!");
 				}
 			}
 			catch(Exception ex){}
@@ -622,8 +668,20 @@ public class Gui extends JFrame{
 					}
 				}
 
-				ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
-				JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
+				int code = ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				if(code == 0){
+					JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
+					OpenOTerminal();
+				}
+				else if(code == -1){
+					JOptionPane.showMessageDialog(null,"Input fields cannot be empty!");
+				}
+				else if(code == -2){
+					JOptionPane.showMessageDialog(null,"Zip Code must be 5 digits long!");
+				}
+				else if(code == -3) {
+					JOptionPane.showMessageDialog(null,"Provider number must be 9 digits long!");
+				}
 			}
 			catch(Exception ex){}
 		}
@@ -651,6 +709,7 @@ public class Gui extends JFrame{
 					// Delete code here
 					ManageAccounts.deleteMember(Integer.parseInt(list.get(0).getText()));
 					JOptionPane.showMessageDialog(null, "The member was deleted");
+					OpenOTerminal();
 				}
 			}
 			catch(Exception ex){}
@@ -679,6 +738,7 @@ public class Gui extends JFrame{
 					// Delete code here
 					ManageAccounts.deleteProvider(Integer.parseInt(list.get(0).getText()));
 					JOptionPane.showMessageDialog(null, "The provider was deleted");
+					OpenOTerminal();
 				}
 			}
 			catch(Exception ex){}
@@ -781,6 +841,13 @@ public class Gui extends JFrame{
 
 		JPanel inputpanel = new JPanel();
 		inputpanel.setLayout(new FlowLayout());
+		
+		JLabel lblCurrentDate = new JLabel("Enter current date and time (MM-DD-YYYY HH:MM:SS): ");
+		lblCurrentDate.setAlignmentY(LEFT_ALIGNMENT);
+		JTextField txtCurrentDate = new JTextField(20);
+		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+	    Date date = new Date();	
+		txtCurrentDate.setText(dateFormat.format(date));
 		JLabel lblDateOfService = new JLabel("Enter date of service (MM-DD-YYYY): ");
 		lblDateOfService.setAlignmentY(LEFT_ALIGNMENT);
 		JTextField txtDateOfService = new JTextField(20);
@@ -808,12 +875,13 @@ public class Gui extends JFrame{
 		input.setActionCommand(ENTER);
 		input.addActionListener(buttonListener);
 
+		inputpanel.add(lblCurrentDate);
+		inputpanel.add(txtCurrentDate);
 		inputpanel.add(lblDateOfService);
 		inputpanel.add(txtDateOfService);
 		inputpanel.add(lblProviderNumber);
 		inputpanel.add(txtProviderNumber);
-		//inputpanel.add(lblServiceCode);
-		//inputpanel.add(txtServiceCode);
+		
 		
 
 		inputpanel.add(submitButton);

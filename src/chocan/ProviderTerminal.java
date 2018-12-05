@@ -58,8 +58,10 @@ public class ProviderTerminal extends Terminal {
         System.out.println("Enter member number: ");
         int memberNum = reader.nextInt();
         reader.nextLine();
-        
-    	BillChocAn.billChocan(actDate, providerNum, serviceCode, memberNum);
+        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+        Date date = new Date();
+        String strDate = dateFormat.format(date);
+    	BillChocAn.billChocan(strDate, actDate, providerNum, serviceCode, memberNum);
     }
     
     else if (option == 3) { // request provider directory
