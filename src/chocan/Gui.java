@@ -576,6 +576,8 @@ public class Gui extends JFrame{
 
 				try{
 				 boolean flag = ManageAccounts.addMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+				 JOptionPane.showMessageDialog(null, "Member was added successfully.");
+				 OpenManageMember();
 				}
 				catch(IllegalArgumentException et) {
 					JOptionPane.showMessageDialog(null, et);
@@ -605,6 +607,8 @@ public class Gui extends JFrame{
 				
 				try{
 					boolean flag = ManageAccounts.addProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
+					JOptionPane.showMessageDialog(null, "Member was added successfully.");
+					OpenManageProvider();
 				}
 				catch(IllegalArgumentException et) {
 					JOptionPane.showMessageDialog(null, et);
