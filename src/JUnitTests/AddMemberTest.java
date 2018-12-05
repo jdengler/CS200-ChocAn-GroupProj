@@ -23,8 +23,8 @@ public class AddMemberTest {
             ManageAccounts.deleteMember(101010101);
         }
 
-        if (ManageAccounts.validMember(122222221) == 1) {
-            ManageAccounts.deleteMember(122222221);
+        if (ManageAccounts.validMember(999999991) == 1) {
+            ManageAccounts.deleteMember(999999991);
         }   
     }
 
@@ -43,8 +43,8 @@ public class AddMemberTest {
 
     @Test
     public void testAddMember2()throws FileNotFoundException, IOException,IllegalArgumentException{
-        ManageAccounts.addMember("Draco Malfoy",122222221,"10 Slytherin Lane","Seattle","Washington",55432);        
-        assertEquals(1,ManageAccounts.validMember(122222221));
+        ManageAccounts.addMember("Draco Malfoy",999999991,"10 Slytherin Lane","Seattle","Washington",55432);        
+        assertEquals(1,ManageAccounts.validMember(999999991));
     }
     
 
