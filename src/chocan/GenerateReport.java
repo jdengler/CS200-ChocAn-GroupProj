@@ -1,3 +1,8 @@
+/*
+ * Author: Conrad Spear
+ * Generates member and provider reports
+ */
+
 package chocan;
 
 import static chocan.Terminal.ReadMember;
@@ -14,22 +19,26 @@ import javax.swing.JOptionPane;
 
 public class GenerateReport {
 
-	/*
-	 * Generate desired member report and calls print member report
-	 */
+	/**
+	 * generateMember() generates a member report for all members and calls print member report
+	 * @param none
+	 * @return void
+	 */	  
 	public static void generateMember() throws FileNotFoundException, IOException{
 		ArrayList<MemberAccounts> members = ReadMember();
 
 		for (MemberAccounts ma : members) {
 			printMemberReport(ma, ma.getName());
-
-		}
-		
+		}		
         JOptionPane.showMessageDialog(null, "All member reports successfully generated and stored in writtenFiles/MemberReports");
-
 		return;
 	}
-
+	
+	/**
+	 * generateIndividualMember() generates a member report base on a member number and calls print member report
+	 * @param number, which is the member number of the individual that you want to generate a report for
+	 * @return void
+	 */
 	public static void generateIndividualMember(int number) throws FileNotFoundException, IOException{
 		ArrayList<MemberAccounts> members = ReadMember();
 
@@ -46,8 +55,11 @@ public class GenerateReport {
 
 		return;
 	}
-	/*
-	 * Generate desired provider report and calls print provider report
+	
+	/**
+	 * generateProvider() generates a member report base on a member number and calls print member report
+	 * @param number, which is the member number of the individual that you want to generate a report for
+	 * @return void
 	 */
 	public static void generateProvider() throws FileNotFoundException, IOException{
 		ArrayList<ProviderAccounts> providers = ReadProviders();
