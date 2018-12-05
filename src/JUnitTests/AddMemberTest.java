@@ -19,8 +19,13 @@ public class AddMemberTest {
 
     @Before
     public void setUp() throws Exception {
-        ManageAccounts.deleteMember(101010101);
-        ManageAccounts.deleteMember(122222221);
+        if (ManageAccounts.validMember(101010101) == 1) {
+            ManageAccounts.deleteMember(101010101);
+        }
+
+        if (ManageAccounts.validMember(122222221) == 1) {
+            ManageAccounts.deleteMember(122222221);
+        }   
     }
 
     @Test
