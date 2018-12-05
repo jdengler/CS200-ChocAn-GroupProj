@@ -73,6 +73,11 @@ public class GenerateReport {
 		return;
 	}
 
+	/**
+	 * generateIndividualProvider() generates a provider report base on a provider number and calls print provider report
+	 * @param number, which is the provider number of the individual that you want to generate a report for
+	 * @return void
+	 */
 	public static void generateIndividualProvider(int number) throws FileNotFoundException, IOException{
 		ArrayList<ProviderAccounts> providers = ReadProviders();
 
@@ -89,8 +94,10 @@ public class GenerateReport {
 		return;
 	}
 
-	/*
-	 * Prints the summary report (used by Manager)
+	/**
+	 * printSummaryReport() generates a summary report for total number of providers, total number of consultations, total number of fees
+	 * @param name, which is used to name the file
+	 * @return void
 	 */
 	public static void printSummaryReport(String name) throws FileNotFoundException,IOException{
 		ArrayList<ProviderAccounts> providers = ReadProviders();
@@ -125,8 +132,12 @@ public class GenerateReport {
 		return;
 	}
 
-	/*
-	 * Prints the member report (used by Manager)
+	
+	/**
+	 * printMemberReport() prints the member report (used by Manager)
+	 * @param member, which is the member object to be reported on
+	 * @param name, which is used to name the file
+	 * @return void
 	 */
 	public static void printMemberReport(MemberAccounts member, String name) throws FileNotFoundException, IOException{
 		name = name.replaceAll("\\s+", "");
@@ -151,8 +162,11 @@ public class GenerateReport {
 	}
 
 
-	/*
-	 * Prints the provider report (used by Manager)
+	/**
+	 * printProviderReport() prints the provider report (used by Manager)
+	 * @param provider, which is the provider object to be reported on
+	 * @param name, which is used to name the file
+	 * @return void
 	 */
 	public static void printProviderReport(ProviderAccounts provider, String name) throws FileNotFoundException, IOException{
 		//ArrayList<ProviderAccounts> pa = ReadProviders();
