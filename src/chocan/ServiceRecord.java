@@ -188,11 +188,6 @@ public class ServiceRecord extends Terminal {
   public void setComments(String comments) {
 	this.comments = comments;
   }
-
-/*public ProviderDirectoryEntry getProviderDirectoryInfo(int serviceCode) {
-	  ProviderDirectory pd = new ProviderDirectory();
-	  return pd.findProviderDirectoryEntry(serviceCode);
-  }*/
   
   /**
    * getServiceName() takes in a service code and looks up the service to return its name
