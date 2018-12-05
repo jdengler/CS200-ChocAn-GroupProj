@@ -236,7 +236,7 @@ public class Terminal {
   public static void rewriteDirectory() throws FileNotFoundException, IOException{
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
 
-      String filename = "writtenFiles/ProviderReports/test2";
+      String filename = "writtenFiles/ProviderDirectory/ProviderDirectory.txt";
 
       Path oPath = Paths.get(filename);
       
