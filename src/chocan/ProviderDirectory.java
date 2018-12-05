@@ -15,7 +15,14 @@ public class ProviderDirectory {
 
   }
 
-
+  /**
+   * validEntry() takes in the service code and returns the provider directory entry if it exists in the database
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @throws IllegalArgumentException
+   * @return ProviderDirectoryEntry
+   */   
   public static ProviderDirectoryEntry validEntry(int code)
       throws FileNotFoundException, IOException, IllegalArgumentException {
     ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
@@ -33,6 +40,13 @@ public class ProviderDirectory {
     return entry;
   }
 
+  /**
+   * findEntry() takes in the service code and returns a boolean if the providerDirectoryEntry exists
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return boolean
+   */ 
   public static boolean findEntry(int code) throws FileNotFoundException, IOException {
     ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
     ProviderDirectoryEntry entry = new ProviderDirectoryEntry();
