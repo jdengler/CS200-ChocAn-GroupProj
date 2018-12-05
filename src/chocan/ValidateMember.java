@@ -3,7 +3,7 @@
  * it is a valid number and checks if the member is suspended or not.
  *
  * @author Hunter Esposito
- * @version 3.5
+ * @version 1.0
  */
 
 package chocan;
