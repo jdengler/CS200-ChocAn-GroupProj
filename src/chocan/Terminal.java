@@ -19,7 +19,6 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class Terminal {
-  //static ManageAccounts ma = new ManageAccounts(); 
 	
 	private static Scanner reader = new Scanner(System.in);
   
@@ -62,27 +61,49 @@ public class Terminal {
 		System.out.println("\nEnd");
   }
   
+	/**
+	   * OpenManagerTerminal() calls managerMenu
+	   * @param none
+	   * @throws FileNotFoundException
+	   * @throws IOException
+	   * @return void
+	   */ 
   public static void OpenManagerTerminal () throws FileNotFoundException, IOException {
-	  //ManagerTerminal mt = new ManagerTerminal();
 	  ManagerTerminal.managerMenu();
 	  
   }
   
+  /**
+   * OpenProviderTerminal() calls provideTerminal
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return void
+   */ 
   public static void OpenProviderTerminal () throws FileNotFoundException, IOException {
-	  //ProviderTerminal pt = new ProviderTerminal();
 	  ProviderTerminal.providerMenu();
   }
   
-
+  /**
+   * OpenOperatorTerminal() calls operatorMenu
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return void
+   */ 
   public static void OpenOperatorTerminal () throws FileNotFoundException, IOException {
-	  //OperatorTerminal ot = new OperatorTerminal();
 	  OperatorTerminal.operatorMenu();
   }
   
   
-/*
- * Reads in the providerDirectory
- */
+  /**
+   * ReadProviderDirectoryEntry() reads in the providerDirectory.txt and stores each line as a ProviderDirectoryEntry and returns
+   * an ArrayList of these providerDirectoryEntries
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return ArrayList of ProviderDirectoryEntry
+   */ 
   public static ArrayList<ProviderDirectoryEntry> ReadProviderDirectoryEntry() throws FileNotFoundException, IOException {
       String filename = "Database/providerDirectory.txt";
       Path pPath = Paths.get(filename);
@@ -114,9 +135,15 @@ public class Terminal {
       return listPde;
   }
   
-  /*A
-   * Reads in members and the services they've had
-   */
+  
+  /**
+   * ReadMember() reads in the member.txt database and creates a new memberAccount for each member, along with the list of services
+   * they've been provided. This returns an arraylist of all the members in the database.
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return ArrayList of MemberAccounts
+   */ 
   public static ArrayList<MemberAccounts> ReadMember() throws FileNotFoundException, IOException{
       String filename = "Database/member.txt";
       Path mPath = Paths.get(filename);
@@ -174,9 +201,15 @@ public class Terminal {
       return listMemA;
   }
   
-  /*
-   * Reads in the providers and the services they've provided
-   */
+  
+  /**
+   * ReadProviders() reads in the provider.txt database and creates a new ProviderAccount for each provider, along with the list of services
+   * they've provided. This returns an arraylist of all the providers in the database.
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return ArrayList of Providers
+   */ 
   public static ArrayList<ProviderAccounts> ReadProviders() throws FileNotFoundException, IOException{
       String filename = "Database/provider.txt";
       Path mPath = Paths.get(filename);
@@ -236,9 +269,14 @@ public class Terminal {
 
 
 
-  /*
-   * Prints the providerDirectory
-   */
+  /**
+   * rewriteDirectory() writes the providerDirectory to ProviderDirectory.txt. This is used for when the provider requests the
+   * providerDirectory
+   * @param none
+   * @throws FileNotFoundException
+   * @throws IOException
+   * @return void
+   */ 
   public static void rewriteDirectory() throws FileNotFoundException, IOException{
       ArrayList<ProviderDirectoryEntry> pde = ReadProviderDirectoryEntry();
 
