@@ -95,7 +95,6 @@ public class BillChocAn {
 	  ArrayList<ProviderDirectoryEntry> pde = Terminal.ReadProviderDirectoryEntry();
 	  String providerDir = "";
 	    for (ProviderDirectoryEntry pd : pde) {
-	      //System.out.println(pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee());
 	    	providerDir += pd.getServiceName() + "," + pd.getServiceCode() + "," + pd.getServiceFee()+"\n";
 	    }
 	    //JOptionPane.showMessageDialog(null,ProviderDir);
@@ -127,9 +126,7 @@ public class BillChocAn {
       }
       input.close();
     }
-    //System.out.print("\n" + "The billed report was successfully generated and stored in member.txt" + "\n");
     JOptionPane.showMessageDialog(null,"The billed report was successfully generated and stored in member.txt");
-
   }
 
 }
