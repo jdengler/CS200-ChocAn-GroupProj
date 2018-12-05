@@ -228,30 +228,36 @@ public class ServiceRecord extends Terminal {
         }
     }
     return fee;
- }
-
-/*Comparator for sorting the list by Member Name*/
-public static Comparator<ServiceRecord> ServiceDateComparator = new Comparator<ServiceRecord>() {
-
-public int compare(ServiceRecord s1, ServiceRecord s2) {
-   
-   Date date1 = new Date();
-	try {
-		date1 = new SimpleDateFormat("MM-dd-yyyy").parse(s1.getDateOfService());
-	} catch (ParseException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
-	Date date2 = new Date();
-	try {
-		date2 = new SimpleDateFormat("MM-dd-yyyy").parse(s2.getDateOfService());
-	} catch (ParseException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
 	}
 
-   //ascending order
-   return date1.compareTo(date2);
-}};
+  
+  /**
+   * Comparator for sorting the list by date. It returns the an integer representing the comparison
+   * result. The comparison returns the earliest date
+   * @param s1, first ServiceRecord for comparison
+   * @param s2, second ServiceRecord for comparison
+   * @return date1.compareTo(date2)
+   */
+  public static Comparator<ServiceRecord> ServiceDateComparator = new Comparator<ServiceRecord>() {
+	
+	  public int compare(ServiceRecord s1, ServiceRecord s2) {
+		  Date date1 = new Date();
+		  try {
+			  date1 = new SimpleDateFormat("MM-dd-yyyy").parse(s1.getDateOfService());
+		  } catch (ParseException e1) {
+			  // TODO Auto-generated catch block
+			  e1.printStackTrace();
+		  }
+		  Date date2 = new Date();
+		  try {
+			date2 = new SimpleDateFormat("MM-dd-yyyy").parse(s2.getDateOfService());
+		  } catch (ParseException e) {
+			  // TODO Auto-generated catch block
+			e.printStackTrace();
+		  }
+		
+		  //ascending order
+		  return date1.compareTo(date2);	  
+  }};
 }
 

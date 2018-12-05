@@ -208,7 +208,13 @@ public class MemberAccounts {
 		servicesProvided.add(service);
 	}	
 	
-    /*Comparator for sorting the list by Member Name*/
+	/**
+	   * Comparator for sorting the list by date. It returns the an integer representing the comparison
+	   * result. The comparison returns the name closest to 'A'
+	   * @param m1, first MemberAccounts for comparison
+	   * @param m2, second MemberAccounts for comparison
+	   * @return MemberName1.compareTo(MemberName2)
+	   */
     public static Comparator<MemberAccounts> MemberNameComparator = new Comparator<MemberAccounts>() {
 
 	public int compare(MemberAccounts m1, MemberAccounts m2) {
