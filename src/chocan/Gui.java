@@ -466,13 +466,7 @@ public class Gui extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			try {
 				MemberAccounts ma = ValidateMember.validateMember(Integer.parseInt(input.getText()));
-				if(ma.equals(null))
-					JOptionPane.showMessageDialog(null,"Invalid number.");
-				else if(!ma.getStatus())
-					JOptionPane.showMessageDialog(null,"Suspended.");
-				else if(ma.getStatus())
-					JOptionPane.showMessageDialog(null,"Validated.");
-			}
+			}			
 			catch(Exception ex){}
 		}
 	});
