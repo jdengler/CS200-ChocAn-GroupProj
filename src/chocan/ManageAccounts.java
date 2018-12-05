@@ -169,14 +169,11 @@ public class ManageAccounts {
     boolean flag =false;
     
     String pn = Integer.toString(number);
-    try {
-	    if (pn.length() != 9) {
-	      throw new IllegalArgumentException("The provider number must be 9 digits long!");
-	    }
-    }
-    catch(IllegalArgumentException e) {
-    	return flag;
-    }
+    
+	if (pn.length() != 9) {
+		throw new IllegalArgumentException("The provider number must be 9 digits long!");
+	}
+    
 
     pacc.setName(name);
     pacc.setNumber(number);

@@ -597,17 +597,14 @@ public class Gui extends JFrame{
 						list.add((JTextField)component);
 					}
 				}
-
-				boolean flag = ManageAccounts.addProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
 				
-				if(flag == true){
-					JOptionPane.showMessageDialog(null, "Provider saved successfully.");
-					OpenOTerminal();
+				try{
+					boolean flag = ManageAccounts.addProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
 				}
-				else{
-					JOptionPane.showMessageDialog(null, "Error. The Provider was not added.");
-					OpenOTerminal();
-				}
+				catch(IllegalArgumentException et) {
+					JOptionPane.showMessageDialog(null, et);
+			    }
+				
 			}
 			catch(Exception ex){}
 		}
