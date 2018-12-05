@@ -1,3 +1,7 @@
+/*
+ * Authors: Josh Engler and Conrad Spear
+ */
+
 package chocan;
 import java.awt.BorderLayout;
 import java.awt.Component;

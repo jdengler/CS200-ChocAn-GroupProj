@@ -1,3 +1,7 @@
+/*
+ * Author: Josh Engler
+ */
+
 package chocan;
 import java.util.ArrayList;
 

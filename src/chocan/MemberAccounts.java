@@ -1,3 +1,7 @@
+/*
+ * Author: Namito Yokota
+ */
+
 package chocan;
 
 import java.util.ArrayList;

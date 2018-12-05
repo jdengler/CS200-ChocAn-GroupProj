@@ -1,3 +1,7 @@
+/*
+ * Author: Conrad Spear
+ */
+
 package chocan;
 import java.io.FileNotFoundException;
 import java.io.IOException;

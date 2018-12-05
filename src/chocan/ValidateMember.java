@@ -1,3 +1,7 @@
+/*
+ * Author: Hunter Espocito
+ */
+
 package chocan;
 
 import java.io.FileNotFoundException;

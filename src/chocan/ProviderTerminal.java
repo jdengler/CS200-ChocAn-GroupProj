@@ -1,3 +1,7 @@
+/*
+ * Author: Namito Yokota
+ */
+
 package chocan;
 import java.nio.file.*;
 import java.io.File;

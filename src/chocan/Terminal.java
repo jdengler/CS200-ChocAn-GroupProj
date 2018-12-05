@@ -1,3 +1,7 @@
+/*
+ * Author: Ashley Phan
+ */
+
 package chocan;
 
 import java.io.BufferedReader;
