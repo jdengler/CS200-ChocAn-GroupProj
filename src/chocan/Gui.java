@@ -518,6 +518,7 @@ public class Gui extends JFrame{
 				
 				if(flag == true){
 					BillChocAn.billChocan(currentDate, serviceDate, Integer.parseInt(providerNumber),Integer.parseInt(list.get(0).getText()), Integer.parseInt(memberNumber));
+					OpenPTerminal();
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Error. The service code is invalid.");
