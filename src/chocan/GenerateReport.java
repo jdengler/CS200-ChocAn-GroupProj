@@ -121,20 +121,21 @@ public class GenerateReport {
 		try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
 			for (ProviderAccounts pa : providers) {
 				ArrayList<ServiceRecord> sr = pa.getServicesProvided();
-				input.write(pa.getName()+",");
+				input.write("Provider Name: "+pa.getName()+",");
 				if(sr == null) {
-					input.write("0"+","+"0\n");
+					input.write(" Number of Consultations: 0"+","+" Fees: $0\n");
 				}
 				else {
-					input.write(pa.getNumberServices()+",");
-					input.write(pa.getTotalFees(sr)+"\n");
+					input.write(" Number of Consultations: "+pa.getNumberServices()+",");
+					input.write(" Fees: $"+pa.getTotalFees(sr)+"\n");
 					totalConsults = totalConsults + pa.getNumberServices();
 					totalFee = totalFee + pa.getTotalFees(sr);
 				}
 			}
-			input.write("Total number of providers: "+providers.size()+"\n");
-			input.write("Total number of consultations: "+totalConsults+"\n");
-			input.write("Total number of fees: $"+totalFee+"\n");
+			input.write("\n");
+			input.write("Total Number of Providers: "+providers.size()+"\n");
+			input.write("Total Number of Consultations: "+totalConsults+"\n");
+			input.write("Total Number of Fees: $"+totalFee+"\n");
 			input.close();
 		}
         JOptionPane.showMessageDialog(null, "The summary report was successfully generated and stored in "+name+".txt");
@@ -157,12 +158,13 @@ public class GenerateReport {
 		File file = new File(filename);
 	      
 		try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
-			input.write(member.getName()+"\n"+member.getNumber()+"\n"+member.getAddress()+"\n"+member.getCity()+"\n"+member.getState()+"\n"+member.getZipCode()+"\n");
+			input.write("Member Name: "+member.getName()+"\n"+"Member Number: "+member.getNumber()+"\n"+"Member Address: "+member.getAddress()+"\n"+"Member City: "+member.getCity()+"\n"+"Member State: "+member.getState()+"\n"+"Member Zip Code: "+member.getZipCode()+"\n");
 
 			ArrayList<ServiceRecord> sr = member.getServicesProvided();
 			if (sr != null) {
 				for(ServiceRecord service : sr) {
-					input.write(service.getDateOfService()+"\n"+service.getProviderName(service.getProviderNumber())+"\n"+service.getServiceName(service.getServiceCode())+"\n");
+					input.write("\n");
+					input.write("Service Date: "+service.getDateOfService()+"\n"+"Service Provider: "+service.getProviderName(service.getProviderNumber())+"\n"+"Service Name: "+service.getServiceName(service.getServiceCode())+"\n");
 				}
 			}
 
@@ -188,12 +190,13 @@ public class GenerateReport {
 		File file = new File(filename);
 	      
 		try(BufferedWriter input = new BufferedWriter(new FileWriter(file))){
-			input.write(provider.getName()+"\n"+provider.getNumber()+"\n"+provider.getAddress()+"\n"+provider.getCity()+"\n"+provider.getState()+"\n"+provider.getZipCode()+"\n");
+			input.write("Provider Name: "+provider.getName()+"\n"+"Provider Number: "+provider.getNumber()+"\n"+"Provider Address: "+provider.getAddress()+"\n"+"Provider City: "+provider.getCity()+"\n"+"Provider State: "+provider.getState()+"\n"+"Provider Zip Code: "+provider.getZipCode()+"\n");
 
 			ArrayList<ServiceRecord> sr = provider.getServicesProvided();
 			if (sr != null) {
 				for(ServiceRecord service : sr) {
-					input.write(service.getDateOfService()+"\n"+service.getCurrentDateTime()+"\n"+service.getMemberName(service.getMemberNumber())+"\n"+service.getMemberNumber()+"\n"+service.getServiceCode()+"\n"+service.getServiceFee(service.getServiceCode())+"\n");
+					input.write("\n");
+					input.write("Service Date: "+service.getDateOfService()+"\n"+"Date Data Was Received: "+service.getCurrentDateTime()+"\n"+"Member Name: "+service.getMemberName(service.getMemberNumber())+"\n"+"Member Number: "+service.getMemberNumber()+"\n"+"Service Code: "+service.getServiceCode()+"\n"+"Fee to be paid: "+service.getServiceFee(service.getServiceCode())+"\n");
 					totalFee = totalFee + service.getServiceFee(service.getServiceCode());
 				}
 				input.write("Total number of consultations with members: "+sr.size()+"\n");

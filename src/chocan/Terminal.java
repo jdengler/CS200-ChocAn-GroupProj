@@ -250,7 +250,7 @@ public class Terminal {
       
       try(BufferedWriter input = new BufferedWriter(new FileWriter(oFile))){
           for (ProviderDirectoryEntry entry : pde) {
-              input.write(entry.getServiceName()+","+entry.getServiceCode()+","+entry.getServiceFee()+"\n");
+              input.write("Service Name: "+entry.getServiceName()+","+" Service Code: "+entry.getServiceCode()+","+" Service Fee: $"+entry.getServiceFee()+"\n");
           }
           input.close();
       }
