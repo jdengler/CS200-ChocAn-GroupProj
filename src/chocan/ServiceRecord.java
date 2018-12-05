@@ -253,5 +253,5 @@ public int compare(ServiceRecord s1, ServiceRecord s2) {
    //ascending order
    return date1.compareTo(date2);
 }};
-  }
+}
 
