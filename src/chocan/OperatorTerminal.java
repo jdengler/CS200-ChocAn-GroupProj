@@ -21,11 +21,20 @@ import javax.print.DocFlavor.URL;
 public class OperatorTerminal extends Terminal {
 	
 	private static Scanner reader = new Scanner(System.in);
-
+	
+	/**
+	 * operatorMenu() Allows the operator to select Manage Member or Manage Provider, each of which contains
+	 * 				  the Add, Update, and Delete functions for both Members and Providers, respectively.
+	 * @param none	
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @return void
+	 */
 	public static void operatorMenu() throws FileNotFoundException, IOException {
 
 		int option = 0;
 		
+		//Operator Menu (main)
 		System.out.println("\nOperator Menu");
 		System.out.println("1.) Manage Member");
 		System.out.println("2.) Manage Provider");
@@ -34,7 +43,8 @@ public class OperatorTerminal extends Terminal {
 			
 		option = reader.nextInt();
 		reader.nextLine();
-			
+		
+		//Manage Member submenu
 		if (option == 1) {
 			System.out.println("\nManage Member");
 			System.out.println("1.) Add Member");
@@ -45,8 +55,9 @@ public class OperatorTerminal extends Terminal {
 				
 			option = reader.nextInt();
 			reader.nextLine();
-				
-			if (option == 1) { // add member
+			
+			//Add member option
+			if (option == 1) { 
 			    System.out.println("\nAdd Member");
 			    System.out.print("Enter member's name: ");
 		        String name = reader.nextLine();
@@ -67,8 +78,9 @@ public class OperatorTerminal extends Terminal {
 			    System.out.println("\nThe member has been added");
 			    return;
 			}
-				
-			else if (option == 2) { // delete member
+			
+			//Delete member option
+			else if (option == 2) { 
 			    System.out.println("\nDelete Member");
 		        System.out.print("Enter member's number: ");
 		        int number = reader.nextInt();
@@ -77,8 +89,9 @@ public class OperatorTerminal extends Terminal {
 				System.out.println("\nThe member has been removed");
 				return;
 			}
-				
-			else if (option == 3) { // update member
+			
+			//Update member option
+			else if (option == 3) {
 				System.out.println("\nUpdate Member");
 				
 				ArrayList <MemberAccounts> members = ReadMember();
@@ -115,6 +128,7 @@ public class OperatorTerminal extends Terminal {
 			}
 		}
 			
+		//Manage Provider submenu
 		else if (option == 2) {
 			System.out.println("\nManage Provider");
 			System.out.println("1.) Add Provider");
@@ -126,7 +140,8 @@ public class OperatorTerminal extends Terminal {
 			option = reader.nextInt();
 			reader.nextLine();
 				
-			if (option == 1) { // add provider
+			//Add provider option
+			if (option == 1) { 
 				System.out.println("\nAdd Provider");
 				System.out.print("Enter provider's name: ");
 		        String name = reader.nextLine();
@@ -147,7 +162,8 @@ public class OperatorTerminal extends Terminal {
 				return;
 			}
 				
-			else if (option == 2) { // delete provider
+			//Delete provider option
+			else if (option == 2) { 
 				System.out.println("\nDelete Provider");
 				System.out.println("Enter provider's number: ");
 		        int number = reader.nextInt();
@@ -156,7 +172,8 @@ public class OperatorTerminal extends Terminal {
 				return;
 			}
 				
-			else if (option == 3) { // update provider
+			//Update provider option
+			else if (option == 3) { 
 				System.out.println("\nUpdate Provider");
 				
 				ArrayList <ProviderAccounts> providers = ReadProviders();
@@ -188,7 +205,6 @@ public class OperatorTerminal extends Terminal {
 		                }
 		            }
 		        }
-				
 				return;
 			}
 		}

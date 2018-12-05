@@ -20,7 +20,15 @@ import java.nio.file.Paths;
 
 
 public class RequestProviderDirectory {
-
+	
+	/**
+	 * requestDirectory() calls the rewriteDirectory() function within the Terminal class.
+	 * 				  
+	 * @param none	
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @return void
+	 */
 	public static void requestDirectory() throws FileNotFoundException, IOException {
 	      Terminal.rewriteDirectory();
 	  }
