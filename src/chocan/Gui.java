@@ -617,6 +617,7 @@ public class Gui extends JFrame{
 				int code = ManageAccounts.updateMember(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
 				if(code == 0){
 					JOptionPane.showMessageDialog(null, "Member was updated successfully.");
+					OpenOTerminal();
 				}
 				else if(code == -1){
 					JOptionPane.showMessageDialog(null,"Input fields cannot be empty!");
@@ -652,6 +653,7 @@ public class Gui extends JFrame{
 				int code = ManageAccounts.updateProvider(list.get(0).getText(),Integer.parseInt(list.get(1).getText()),list.get(2).getText(),list.get(3).getText(),list.get(4).getText(),Integer.parseInt(list.get(5).getText()));
 				if(code == 0){
 					JOptionPane.showMessageDialog(null, "Provider was updated successfully.");
+					OpenOTerminal();
 				}
 				else if(code == -1){
 					JOptionPane.showMessageDialog(null,"Input fields cannot be empty!");
@@ -689,6 +691,7 @@ public class Gui extends JFrame{
 					// Delete code here
 					ManageAccounts.deleteMember(Integer.parseInt(list.get(0).getText()));
 					JOptionPane.showMessageDialog(null, "The member was deleted");
+					OpenOTerminal();
 				}
 			}
 			catch(Exception ex){}
@@ -717,6 +720,7 @@ public class Gui extends JFrame{
 					// Delete code here
 					ManageAccounts.deleteProvider(Integer.parseInt(list.get(0).getText()));
 					JOptionPane.showMessageDialog(null, "The provider was deleted");
+					OpenOTerminal();
 				}
 			}
 			catch(Exception ex){}
