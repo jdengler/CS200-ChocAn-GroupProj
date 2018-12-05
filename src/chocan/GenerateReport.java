@@ -113,7 +113,7 @@ public class GenerateReport {
 	 * Prints the member report (used by Manager)
 	 */
 	public static void printMemberReport(MemberAccounts member, String name) throws FileNotFoundException, IOException{
-
+		name.replaceAll("\\s+", "");
 		String filename = "writtenFiles/MemberReports/"+name+".txt";
 
 		File file = new File(filename);
@@ -141,7 +141,7 @@ public class GenerateReport {
 	 */
 	public static void printProviderReport(ProviderAccounts provider, String name) throws FileNotFoundException, IOException{
 		//ArrayList<ProviderAccounts> pa = ReadProviders();
-
+		name.replaceAll("\\s+", "");
 		double totalFee = 0;
 		String filename = "writtenFiles/ProviderReports/"+name+".txt";
 
