@@ -1,6 +1,4 @@
-/*
- * Author: Namito Yokota
- */
+// Author: Namito Yokota
 
 package chocan;
 
