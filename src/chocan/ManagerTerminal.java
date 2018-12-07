@@ -43,26 +43,45 @@ public class ManagerTerminal extends Terminal{
 
 		else if (option == 2) { // generate member report
 			System.out.println("\nGenerate Member Report");
-
-			System.out.print("Please name the file: ");
-			String name = reader.next();
-			System.out.print("Enter member's number: ");
-			int number = reader.nextInt();
+			System.out.println("1.) Generate Reports for All Members");
+			System.out.println("2.) Generate Individual Member Report");
+			
+			option = reader.nextInt();
 			reader.nextLine();
+			
+			if(option == 1){
+				GenerateReport.generateMember();
+			}
+			else if(option == 2){
+				
+				System.out.print("Enter member's number: ");
+				int number = reader.nextInt();
+				reader.nextLine();
 
-			GenerateReport.generateMember();
+				GenerateReport.generateIndividualMember(number);
+			}
+			
 		}
 
 		else if (option == 3) { // generate provider report
 			System.out.println("\nGenerate Provider Report");
+			System.out.println("1.) Generate Reports for All Providers");
+			System.out.println("2.) Generate Individual Provider Report");
 
-			System.out.println("Please name the file: ");
-			String name = reader.next();
-			System.out.print("Enter provider's number: ");
-			int number = reader.nextInt();
+			option = reader.nextInt();
 			reader.nextLine();
-
-			GenerateReport.generateProvider();
+			
+			if(option == 1){
+				GenerateReport.generateProvider();
+			}
+			else if(option == 2){
+				
+				System.out.print("Enter provider's number: ");
+				int number = reader.nextInt();
+				reader.nextLine();
+				GenerateReport.generateIndividualProvider(number);
+			}
+			
 		}
 
 		return;
